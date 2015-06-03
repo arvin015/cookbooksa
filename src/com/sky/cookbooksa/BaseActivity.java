@@ -17,6 +17,7 @@ public class BaseActivity extends Activity {
 	protected Context context;
 
 	protected FinalHttp fh;
+	
 	protected FinalBitmap fb;
 
 	protected ProgressDialog pb;
