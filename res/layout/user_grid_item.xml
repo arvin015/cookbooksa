@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal" >
+
+    <FrameLayout
+        android:id="@+id/ll_option_container"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:background="@drawable/common_white_bg"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <ImageView
+            android:id="@+id/option_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/about"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/option_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:text="我的收藏"
+            android:textColor="@color/main_yellow"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+</LinearLayout>

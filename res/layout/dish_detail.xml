@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="52dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp" >
+
+                    <ImageView
+                        android:id="@+id/dishpic"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:scaleType="fitXY" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_userpic"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_alignBottom="@id/dishpic"
+                        android:layout_alignRight="@id/dishpic"
+                        android:layout_marginBottom="-25dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/pic_bg"
+                        android:padding="2dp" >
+
+                        <ImageView
+                            android:id="@+id/userpic"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/avatar_default" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/user_nick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/dishpic"
+                        android:layout_alignTop="@id/rl_userpic"
+                        android:layout_marginRight="5dp"
+                        android:layout_toLeftOf="@id/rl_userpic"
+                        android:gravity="center"
+                        android:text="木子2014"
+                        android:textColor="@color/main_green"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/dish_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="家常豆腐"
+                            android:textColor="@color/main_yellow"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dish_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="简介：家常豆腐-Fried Tofu, Home Style 一种老少皆宜的美味食品，没有特别强的季节性，四季可食。豆腐是中国人饮食智慧的结晶，在各类菜系中豆类都有一席之地"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/dish_method"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="工艺：酱烧"
+                                android:textColor="@color/main_gray"
+                                android:textSize="16sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/dish_during"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="制作时间：8-12分钟"
+                                android:textColor="@color/main_gray"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/dish_taste"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="口味：家常味"
+                                android:textColor="@color/main_gray"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/dish_style"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="3dp"
+                                android:layout_weight="1"
+                                android:text="菜系：湘菜"
+                                android:textColor="@color/main_gray"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 食材 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/detail_tab_bg"
+                            android:orientation="horizontal"
+                            android:padding="5dp" >
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="主料、辅料"
+                                android:textColor="@color/main_yellow"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1"
+                                android:text="调料"
+                                android:textColor="@color/main_yellow"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="false"
+                            android:orientation="horizontal" >
+
+                            <com.sky.cookbooksa.widget.CommonListView
+                                android:id="@+id/ing_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_weight="1"
+                                android:divider="#E3E3DD"
+                                android:dividerHeight="0.5dp" />
+
+                            <com.sky.cookbooksa.widget.CommonListView
+                                android:id="@+id/sea_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_weight="1"
+                                android:divider="#E3E3DD"
+                                android:dividerHeight="0.5dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 步骤 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/detail_tab_bg"
+                            android:orientation="horizontal"
+                            android:padding="5dp" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="步骤"
+                                android:textColor="@color/main_yellow"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/enter_step_detail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="right"
+                                android:text="点击查看步骤大图》"
+                                android:textColor="@color/main_green"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                        <com.sky.cookbooksa.widget.CommonListView
+                            android:id="@+id/step_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:divider="#E3E3DD"
+                            android:dividerHeight="0.3dp" />
+                    </LinearLayout>
+
+                    <!-- 小贴士 -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/detail_tab_bg"
+                            android:padding="5dp"
+                            android:text="小贴士"
+                            android:textColor="@color/main_yellow"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/dish_tip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="水别放太少，鸡精多些味道更好，豆腐一定要慢火烧透才入味。"
+                            android:textColor="@color/main_gray"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <!-- 底部栏 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#E3E3DD" />
+
+            <LinearLayout
+                android:id="@+id/group_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:id="@+id/gohome"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_bg_03"
+                    android:src="@drawable/btn_home"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:id="@+id/gocomment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_bg_03"
+                    android:src="@drawable/btn_issue_comment_normal" />
+
+                <ImageButton
+                    android:id="@+id/goshare"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_bg_03"
+                    android:src="@drawable/btn_share_normal" />
+
+                <ImageButton
+                    android:id="@+id/gocollect"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/white_bg_03" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

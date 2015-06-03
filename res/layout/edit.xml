@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp" >
+
+        <EditText
+            android:id="@+id/smallEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ump_edit_bg_normal"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size" />
+
+        <RelativeLayout
+            android:id="@+id/largeEditContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/largeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/ump_edit_bg_normal"
+                android:gravity="top"
+                android:maxLength="30"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/totalNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/largeEdit"
+                android:layout_alignRight="@id/largeEdit"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:text="30" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
