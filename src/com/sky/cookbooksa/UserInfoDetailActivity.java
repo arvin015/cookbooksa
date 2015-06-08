@@ -518,8 +518,8 @@ public class UserInfoDetailActivity extends BaseActivity {
 		intent.putExtra("crop", "false");  
 		intent.putExtra("aspectX", 1);  
 		intent.putExtra("aspectY", 1);  
-		intent.putExtra("outputX", 80);  
-		intent.putExtra("outputY", 80);  
+		intent.putExtra("outputX", 320);  
+		intent.putExtra("outputY", 320);  
 		intent.putExtra("return-data", true);  
 
 		return intent;  
@@ -532,8 +532,8 @@ public class UserInfoDetailActivity extends BaseActivity {
 		intent.putExtra("crop", "true");  
 		intent.putExtra("aspectX", 1);  
 		intent.putExtra("aspectY", 1);  
-		intent.putExtra("outputX", 80);  
-		intent.putExtra("outputY", 80);  
+		intent.putExtra("outputX", 320);  
+		intent.putExtra("outputY", 320);  
 		intent.putExtra("return-data", true);  
 
 		return intent;  

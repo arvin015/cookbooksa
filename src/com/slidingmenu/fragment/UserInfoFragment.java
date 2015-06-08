@@ -8,6 +8,7 @@ import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.UserInfoDetailActivity;
 import com.sky.cookbooksa.UserLoginActivity;
+import com.sky.cookbooksa.uihelper.ImageDialogHelper;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.StringUtil;
@@ -63,6 +64,8 @@ public class UserInfoFragment extends Fragment{
 
 	private int LOADCODE = 100;
 	private int USERCODE = 200;
+
+	private ImageDialogHelper imageDialogHelper;
 
 	private String[] name_options = new String[]{
 			"我的资料", "我的收藏", "我的足迹", "我的私房菜", "我的说说"
@@ -162,6 +165,19 @@ public class UserInfoFragment extends Fragment{
 			}
 		});
 
+		userPic.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Log.d("print", "path="+Constant.IMAGE_DIR + Utils.userPic);
+				
+				imageDialogHelper = new ImageDialogHelper(act, Constant.IMAGE_DIR + Utils.userPic);
+				imageDialogHelper.showDialog();
+			}
+		});
+
 		goLogin.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -202,7 +218,7 @@ public class UserInfoFragment extends Fragment{
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		if(resultCode == Activity.RESULT_OK){
 
 			if(requestCode == LOADCODE){
@@ -211,7 +227,7 @@ public class UserInfoFragment extends Fragment{
 			}else if(requestCode == USERCODE){
 
 				Log.d("print", "come here result");
-				
+
 				userNick.setText(Utils.userNick);
 
 				if(Utils.userBm != null){
