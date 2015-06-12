@@ -24,7 +24,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.sky.cookbooksa.adapter.MyViewPagerAdapter;
+import com.sky.cookbooksa.push.PushUtils;
 import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ExitApplication;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
@@ -73,6 +76,10 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		PushManager.startWork(getApplicationContext(),
+				PushConstants.LOGIN_TYPE_API_KEY,
+				PushUtils.getMetaValue(MainActivity.this, "api_key"));
 
 		ExitApplication.getInstance().addActivity(this);
 		DisplayUtil.getInstance(this);
@@ -272,6 +279,17 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 	//exit app
 	private void exitApp(){
 		ExitApplication.getInstance().exit();
+	}
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		// TODO Auto-generated method stub
+
+		setIntent(intent);
+
+		ToastUtil.toastLong(context, "onNewIntent---id="+intent.getStringExtra("id"));
+
+		super.onNewIntent(intent);
 	}
 
 	@Override

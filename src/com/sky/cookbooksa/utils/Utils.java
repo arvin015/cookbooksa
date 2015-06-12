@@ -17,9 +17,9 @@ public class Utils {
 	public final static String USER_PHONE = "uPhone";
 
 	public final static String USER_ID = "uId";
-	
+
 	public final static String USER_NICK = "uNick";
-	
+
 	public final static String USER_PIC = "uPic";
 
 	public static boolean isLoaded = false;
@@ -28,7 +28,11 @@ public class Utils {
 	public static String userNick;
 	public static String userPic;
 	public static String userId;
-	
+
 	public static Bitmap userBm;
+
+	//PUSH
+	public static String pushUserId;
+	public static String pushChannelId;
 
 }

@@ -2,17 +2,17 @@ package com.sky.cookbooksa.utils;
 
 public class Constant {
 
-	//	public static final String DIR = "http://www.skycookbook.sinaapp.com/Public/Uploads/";//远程
+	public static final String DIR = "http://www.skycookbook.sinaapp.com/Public/Uploads/";//远程
 
-	public static String DIR = "http://192.168.23.106:8081/Public/Uploads/";//本地
+	//	public static String DIR = "http://192.168.23.106:8081/Public/Uploads/";//本地
 
-	//	private static String httpip = "http://www.skycookbook.sinaapp.com/";//远程
+	private static String httpip = "http://www.skycookbook.sinaapp.com/";//远程
 
-	private static String httpip = "http://192.168.23.106:8081/";//本地
+	//	private static String httpip = "http://192.168.23.106:8081/";//本地
 
-	//	public static String IMAGE_DIR = "http://www.skycookbook.sinaapp.com/Public/Images/";//远程
+	public static String IMAGE_DIR = "http://www.skycookbook.sinaapp.com/Public/Images/";//远程
 
-	public static String IMAGE_DIR = "http://192.168.23.106:8081/Public/Images/";//本地
+	//	public static String IMAGE_DIR = "http://192.168.23.106:8081/Public/Images/";//本地
 
 	public static String url_dishlist = httpip + "index.php/Dish/page_list";
 
