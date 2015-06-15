@@ -19,10 +19,4 @@ public class ImageAsyncTaskCallback implements ImageAsyncTaskListener{
 
 	}
 
-	@Override
-	public void loadProgress(int progress) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

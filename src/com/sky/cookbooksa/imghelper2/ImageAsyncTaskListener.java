@@ -17,9 +17,4 @@ public interface ImageAsyncTaskListener {
 	 */
 	public void loadImageFail();
 
-	/**
-	 * 图片加载进度
-	 * @param progress
-	 */
-	public void loadProgress(int progress);
 }

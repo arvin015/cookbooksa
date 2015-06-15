@@ -107,14 +107,6 @@ public class ImageAsyncTask extends AsyncTask<String, Integer, Bitmap>{
 	}
 
 	@Override
-	protected void onProgressUpdate(Integer... values) {
-		// TODO Auto-generated method stub
-		super.onProgressUpdate(values);
-
-		listener.loadProgress(values[0]);
-	}
-
-	@Override
 	protected Bitmap doInBackground(String... params) {
 		// TODO Auto-generated method stub
 

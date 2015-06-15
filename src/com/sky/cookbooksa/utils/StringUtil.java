@@ -615,6 +615,16 @@ public class StringUtil {
 		return version;
 	}
 
+	/**
+	 * 截取String
+	 * @param str
+	 * @param s
+	 * @return
+	 */
+	public static String subString(String str, String s){
+		return str.substring(str.lastIndexOf(s) + 1);
+	}
+
 	public static int sdkVersion(){
 		return android.os.Build.VERSION.SDK_INT;
 	}

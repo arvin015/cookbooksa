@@ -1,6 +1,8 @@
 package com.sky.cookbooksa;
 
 import com.sky.cookbooksa.utils.ExitApplication;
+import com.sky.cookbooksa.utils.NetworkUtil;
+import com.sky.cookbooksa.utils.ToastUtil;
 
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
@@ -17,7 +19,7 @@ public class BaseActivity extends Activity {
 	protected Context context;
 
 	protected FinalHttp fh;
-	
+
 	protected FinalBitmap fb;
 
 	protected ProgressDialog pb;
@@ -36,6 +38,9 @@ public class BaseActivity extends Activity {
 		// TODO Auto-generated method stub
 
 		ExitApplication.getInstance().addActivity(this);
+		if(!NetworkUtil.isNetworkConnected(this)){
+			ToastUtil.toastShort(this, "当前网络未连接，请检测网络！");
+		}
 
 		context = this;
 

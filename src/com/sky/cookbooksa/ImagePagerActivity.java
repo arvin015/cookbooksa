@@ -36,6 +36,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.sky.cookbooksa.adapter.PageIndicator;
 import com.sky.cookbooksa.entity.PictureInfo;
 import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.FileUtils;
 import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.HackyViewPager;
@@ -101,11 +102,12 @@ public class ImagePagerActivity extends BaseActivity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				File file = new File(DOWNLOADDIR);
-				if(!file.exists()){
-					file.mkdirs();
-				}
-				fh.download(Constant.DIR + list.get(currentPos).getPath(), DOWNLOADDIR + list.get(currentPos).getPath(), 
+
+				FileUtils.mkdirs(DOWNLOADDIR);
+
+				String imageStr = StringUtil.subString(list.get(currentPos).getPath(), "/");
+
+				fh.download(Constant.DIR + imageStr, DOWNLOADDIR + imageStr, 
 						false, new AjaxCallBack<File>() {
 
 					@Override

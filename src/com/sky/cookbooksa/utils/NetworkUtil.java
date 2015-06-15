@@ -6,22 +6,23 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 
 /**
  * 
-* @Title: NetworkUtil.java 
-* @Package com.fullteem.utils 
-* @Description: Android网络状�1�7�工具类，使用此类获取网络状态信恄1�7 
-* @author Alexclin   
-* @date 2013-4-10 下午5:59:23 
-* @version V1.0
+ * @author arvin.li
+ *
  */
 public class NetworkUtil {
+
 	private static final int CMNET = 3;
 	private static final int CMWAP = 2;
 	private static final int WIFI = 1;
 
+	/**
+	 * 网络是否连接
+	 * @param context
+	 * @return
+	 */
 	public static boolean isNetworkConnected(Context context) {
 		if (context != null) {
 			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
@@ -35,6 +36,11 @@ public class NetworkUtil {
 		return false;
 	}
 
+	/**
+	 * WiFi是否连接
+	 * @param context
+	 * @return
+	 */
 	public static boolean isWifiConnected(Context context) {
 		if (context != null) {
 			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
@@ -48,6 +54,10 @@ public class NetworkUtil {
 		return false;
 	}
 
+	/**
+	 * @param context
+	 * @return
+	 */
 	public static boolean isMobileConnected(Context context) {
 		if (context != null) {
 			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
@@ -62,39 +72,10 @@ public class NetworkUtil {
 	}
 
 	/**
-	 * 获取当前网络类型
-	 * 
+	 * 获取当前的网络状态 -1：没有网络 1：WIFI网络 2：wap网络 3：net网络
 	 * @param context
-	 * @return 当前网络类型，或无连接为-1
-	 */
-	public static int getConnectedType(Context context) {
-		if (context != null) {
-			ConnectivityManager mConnectivityManager = (ConnectivityManager) context
-					.getSystemService(Context.CONNECTIVITY_SERVICE);
-			NetworkInfo mNetworkInfo = mConnectivityManager
-					.getActiveNetworkInfo();
-			if (mNetworkInfo != null && mNetworkInfo.isAvailable()) {
-				return mNetworkInfo.getType();
-			}
-		}
-		return -1;
-	}
-
-	/**
-	 * 
-	 * @author sky
-	 * 
-	 *         Email vipa1888@163.com
-	 * 
-	 *         QQ:840950105
-	 * 
-	 *         获取当前的网络状怄1�7 -1：没有网组1�7 1：WIFI网络2：wap网络3：net网络
-	 * 
-	 * @param context
-	 * 
 	 * @return
 	 */
-
 	public static int getAPNType(Context context) {
 		int netType = -1;
 		ConnectivityManager connMgr = (ConnectivityManager) context
@@ -106,9 +87,6 @@ public class NetworkUtil {
 
 		int nType = networkInfo.getType();
 		if (nType == ConnectivityManager.TYPE_MOBILE) {
-			Log.e("networkInfo.getExtraInfo()",
-					"networkInfo.getExtraInfo() is "
-							+ networkInfo.getExtraInfo());
 			if (networkInfo.getExtraInfo().toLowerCase().equals("cmnet")) {
 				netType = CMNET;
 			}
@@ -120,17 +98,13 @@ public class NetworkUtil {
 			netType = WIFI;
 		}
 		return netType;
-
 	}
 
 	/**
-	 * 新建丄1�7个网络状态监听器并注冄1�7
-	 * 
+	 * 网络监听器
 	 * @param context
-	 *            上下斄1�7
 	 * @param callback
-	 *            网络改变时的回调
-	 * @return 被注册的广播接收噄1�7
+	 * @return
 	 */
 	public static BroadcastReceiver registerNetworkCallback(Context context,
 			NetworkChangedCallback callback) {
