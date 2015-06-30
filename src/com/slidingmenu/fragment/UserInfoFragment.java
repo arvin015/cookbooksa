@@ -226,8 +226,6 @@ public class UserInfoFragment extends Fragment{
 				loadLoginData();
 			}else if(requestCode == USERCODE){
 
-				Log.d("print", "come here result");
-
 				userNick.setText(Utils.userNick);
 
 				if(Utils.userBm != null){

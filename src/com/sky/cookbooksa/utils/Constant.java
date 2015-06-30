@@ -64,4 +64,10 @@ public class Constant {
 	//Upload
 	public static String url_uploadPhoto = httpip + "index.php/Upload/upload";
 
+	//Message
+	public static String url_getnewmessagesbyuserid = httpip + "index.php/Message/getNewMessagesByUserId";
+	public static String url_getnewmessagesnumbyuserid = httpip + "index.php/Message/getNewMessagesNumByUserId";
+	public static String url_updatemessagestate = httpip + "index.php/Message/updateMessageState";
+	public static String url_deletemessagebymsgid = httpip + "index.php/Message/deleteMessageByMsgId";
+
 }

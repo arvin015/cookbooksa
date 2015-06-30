@@ -37,7 +37,7 @@ public class BaseActivity extends Activity {
 	private void init() {
 		// TODO Auto-generated method stub
 
-		ExitApplication.getInstance().addActivity(this);
+		ExitApplication.getInstance(context).addActivity(this);
 		if(!NetworkUtil.isNetworkConnected(this)){
 			ToastUtil.toastShort(this, "当前网络未连接，请检测网络！");
 		}
@@ -99,6 +99,6 @@ public class BaseActivity extends Activity {
 
 	//exit app
 	protected void exitApp(){
-		ExitApplication.getInstance().exit();
+		ExitApplication.getInstance(context).exit();
 	}
 }

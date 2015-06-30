@@ -25,6 +25,8 @@ import com.sky.cookbooksa.utils.ToastUtil;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -111,6 +113,8 @@ public class SearchFragment extends Fragment implements OnClickListener{
 		hot_grid = (GridView)view.findViewById(R.id.hot_grid);
 
 		footerview = LayoutInflater.from(act).inflate(R.layout.footer_clearrecord, null);
+
+		hot_grid.setSelector(new ColorDrawable(Color.TRANSPARENT));
 
 		TextView clearText = (TextView) footerview.findViewById(R.id.clear_record);
 		clearText.setOnClickListener(new OnClickListener() {

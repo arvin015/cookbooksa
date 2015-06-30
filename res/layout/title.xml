@@ -1,77 +1,116 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_repeat_titlebg"
     android:padding="3dp" >
 
-    <ImageButton
-        android:id="@+id/back"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="3dp"
-        android:background="@drawable/back"
-        android:visibility="gone" />
+        android:layout_gravity="left|center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-    <ImageButton
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="3dp"
-        android:background="@drawable/menu_icon"
-        android:visibility="gone" />
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:background="@drawable/back"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:background="@drawable/menu_icon"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:shadowColor="#ff000000"
+        android:shadowRadius="5"
         android:textColor="#FFF"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/setting"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="6dp"
-        android:background="@drawable/setting_icon"
-        android:visibility="gone" />
+        android:layout_gravity="right|center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/sureBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="6dp"
-        android:background="@drawable/search_btn_bg"
-        android:padding="5dp"
-        android:text="确定"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        <RelativeLayout
+            android:id="@+id/messageContainer"
+            android:layout_width="65px"
+            android:layout_height="65px"
+            android:gravity="center"
+            android:visibility="gone" >
 
-    <ToggleButton
-        android:id="@+id/list_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="6dp"
-        android:background="@drawable/tab_liststyle_selector"
-        android:checked="true"
-        android:clickable="true"
-        android:textOff=""
-        android:textOn=""
-        android:visibility="gone" />
+            <ImageButton
+                android:id="@+id/messageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="6dp"
+                android:background="@drawable/icon_message" />
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/msgNumText"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignRight="@id/messageBtn"
+                android:layout_alignTop="@id/messageBtn"
+                android:layout_marginRight="-6dp"
+                android:layout_marginTop="-6dp"
+                android:background="@drawable/msg_num_bg"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textColor="#FFFFFF"
+                android:textSize="10sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/setting_icon"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/sureBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/search_btn_bg"
+            android:padding="5dp"
+            android:text="确定"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <ToggleButton
+            android:id="@+id/list_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/tab_liststyle_selector"
+            android:checked="true"
+            android:clickable="true"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="gone" />
+    </LinearLayout>
+
+</FrameLayout>

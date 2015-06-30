@@ -22,6 +22,9 @@ public class Utils {
 
 	public final static String USER_PIC = "uPic";
 
+	public final static String NEW_MSG_NUM = "newMsgNum";
+	public final static String HAS_NEW_MSG = "hasNewMsg";
+
 	public static boolean isLoaded = false;
 
 	public static String userPhone;
@@ -30,6 +33,8 @@ public class Utils {
 	public static String userId;
 
 	public static Bitmap userBm;
+
+	public static int newMsgNum = 0;//新消息条数
 
 	//PUSH
 	public static String pushUserId;

@@ -7,7 +7,6 @@ import net.tsz.afinal.FinalDb;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.SRecord;
-import com.sky.cookbooksa.utils.ToastUtil;
 
 import android.content.Context;
 import android.view.LayoutInflater;

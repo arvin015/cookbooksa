@@ -2,7 +2,14 @@ package com.sky.cookbooksa;
 
 import java.util.ArrayList;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +27,9 @@ import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -28,6 +37,7 @@ import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.sky.cookbooksa.adapter.MyViewPagerAdapter;
 import com.sky.cookbooksa.push.PushUtils;
+import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ExitApplication;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
@@ -50,12 +60,14 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 	protected Context context;
 
 	protected CustomViewPager pager;
-	private ImageButton menu, setting;
+	private RelativeLayout messageContainer;
+	private ImageButton menu, setting, messageBtn;
+	private ImageView newMsgFlag;
 	private ToggleButton listStyle;
 	private PagerAdapter mAdapter;
 	private float screenWidth;//屏幕宽度
 	private SlidingMenu sm;
-	private TextView title;
+	private TextView title, msgNumText;
 
 	private FragmentTransaction ft;
 
@@ -64,6 +76,8 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 	private long lastTime = 0;
 
 	private long totalTime = 2000;
+
+	private final int MSG_ACT_FLAG = 10000;
 
 	private ArrayList<Fragment> fragments;
 	private ArrayList<RadioButton> titles = new ArrayList<RadioButton>();//五个标题
@@ -77,11 +91,12 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		PushManager.startWork(getApplicationContext(),
-				PushConstants.LOGIN_TYPE_API_KEY,
-				PushUtils.getMetaValue(MainActivity.this, "api_key"));
+		//初始化百度云推送
+		//		PushManager.startWork(getApplicationContext(),
+		//				PushConstants.LOGIN_TYPE_API_KEY,
+		//				PushUtils.getMetaValue(MainActivity.this, "api_key"));
 
-		ExitApplication.getInstance().addActivity(this);
+		ExitApplication.getInstance(context).addActivity(this);
 		DisplayUtil.getInstance(this);
 
 		context = this;
@@ -91,6 +106,11 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 		initView();//初始化控件
 		initTitle();
 		initViewPager();
+
+		//加载消息
+		if(Utils.isLoaded){
+			loadMsg();
+		}
 	}
 	/**
 	 * 初始化视图
@@ -112,10 +132,15 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 		menu = (ImageButton) findViewById(R.id.menu);
 		menu.setVisibility(View.VISIBLE);
 		setting = (ImageButton) findViewById(R.id.setting);
+		messageBtn = (ImageButton) findViewById(R.id.messageBtn);
+		newMsgFlag = (ImageView) findViewById(R.id.newMsgFlag);
+		msgNumText = (TextView) findViewById(R.id.msgNumText);
 		title = (TextView) findViewById(R.id.title);
 		listStyle = (ToggleButton) findViewById(R.id.list_style);
 		listStyle.setVisibility(View.VISIBLE);
 		title.setText(titleNames[0]);
+
+		messageContainer = (RelativeLayout) findViewById(R.id.messageContainer);
 
 		menu.setOnClickListener(new OnClickListener() {
 
@@ -147,6 +172,25 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(context, SettingActivity.class);
 				context.startActivity(intent);
+				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+			}
+		});
+
+		messageBtn.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(!Utils.isLoaded){
+					ToastUtil.toastShort(context, "请先登录！");
+					return;
+				}
+
+				SharedPreferencesUtils.getInstance(context, "").saveSharedPreferences(Utils.HAS_NEW_MSG, 0);
+				newMsgFlag.setVisibility(View.GONE);
+
+				Intent intent = new Intent(context, MessageActivity.class);
+				startActivityForResult(intent, MSG_ACT_FLAG);
 				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 			}
 		});
@@ -257,8 +301,16 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 
 			if(index == 3){
 				setting.setVisibility(View.VISIBLE);
+				messageContainer.setVisibility(View.VISIBLE);
+
+				if(Utils.newMsgNum > 0){
+					msgNumText.setVisibility(View.VISIBLE);
+					msgNumText.setText("" + Utils.newMsgNum);
+				}
+
 			}else{
 				setting.setVisibility(View.GONE);
+				messageContainer.setVisibility(View.GONE);
 			}
 		}
 
@@ -278,7 +330,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 
 	//exit app
 	private void exitApp(){
-		ExitApplication.getInstance().exit();
+		ExitApplication.getInstance(context).exit();
 	}
 
 	@Override
@@ -334,5 +386,73 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 			// 如果不是第一页，设置触摸屏幕的模式为边缘60px的地方  
 			sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 		}
+	}
+
+	//Activity回调
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if(resultCode == Activity.RESULT_OK){
+			if(requestCode == MSG_ACT_FLAG){
+				if(Utils.newMsgNum > 0){
+					msgNumText.setText(Utils.newMsgNum + "");
+				}else{
+					msgNumText.setVisibility(View.GONE);
+				}
+			}
+		}
+	}
+
+	//加载消息一系列操作
+	//加载消息
+	private void loadMsg(){
+		FinalHttp finalHttp = new FinalHttp();
+
+		AjaxParams params = new AjaxParams();
+		params.put("userId", Utils.userId);
+
+		finalHttp.post(Constant.url_getnewmessagesnumbyuserid, params, 
+				new AjaxCallBack<Object>() {
+
+			@Override
+			public void onFailure(Throwable t, int errorNo, String strMsg) {
+				// TODO Auto-generated method stub
+				super.onFailure(t, errorNo, strMsg);
+			}
+
+			@Override
+			public void onSuccess(Object t) {
+				// TODO Auto-generated method stub
+				super.onSuccess(t);
+
+				JSONObject resultObj = null;
+				try {
+					resultObj = new JSONObject(String.valueOf(t));
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				if(resultObj != null){
+					Utils.newMsgNum = resultObj.optInt("count", 0);
+				}
+
+				//是否有新消息
+				if(Utils.newMsgNum > SharedPreferencesUtils.getInstance(context, "")
+						.loadIntSharedPreference(Utils.NEW_MSG_NUM)){
+					newMsgFlag.setVisibility(View.VISIBLE);
+				}else{
+					//是否有未读消息
+					int hasNewMsg = SharedPreferencesUtils.getInstance(context, "")
+							.loadIntSharedPreference(Utils.HAS_NEW_MSG);
+					if(hasNewMsg == 1){
+						newMsgFlag.setVisibility(View.VISIBLE);
+					}
+				}
+			}
+
+		});
 	}
 }
