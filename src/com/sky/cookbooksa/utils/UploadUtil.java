@@ -1,4 +1,4 @@
-﻿package com.sky.cookbooksa.utils;
+package com.sky.cookbooksa.utils;
 
 import java.io.DataOutputStream;
 import java.io.FileInputStream;

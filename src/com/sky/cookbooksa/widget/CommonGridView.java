@@ -1,4 +1,4 @@
-﻿package com.sky.cookbooksa.widget;
+package com.sky.cookbooksa.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
