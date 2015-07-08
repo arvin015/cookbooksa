@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp" >
+
+        <Button
+            android:id="@+id/exit_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/orange_btn_bg"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="退出"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size" />
+    </FrameLayout>
+
+</LinearLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/setting.xml -->

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\android\projects\cookbooksa\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="bd6479f5dd592790607e0504e66e0f31c2b4d308">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\android-support-v4-11f8fb386a821d9b99584e29b63841828a271bcd.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-QZone-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="df1b100aea097bdf5f08e3fdd741e40ce5deb01d">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-QZone-2.4.2-c47e20214258f7c46fbb6e008749d74a93587826.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\AnalysisSDK_0.0.3.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="fcbe3a962f6385d900d9b027e5b57877e60c3505">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\AnalysisSDK_0.0.3-ee533172e2624b698284eb56435d99285646b784.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\SMSSDK-1.1.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f148ba54788359f1c6a5cfaf1c11119691f7f815">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\SMSSDK-1.1.4-12ac26748c5573ec67656cc7837c24217b46432d.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\Android_Location_V1.3.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="b64d1f38ef7ee28b538d61a39d040f249c65587c">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\Android_Location_V1.3.2-65a405c596a9afecc8b6880c121297787023a003.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-SinaWeibo-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1165bbfaa37a8b5c1674d5a8ad9b523cfe60676">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-SinaWeibo-2.4.2-386c6a734f45f505be9991198ac0dbb743fc2411.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-Core-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d11de919b266ca9bcf6382e9e42015f350400064">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-Core-2.4.2-85bc5adc894139271b27da7867acfc360835de1e.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\mframework.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="25509058b34a5ee08dbf66e57078e3083735d200">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\mframework-c2f21e8f37b457d60f38d05daadfa04d0dc70f11.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-Wechat-Moments-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e726c9210c266c82e8ee7f8f7951f87a3183d125">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Moments-2.4.2-bd1ad3f41b8f08e745fc43feebd593433c97a5d2.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\pushservice-4.4.1.88.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c924ea0b023d5ffa30737f4a6172499b80eb50b6">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\pushservice-4.4.1.88-eaecfa347093937a51d56f044a2977e4217c70ce.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-TencentWeibo-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4e827d591694955fc5e14ec853f8bde09d1091cb">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-TencentWeibo-2.4.2-ecb58d4f240d9389782abb7525ce80421913937f.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\zxing-1.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="327bddfe22740db0419bd719a0f950b6ad2b3c3f">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\zxing-1.6-aa62151cc14e5e6608652e866ca5cbe00b4d6ecd.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-QQ-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4ab8d715e328293d095bf4a5737a8e778b8ed02a">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-QQ-2.4.2-a7245cbd42f245a3e009881bfcc0e83fee1824fa.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-ShortMessage-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f34a3bc260575a3c53763d2bdb06a338defb66fc">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-ShortMessage-2.4.2-bef092e2baa3dcbc41a6b8581c3c3f3fd8f03948.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-Wechat-Core-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a56175934bc035e3f1c9081b09c4c5293949141d">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-Core-2.4.2-d42a70df8ba2979e08a453ced131d1bf7329f647.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\afinal_0.5_bin.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="89729e3bc7f76890363b10e1e0dc5e57964c7807">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\afinal_0.5_bin-eed2641627712a8ad359e2b9a926b048be6bb5fc.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-Wechat-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3e70952a15144a2ca6d827aeb3e0c2efd0cdb9eb">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-Wechat-2.4.2-e8014b2e0dc0f82343e2375f5a2cf89799cd3027.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\android-async-http-1.4.4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3bae85a076241828810bf8fbcc12e5891d5fc34c">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\android-async-http-1.4.4-3e564fd3365943f73c9cd8a999b1d8da07978c6f.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\universal-image-loader-1.8.6.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="09995ba681982ca129af798c9eb21e79c4bffa45">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\universal-image-loader-1.8.6-cfab69fd99154e1acf7ee3acc302efc8c0b6a492.jar" />
+    </item>
+    <item
+        jar="D:\android\projects\cookbooksa\libs\ShareSDK-Email-2.4.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c5579eb0eb217432fcf418ae8eebcb3a41a4975d">
+        <dex dex="D:\android\projects\cookbooksa\build\intermediates\pre-dexed\debug\ShareSDK-Email-2.4.2-4f3d91e2e0107444d2e4cd2028e24ab31d6e15d5.jar" />
+    </item>
+
+</items>

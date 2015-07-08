@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hot_ll_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/yellow_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="6dp" >
+
+    <TextView
+        android:id="@+id/hot_dish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="家常豆腐"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+</LinearLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/hot_grid_item.xml -->

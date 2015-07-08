@@ -1,0 +1,115 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/title" />
+
+        <com.sky.cookbooksa.widget.CustomViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="55dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="bottom" >
+
+        <RadioGroup
+            android:id="@+id/group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_bg"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_home_selector"
+                android:gravity="center"
+                android:text="专题"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="15sp"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/dish"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_bg"
+                android:button="@null"
+                android:checked="true"
+                android:drawableTop="@drawable/tab_home_selector"
+                android:gravity="center"
+                android:text="推荐"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/classify"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_bg"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_classify_selector"
+                android:gravity="center"
+                android:text="分类"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_bg"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_search_selector"
+                android:gravity="center"
+                android:text="搜索"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="15sp" />
+
+            <RadioButton
+                android:id="@+id/userinfo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/bottom_bg"
+                android:button="@null"
+                android:drawableTop="@drawable/tab_user_selector"
+                android:gravity="center"
+                android:text="我的"
+                android:textColor="@drawable/tab_textcolor_selector"
+                android:textSize="15sp" />
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/newMsgFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/msg_num_bg"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</FrameLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/activity_main.xml -->

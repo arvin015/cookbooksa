@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\android\projects\cookbooksa\assets"><file name="font/fzst.ttf" path="D:\android\projects\cookbooksa\assets\font\fzst.ttf"/><file name="region.db" path="D:\android\projects\cookbooksa\assets\region.db"/><file name="ShareSDK.xml" path="D:\android\projects\cookbooksa\assets\ShareSDK.xml"/></source></dataSet><dataSet config="debug"><source path="D:\android\projects\cookbooksa\build-types\debug\assets"/></dataSet></merger>
