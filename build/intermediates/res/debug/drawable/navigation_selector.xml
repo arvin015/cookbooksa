@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/navigation_selected_bg" android:state_checked="true"></item>
     <item android:drawable="@drawable/navigation_bg" android:state_checked="false"></item>
 
-</selector><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/navigation_selector.xml -->
+</selector><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/navigation_selector.xml -->

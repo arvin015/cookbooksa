@@ -6,4 +6,4 @@
         android:startColor="@color/actionbar_background_start"
         android:endColor="@color/actionbar_background_end"
         android:angle="-90" />
-</shape><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/actionbar_background.xml -->
+</shape><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/actionbar_background.xml -->

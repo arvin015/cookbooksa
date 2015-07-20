@@ -2,4 +2,4 @@
 <bitmap xmlns:android="http://schemas.android.com/apk/res/android"
     android:src="@drawable/dialog_titlebg"
     android:tileMode="repeat" />
-<!-- From: file:/D:/android/projects/cookbooksa/res/drawable/dialog_repeat_titlebg.xml -->
+<!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/dialog_repeat_titlebg.xml -->

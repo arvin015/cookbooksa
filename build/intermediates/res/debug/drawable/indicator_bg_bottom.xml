@@ -15,4 +15,4 @@
         android:topLeftRadius="@dimen/indicator_corner_radius"
         android:topRightRadius="@dimen/indicator_corner_radius" />
 
-</shape><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/indicator_bg_bottom.xml -->
+</shape><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/indicator_bg_bottom.xml -->

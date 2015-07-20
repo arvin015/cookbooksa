@@ -75,7 +75,6 @@ public class SettingActivity extends BaseActivity{
 						@Override
 						public void onClick(View arg0) {
 							// TODO Auto-generated method stub
-							SharedPreferencesUtils.getInstance(context, "").removeAllKey();
 							clearLoginData();
 
 							intentHandle(MainActivity.class, null, true);
@@ -102,8 +101,16 @@ public class SettingActivity extends BaseActivity{
 	}
 
 	private void clearLoginData(){
+
+		SharedPreferencesUtils.getInstance(context, "").removeKey(Utils.USER_ID);
+		SharedPreferencesUtils.getInstance(context, "").removeKey(Utils.USER_NICK);
+		SharedPreferencesUtils.getInstance(context, "").removeKey(Utils.USER_PHONE);
+
 		Utils.userNick = "";
 		Utils.userPhone = "";
 		Utils.userPic = "";
+		Utils.userId = "";
+		Utils.isLoaded = false;
+		Utils.newMsgNum = 0;
 	}
 }

@@ -62,7 +62,6 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name="com.sky.cookbooksa.MainActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.sky.cookbooksa.WelcomeActivity"

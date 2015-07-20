@@ -4,6 +4,7 @@ import net.tsz.afinal.FinalBitmap;
 
 import com.sky.cookbooksa.CollectActivity;
 import com.sky.cookbooksa.FootprintActivity;
+import com.sky.cookbooksa.IUserLoadedCallback;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.UserInfoDetailActivity;
@@ -67,6 +68,8 @@ public class UserInfoFragment extends Fragment{
 
 	private ImageDialogHelper imageDialogHelper;
 
+	private IUserLoadedCallback userLoadedCallback;
+
 	private String[] name_options = new String[]{
 			"我的资料", "我的收藏", "我的足迹", "我的私房菜", "我的说说"
 	};
@@ -78,8 +81,10 @@ public class UserInfoFragment extends Fragment{
 
 	public UserInfoFragment(){}
 
-	public UserInfoFragment(Context context){
-		act = (MainActivity)context;
+	public UserInfoFragment(MainActivity act){
+		this.act = act;
+
+		userLoadedCallback = act;
 	}
 
 	@Override
@@ -224,6 +229,9 @@ public class UserInfoFragment extends Fragment{
 			if(requestCode == LOADCODE){
 
 				loadLoginData();
+
+				userLoadedCallback.userLoaded();//通知主程序加载用户消息
+
 			}else if(requestCode == USERCODE){
 
 				userNick.setText(Utils.userNick);

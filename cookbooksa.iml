@@ -81,25 +81,25 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
+    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="zxing-1.6" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Wechat-Core-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Core-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-QZone-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Email-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="mframework" level="project" />
     <orderEntry type="library" exported="" name="AnalysisSDK_0.0.3" level="project" />
-    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="SMSSDK-1.1.4" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-QQ-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="universal-image-loader-1.8.6" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="afinal_0.5_bin" level="project" />
-    <orderEntry type="library" exported="" name="android-async-http-1.4.4" level="project" />
+    <orderEntry type="library" exported="" name="universal-image-loader-1.8.6" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-ShortMessage-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-QZone-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Core-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-TencentWeibo-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="SMSSDK-1.1.4" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="zxing-1.6" level="project" />
     <orderEntry type="library" exported="" name="pushservice-4.4.1.88" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="Android_Location_V1.3.2" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Email-2.4.2" level="project" />
-    <orderEntry type="library" exported="" name="ShareSDK-Wechat-Core-2.4.2" level="project" />
   </component>
 </module>
