@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/title" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <com.sky.cookbooksa.widget.CommonScrollView
             android:id="@+id/comment_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="65dp" >
+            android:layout_marginBottom="65dp">
 
             <LinearLayout
                 android:id="@+id/content_container"
@@ -45,14 +45,14 @@
             android:background="@drawable/common_white_bg"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="6dp" >
+            android:padding="6dp">
 
             <EditText
                 android:id="@+id/comment_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:background="@drawable/ump_edit_bg_normal"
+                android:background="@drawable/common_edit_bg_shape"
                 android:hint="说点什么吧？"
                 android:padding="6dp"
                 android:textColor="#90000000"

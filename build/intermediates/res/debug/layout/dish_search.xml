@@ -4,23 +4,23 @@
     android:layout_height="match_parent"
     android:background="#FFF"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="5" >
+            android:layout_weight="5">
 
             <EditText
                 android:id="@+id/search_key"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ump_edit_bg_normal"
+                android:background="@drawable/common_edit_bg_shape"
                 android:hint="请输入菜肴关键字"
                 android:paddingBottom="6dp"
                 android:paddingLeft="5dp"
@@ -30,11 +30,11 @@
 
             <Button
                 android:id="@+id/cancel_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="28dp"
+                android:layout_height="22dp"
                 android:layout_alignRight="@id/search_key"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="5dp"
                 android:background="@drawable/tab_cancel_selector"
                 android:visibility="gone" />
         </RelativeLayout>
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +82,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -108,8 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:divider="#EAEAEA"
-            android:dividerHeight="0.8dp" >
-        </ListView>
+            android:dividerHeight="0.8dp"></ListView>
     </LinearLayout>
 
 </LinearLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/dish_search.xml -->

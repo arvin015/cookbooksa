@@ -57,7 +57,7 @@ import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
 
 public class MainActivity extends SlidingFragmentActivity implements OnPageChangeListener,
-        IUserLoadedCallback {
+        IUserLoadedCallback, IRecommendFragmentCallback {
 
     protected Context context;
 
@@ -293,6 +293,16 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
     }
 
     /**
+     * 推荐Fragment搜索框点击回调方法
+     */
+    @Override
+    public void searchClick() {
+        if (fragments.get(2) != null) {
+            ((SearchFragment) fragments.get(2)).setFocus();
+        }
+    }
+
+    /**
      * 重写OnClickListener的响应函数，主要目的就是实现点击title时，pager会跟着响应切换
      */
     private class MyOnClickListener implements OnClickListener {
@@ -454,7 +464,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
                         }
 
                         //刚登录是否有新消息显示
-                        if(Utils.newMsgNum > 0 && pager.getCurrentItem() == 3){
+                        if (Utils.newMsgNum > 0 && pager.getCurrentItem() == 3) {
                             showMsgIcon();
                         }
 

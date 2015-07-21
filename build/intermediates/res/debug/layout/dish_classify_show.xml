@@ -5,7 +5,7 @@
     android:layout_marginBottom="10dp"
     android:layout_marginTop="30dp"
     android:background="@drawable/common_white_bg"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
         android:id="@+id/content_container"
@@ -13,14 +13,14 @@
         android:layout_height="match_parent"
         android:layout_weight="4"
         android:background="#FFFFFF"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/main_yellow"
+            android:background="@drawable/common_yellow_shape"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/goback"
@@ -49,7 +49,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
+        android:layout_weight="1">
 
         <com.sky.cookbooksa.widget.ClassifyNavigationRadioGroup
             android:id="@+id/ll_navigation"

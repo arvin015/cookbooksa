@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/title" />
 
@@ -13,13 +13,14 @@
         android:orientation="vertical"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:paddingTop="15dp" >
+        android:paddingTop="15dp">
 
         <EditText
             android:id="@+id/smallEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ump_edit_bg_normal"
+            android:background="@drawable/common_edit_bg_shape"
+            android:padding="8dp"
             android:textColor="#000000"
             android:textSize="@dimen/text_size" />
 
@@ -27,15 +28,16 @@
             android:id="@+id/largeEditContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <EditText
                 android:id="@+id/largeEdit"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:background="@drawable/ump_edit_bg_normal"
+                android:background="@drawable/common_edit_bg_shape"
                 android:gravity="top"
                 android:maxLength="30"
+                android:padding="8dp"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size" />
 
