@@ -2,7 +2,7 @@
     android:id="@+id/classify_item_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/griditem_bg"
+    android:background="@drawable/common_edit_bg_shape"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:padding="6dp" >
