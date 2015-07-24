@@ -203,181 +203,187 @@ ADDED from AndroidManifest.xml:109:9
 		ADDED from AndroidManifest.xml:111:13
 	android:name
 		ADDED from AndroidManifest.xml:110:13
+activity#com.sky.cookbooksa.LuckDrawActivity
+ADDED from AndroidManifest.xml:112:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:114:13
+	android:name
+		ADDED from AndroidManifest.xml:113:13
 receiver#com.sky.cookbooksa.push.MyPushMessageReceiver
-ADDED from AndroidManifest.xml:114:9
+ADDED from AndroidManifest.xml:117:9
 	android:name
-		ADDED from AndroidManifest.xml:114:19
+		ADDED from AndroidManifest.xml:117:19
 intent-filter#com.baidu.android.pushservice.action.MESSAGE+com.baidu.android.pushservice.action.RECEIVE+com.baidu.android.pushservice.action.notification.CLICK
-ADDED from AndroidManifest.xml:115:13
+ADDED from AndroidManifest.xml:118:13
 action#com.baidu.android.pushservice.action.MESSAGE
-ADDED from AndroidManifest.xml:118:17
-	android:name
-		ADDED from AndroidManifest.xml:118:25
-action#com.baidu.android.pushservice.action.RECEIVE
-ADDED from AndroidManifest.xml:120:17
-	android:name
-		ADDED from AndroidManifest.xml:120:25
-action#com.baidu.android.pushservice.action.notification.CLICK
 ADDED from AndroidManifest.xml:121:17
 	android:name
 		ADDED from AndroidManifest.xml:121:25
+action#com.baidu.android.pushservice.action.RECEIVE
+ADDED from AndroidManifest.xml:123:17
+	android:name
+		ADDED from AndroidManifest.xml:123:25
+action#com.baidu.android.pushservice.action.notification.CLICK
+ADDED from AndroidManifest.xml:124:17
+	android:name
+		ADDED from AndroidManifest.xml:124:25
 receiver#com.baidu.android.pushservice.PushServiceReceiver
-ADDED from AndroidManifest.xml:126:9
+ADDED from AndroidManifest.xml:129:9
 	android:process
-		ADDED from AndroidManifest.xml:128:13
+		ADDED from AndroidManifest.xml:131:13
 	android:name
-		ADDED from AndroidManifest.xml:127:13
+		ADDED from AndroidManifest.xml:130:13
 intent-filter#android.intent.action.ACTION_POWER_CONNECTED+android.intent.action.ACTION_POWER_DISCONNECTED+android.intent.action.BOOT_COMPLETED+android.intent.action.MEDIA_MOUNTED+android.intent.action.USER_PRESENT+android.net.conn.CONNECTIVITY_CHANGE+com.baidu.android.pushservice.action.advertise.notification.SHOW+com.baidu.android.pushservice.action.media.CLICK+com.baidu.android.pushservice.action.notification.SHOW
-ADDED from AndroidManifest.xml:129:13
+ADDED from AndroidManifest.xml:132:13
 action#android.intent.action.BOOT_COMPLETED
-ADDED from AndroidManifest.xml:130:17
-	android:name
-		ADDED from AndroidManifest.xml:130:25
-action#android.net.conn.CONNECTIVITY_CHANGE
-ADDED from AndroidManifest.xml:131:17
-	android:name
-		ADDED from AndroidManifest.xml:131:25
-action#com.baidu.android.pushservice.action.notification.SHOW
-ADDED from AndroidManifest.xml:132:17
-	android:name
-		ADDED from AndroidManifest.xml:132:25
-action#com.baidu.android.pushservice.action.advertise.notification.SHOW
 ADDED from AndroidManifest.xml:133:17
 	android:name
 		ADDED from AndroidManifest.xml:133:25
-action#com.baidu.android.pushservice.action.media.CLICK
+action#android.net.conn.CONNECTIVITY_CHANGE
 ADDED from AndroidManifest.xml:134:17
 	android:name
 		ADDED from AndroidManifest.xml:134:25
-action#android.intent.action.MEDIA_MOUNTED
+action#com.baidu.android.pushservice.action.notification.SHOW
+ADDED from AndroidManifest.xml:135:17
+	android:name
+		ADDED from AndroidManifest.xml:135:25
+action#com.baidu.android.pushservice.action.advertise.notification.SHOW
 ADDED from AndroidManifest.xml:136:17
 	android:name
 		ADDED from AndroidManifest.xml:136:25
-action#android.intent.action.USER_PRESENT
+action#com.baidu.android.pushservice.action.media.CLICK
 ADDED from AndroidManifest.xml:137:17
 	android:name
 		ADDED from AndroidManifest.xml:137:25
-action#android.intent.action.ACTION_POWER_CONNECTED
-ADDED from AndroidManifest.xml:138:17
-	android:name
-		ADDED from AndroidManifest.xml:138:25
-action#android.intent.action.ACTION_POWER_DISCONNECTED
+action#android.intent.action.MEDIA_MOUNTED
 ADDED from AndroidManifest.xml:139:17
 	android:name
 		ADDED from AndroidManifest.xml:139:25
+action#android.intent.action.USER_PRESENT
+ADDED from AndroidManifest.xml:140:17
+	android:name
+		ADDED from AndroidManifest.xml:140:25
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from AndroidManifest.xml:141:17
+	android:name
+		ADDED from AndroidManifest.xml:141:25
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from AndroidManifest.xml:142:17
+	android:name
+		ADDED from AndroidManifest.xml:142:25
 receiver#com.baidu.android.pushservice.RegistrationReceiver
-ADDED from AndroidManifest.xml:142:9
+ADDED from AndroidManifest.xml:145:9
 	android:process
-		ADDED from AndroidManifest.xml:144:13
+		ADDED from AndroidManifest.xml:147:13
 	android:name
-		ADDED from AndroidManifest.xml:143:13
+		ADDED from AndroidManifest.xml:146:13
 intent-filter#com.baidu.android.pushservice.action.BIND_SYNC+com.baidu.android.pushservice.action.METHOD+com.baidu.android.pushservice.action.adnotification.ADCLICK+com.baidu.android.pushservice.action.adnotification.ADDELETE
-ADDED from AndroidManifest.xml:145:13
+ADDED from AndroidManifest.xml:148:13
 action#com.baidu.android.pushservice.action.adnotification.ADCLICK
-ADDED from AndroidManifest.xml:146:17
-	android:name
-		ADDED from AndroidManifest.xml:146:25
-action#com.baidu.android.pushservice.action.adnotification.ADDELETE
-ADDED from AndroidManifest.xml:147:17
-	android:name
-		ADDED from AndroidManifest.xml:147:25
-action#com.baidu.android.pushservice.action.METHOD
-ADDED from AndroidManifest.xml:148:17
-	android:name
-		ADDED from AndroidManifest.xml:148:25
-action#com.baidu.android.pushservice.action.BIND_SYNC
 ADDED from AndroidManifest.xml:149:17
 	android:name
 		ADDED from AndroidManifest.xml:149:25
-intent-filter#android.intent.action.PACKAGE_REMOVED
-ADDED from AndroidManifest.xml:151:13
-action#android.intent.action.PACKAGE_REMOVED
+action#com.baidu.android.pushservice.action.adnotification.ADDELETE
+ADDED from AndroidManifest.xml:150:17
+	android:name
+		ADDED from AndroidManifest.xml:150:25
+action#com.baidu.android.pushservice.action.METHOD
+ADDED from AndroidManifest.xml:151:17
+	android:name
+		ADDED from AndroidManifest.xml:151:25
+action#com.baidu.android.pushservice.action.BIND_SYNC
 ADDED from AndroidManifest.xml:152:17
 	android:name
 		ADDED from AndroidManifest.xml:152:25
+intent-filter#android.intent.action.PACKAGE_REMOVED
+ADDED from AndroidManifest.xml:154:13
+action#android.intent.action.PACKAGE_REMOVED
+ADDED from AndroidManifest.xml:155:17
+	android:name
+		ADDED from AndroidManifest.xml:155:25
 service#com.baidu.android.pushservice.PushService
-ADDED from AndroidManifest.xml:158:9
+ADDED from AndroidManifest.xml:161:9
 	android:process
-		ADDED from AndroidManifest.xml:161:13
+		ADDED from AndroidManifest.xml:164:13
 	android:exported
-		ADDED from AndroidManifest.xml:160:13
+		ADDED from AndroidManifest.xml:163:13
 	android:name
-		ADDED from AndroidManifest.xml:159:13
+		ADDED from AndroidManifest.xml:162:13
 intent-filter#com.baidu.android.pushservice.action.PUSH_SERVICE
-ADDED from AndroidManifest.xml:162:13
+ADDED from AndroidManifest.xml:165:13
 action#com.baidu.android.pushservice.action.PUSH_SERVICE
-ADDED from AndroidManifest.xml:163:17
+ADDED from AndroidManifest.xml:166:17
 	android:name
-		ADDED from AndroidManifest.xml:163:25
+		ADDED from AndroidManifest.xml:166:25
 service#com.baidu.android.pushservice.CommandService
-ADDED from AndroidManifest.xml:166:9
+ADDED from AndroidManifest.xml:169:9
 	android:exported
-		ADDED from AndroidManifest.xml:168:13
+		ADDED from AndroidManifest.xml:171:13
 	android:name
-		ADDED from AndroidManifest.xml:167:13
+		ADDED from AndroidManifest.xml:170:13
 meta-data#api_key
-ADDED from AndroidManifest.xml:173:9
+ADDED from AndroidManifest.xml:176:9
 	android:name
-		ADDED from AndroidManifest.xml:174:13
+		ADDED from AndroidManifest.xml:177:13
 	android:value
-		ADDED from AndroidManifest.xml:175:13
+		ADDED from AndroidManifest.xml:178:13
 uses-permission#android.permission.INTERNET
-ADDED from AndroidManifest.xml:178:5
-	android:name
-		ADDED from AndroidManifest.xml:178:22
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from AndroidManifest.xml:179:5
-	android:name
-		ADDED from AndroidManifest.xml:179:22
-uses-permission#android.permission.GET_TASKS
-ADDED from AndroidManifest.xml:180:5
-	android:name
-		ADDED from AndroidManifest.xml:180:22
-uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from AndroidManifest.xml:181:5
 	android:name
 		ADDED from AndroidManifest.xml:181:22
-uses-permission#android.permission.ACCESS_NETWORK_STATE
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:182:5
 	android:name
 		ADDED from AndroidManifest.xml:182:22
-uses-permission#android.permission.CHANGE_WIFI_STATE
+uses-permission#android.permission.GET_TASKS
 ADDED from AndroidManifest.xml:183:5
 	android:name
 		ADDED from AndroidManifest.xml:183:22
-uses-permission#android.permission.READ_PHONE_STATE
+uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from AndroidManifest.xml:184:5
 	android:name
 		ADDED from AndroidManifest.xml:184:22
-uses-permission#android.permission.MANAGE_ACCOUNTS
+uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from AndroidManifest.xml:185:5
 	android:name
 		ADDED from AndroidManifest.xml:185:22
-uses-permission#android.permission.GET_ACCOUNTS
+uses-permission#android.permission.CHANGE_WIFI_STATE
 ADDED from AndroidManifest.xml:186:5
 	android:name
 		ADDED from AndroidManifest.xml:186:22
-uses-permission#android.permission.READ_CONTACTS
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from AndroidManifest.xml:187:5
 	android:name
 		ADDED from AndroidManifest.xml:187:22
-uses-permission#android.permission.RECEIVE_SMS
+uses-permission#android.permission.MANAGE_ACCOUNTS
 ADDED from AndroidManifest.xml:188:5
 	android:name
 		ADDED from AndroidManifest.xml:188:22
-uses-permission#android.permission.ACCESS_FINE_LOCATION
+uses-permission#android.permission.GET_ACCOUNTS
 ADDED from AndroidManifest.xml:189:5
 	android:name
 		ADDED from AndroidManifest.xml:189:22
-uses-permission#android.permission.ACCESS_COARSE_LOCATION
+uses-permission#android.permission.READ_CONTACTS
 ADDED from AndroidManifest.xml:190:5
 	android:name
 		ADDED from AndroidManifest.xml:190:22
-uses-permission#android.permission.VIBRATE
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from AndroidManifest.xml:191:5
+	android:name
+		ADDED from AndroidManifest.xml:191:22
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from AndroidManifest.xml:192:5
+	android:name
+		ADDED from AndroidManifest.xml:192:22
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from AndroidManifest.xml:193:5
 	android:name
 		ADDED from AndroidManifest.xml:193:22
-uses-permission#android.permission.CAMERA
-ADDED from AndroidManifest.xml:194:5
+uses-permission#android.permission.VIBRATE
+ADDED from AndroidManifest.xml:196:5
 	android:name
-		ADDED from AndroidManifest.xml:194:22
+		ADDED from AndroidManifest.xml:196:22
+uses-permission#android.permission.CAMERA
+ADDED from AndroidManifest.xml:197:5
+	android:name
+		ADDED from AndroidManifest.xml:197:22

@@ -127,6 +127,9 @@
         <activity
             android:name="com.sky.cookbooksa.MessageActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sky.cookbooksa.LuckDrawActivity"
+            android:screenOrientation="portrait" />
 
         <!-- push应用定义消息receiver声明 -->
         <receiver android:name="com.sky.cookbooksa.push.MyPushMessageReceiver" >
