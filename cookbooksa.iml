@@ -96,8 +96,10 @@
     <orderEntry type="library" exported="" name="afinal_0.5_bin" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.8.6" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-ShortMessage-2.4.2" level="project" />
+    <orderEntry type="library" exported="" name="Android_2DMapApi_V2.4.1" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-TencentWeibo-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="pushservice-4.4.1.88" level="project" />
+    <orderEntry type="library" exported="" name="AMap_Services_V2.4.0" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-Wechat-Moments-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="ShareSDK-SinaWeibo-2.4.2" level="project" />
     <orderEntry type="library" exported="" name="Android_Location_V1.3.2" level="project" />

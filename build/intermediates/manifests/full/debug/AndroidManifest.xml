@@ -32,10 +32,6 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Black.NoTitleBar" >
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="c8b27237d11e20eabebaaeb336e527cb" />
-
         <activity
             android:name="com.sky.cookbooksa.BlankActivity"
             android:label="@string/app_name"
@@ -130,6 +126,9 @@
         <activity
             android:name="com.sky.cookbooksa.LuckDrawActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.sky.cookbooksa.NearbyMapActivity"
+            android:screenOrientation="portrait" />
 
         <!-- push应用定义消息receiver声明 -->
         <receiver android:name="com.sky.cookbooksa.push.MyPushMessageReceiver" >
@@ -194,6 +193,11 @@
         <meta-data
             android:name="api_key"
             android:value="Dw2kjBioFfRohluBTrr4vh1Z" />
+
+        <!-- 高德地图API Key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="c8b27237d11e20eabebaaeb336e527cb" />
     </application>
 
 </manifest>
