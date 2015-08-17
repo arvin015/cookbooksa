@@ -4,10 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.sky.cookbooksa.R;
@@ -21,13 +18,21 @@ public class TurntableView extends View {
 
     private Bitmap bgBm, pointBm;
 
-    private boolean isTurning = true;
+    private boolean isTurning = false;
 
-    private int turnAngle;
+    private int turnAngle;//已旋转度数
 
-    private int totalAngle = 760;
+    private int totalAngle;//总共需旋转度数
 
-    private GestureDetector mGestureDetector;
+    private int defaultAngle = 1080;//默认需最小旋转角度
+
+    private int perAngle = 60;//每个选项区度数
+
+    private int areaId;//目标选区Id
+
+//    private GestureDetector mGestureDetector;
+
+//    private RectF mRectF;//点击开始目标区域
 
     public TurntableView(Context context) {
         this(context, null);
@@ -45,12 +50,15 @@ public class TurntableView extends View {
         init();
     }
 
+    /**
+     * 初始化
+     */
     private void init() {
 
         bgBm = BitmapFactory.decodeResource(getResources(), R.drawable.bg_wheel);
         pointBm = BitmapFactory.decodeResource(getResources(), R.drawable.point);
 
-        //手势
+        /*//手势
         mGestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onSingleTapUp(MotionEvent e) {//点击up事件
@@ -59,7 +67,7 @@ public class TurntableView extends View {
 
                 return super.onSingleTapUp(e);
             }
-        });
+        });*/
     }
 
     @Override
@@ -76,7 +84,10 @@ public class TurntableView extends View {
 
         if (isTurning) {
 
-            if (Math.ceil(totalAngle - turnAngle) <= 3) {
+            if (Math.ceil(totalAngle - turnAngle) <= 6) {
+
+                listener.luckDrawEnd(areaId);
+
                 isTurning = false;
             }
 
@@ -87,7 +98,7 @@ public class TurntableView extends View {
 
             canvas.restore();
 
-            turnAngle += 3;
+            turnAngle += 6;
 
         } else {
             canvas.drawBitmap(bgBm, 0, 0, null);
@@ -100,23 +111,62 @@ public class TurntableView extends View {
         }
     }
 
-    @Override
+    /**
+     * 设置旋转数据
+     *
+     * @param defaultAngle
+     * @param perAngle
+     */
+    public void setDefaultAngle(int defaultAngle, int perAngle) {
+        this.defaultAngle = defaultAngle;
+        this.perAngle = perAngle;
+    }
+
+    /**
+     * 开始旋转
+     *
+     * @param areaId
+     */
+    public void startTurn(int areaId) {
+
+        this.areaId = areaId;
+        this.totalAngle = defaultAngle + areaId * perAngle;
+
+        turnAngle = 0;
+
+        isTurning = true;
+
+        invalidate();
+    }
+
+   /* @Override
     public boolean onTouchEvent(MotionEvent event) {
 
         mGestureDetector.onTouchEvent(event);//将Touch事件交给手势处理
 
         return true;
-    }
+    }*/
 
+   /* */
+
+    /**
+     * 点击处理
+     *
+     * @param e
+     *//*
     private void clickUpHandle(MotionEvent e) {
 
         if (isTurning) {
             return;
         }
 
+        totalAngle = defaultAngle + (RandomUtil.randomNum(360 / perAngle) + 1) * 60;
+
         //创建一个点击有效区域
-        RectF mRectF = new RectF(getWidth() / 2 - 40, getHeight() / 2 - 40,
-                getWidth() / 2 + 40, getHeight() / 2 + 40);
+        if (mRectF == null) {
+            mRectF = new RectF(getWidth() / 2 - 40, getHeight() / 2 - 40,
+                    getWidth() / 2 + 40, getHeight() / 2 + 40);
+        }
 
         if (mRectF.contains(e.getX(), e.getY())) {
 
@@ -126,5 +176,26 @@ public class TurntableView extends View {
 
             invalidate();
         }
+    }*/
+
+    private ITurntableListener listener;
+
+    /**
+     * 设置回调函数
+     *
+     * @param listener
+     */
+    public void setListener(ITurntableListener listener) {
+        this.listener = listener;
+    }
+
+    /**
+     * 回调函数
+     */
+    public interface ITurntableListener {
+        /**
+         * 旋转结束
+         */
+        void luckDrawEnd(int areaId);
     }
 }

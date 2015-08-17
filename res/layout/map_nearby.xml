@@ -7,38 +7,70 @@
 
     <include layout="@layout/title" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/addrKeyEdit"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_margin="2dp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/addrKeyEdit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:background="@drawable/common_edit_bg_shape"
+                android:hint="请输入地址关键字"
+                android:paddingBottom="6dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="6dp"
+                android:textColorHint="#E0E0E0"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/searchBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/search_btn_bg"
+                android:padding="7dp"
+                android:text="搜索"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- 隐藏AutoCompleteTextView焦点所用 -->
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <AutoCompleteTextView
+            android:id="@+id/searchEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/common_edit_bg_shape"
-            android:hint="请输入地址关键字"
+            android:completionThreshold="1"
+            android:dropDownVerticalOffset="1dp"
+            android:hint="请输入关键字"
+            android:maxLength="30"
             android:paddingBottom="6dp"
             android:paddingLeft="5dp"
             android:paddingTop="6dp"
+            android:singleLine="true"
             android:textColorHint="#E0E0E0"
             android:textSize="18sp" />
+    </FrameLayout>
 
-        <Button
-            android:id="@+id/searchBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
-            android:layout_weight="1"
-            android:background="@drawable/search_btn_bg"
-            android:padding="7dp"
-            android:text="搜索"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

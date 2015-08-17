@@ -4,9 +4,9 @@ import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,7 +26,8 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.maps2d.model.MyLocationStyle;
-import com.sky.cookbooksa.uihelper.MapGeocoderHelper;
+import com.sky.cookbooksa.map.GeocoderHelper;
+import com.sky.cookbooksa.map.PoiKeywordSearchHelper;
 import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.RadarScanView;
@@ -44,6 +45,8 @@ public class NearbyMapActivity extends BaseActivity {
 
     private ImageButton backBtn;
 
+    private AutoCompleteTextView searchEdit;
+
     private Button searchBtn;
 
     private TextView titleText;
@@ -58,7 +61,9 @@ public class NearbyMapActivity extends BaseActivity {
 
     private LocationSource mLoactionSource;
 
-    private MapGeocoderHelper mapGeocoderHelper;
+    private GeocoderHelper geocoderHelper;
+
+    private PoiKeywordSearchHelper poiKeywordSearchHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,7 @@ public class NearbyMapActivity extends BaseActivity {
 
         searchBtn = (Button) findViewById(R.id.searchBtn);
         keyEdit = (EditText) findViewById(R.id.addrKeyEdit);
+        searchEdit = (AutoCompleteTextView) findViewById(R.id.searchEdit);
         radarScanView = (RadarScanView) findViewById(R.id.radarScanView);
         backBtn = (ImageButton) findViewById(R.id.back);
         titleText = (TextView) findViewById(R.id.title);
@@ -105,7 +111,11 @@ public class NearbyMapActivity extends BaseActivity {
                     return;
                 }
 
-                mapGeocoderHelper.getLatLngByAddress(keyStr);
+                geocoderHelper.getLatLngByAddress(keyStr);
+
+                keyEdit.setText("");
+
+                toggleKeyboard(keyEdit, false);
             }
         });
 
@@ -113,7 +123,10 @@ public class NearbyMapActivity extends BaseActivity {
 
         addMarkers();
 
-        mapGeocoderHelper = new MapGeocoderHelper(NearbyMapActivity.this, amap);
+        geocoderHelper = new GeocoderHelper(NearbyMapActivity.this, amap);
+
+        poiKeywordSearchHelper = new PoiKeywordSearchHelper(NearbyMapActivity.this, amap, searchEdit);
+        poiKeywordSearchHelper.setSearchCity("深圳");
     }
 
     private void addMarkers() {
@@ -230,7 +243,7 @@ public class NearbyMapActivity extends BaseActivity {
         amap.setOnInfoWindowClickListener(new AMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-
+                ToastUtil.toastShort(context, marker.getSnippet());
             }
         });
 
@@ -239,9 +252,7 @@ public class NearbyMapActivity extends BaseActivity {
             @Override
             public void onMapClick(LatLng latLng) {
 
-                Log.d("print", "onMapClick=" + latLng.latitude + "   " + latLng.longitude);
-
-                mapGeocoderHelper.getAddressByLatLng(latLng);
+                geocoderHelper.getAddressByLatLng(latLng);
             }
         });
     }
@@ -311,8 +322,6 @@ public class NearbyMapActivity extends BaseActivity {
 
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
-
-            Log.d("print", "lat=" + aMapLocation.getLatitude() + "   lng=" + aMapLocation.getLongitude());
 
             if (locationChangedListener != null && aMapLocation != null) {
                 locationChangedListener.onLocationChanged(aMapLocation);//显示系统小蓝点
