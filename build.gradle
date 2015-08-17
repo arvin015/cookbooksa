@@ -9,7 +9,7 @@ buildscript {
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(include: '*.jar', dir: 'libs')
     compile files('libs/Android_2DMapApi_V2.4.1.jar')
     compile files('libs/AMap_Services_V2.4.0.jar')
 }
@@ -19,7 +19,7 @@ android {
         arvinli {
             keyAlias 'arvinli'
             keyPassword 'arvinli'
-            storeFile file('C:/Users/arvin.li.MM/Desktop/arvinli.jks')
+            storeFile file('C:/Users/Administrator/Desktop/arvin.jks')
             storePassword 'arvinli'
         }
     }

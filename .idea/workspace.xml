@@ -47,43 +47,254 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="574e3036-51de-47b5-b927-cbd78f9ed0fc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/map/PoiKeywordSearchHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/ProgressDialogUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/RandomUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/common_grey_shape.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/layout/map_auto_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AESEncryptor.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AESEncryptor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AphidLog$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AphidLog$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AphidLog.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AphidLog.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AssetsDatabaseManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/AssetsDatabaseManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/AutoFocusCallback.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/AutoFocusCallback.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BaseActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BaseActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/BitmapUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/BitmapUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BlankActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BlankActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BlankActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/BlankActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CameraConfigurationManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CameraConfigurationManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CameraManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CameraManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CanvasTransformerBuilder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivityHandler$State.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivityHandler$State.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivityHandler.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/CaptureActivityHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$3$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$RegionAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$RegionAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$RegionAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity$RegionAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ChoiceCityActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$ClassifyAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$ClassifyAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$ClassifyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$ClassifyAdapter$ViewHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$ClassifyAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper$ClassifyAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ClassifyNavigationHelper.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ClassifyNavigationRadioGroup.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ClassifyNavigationRadioGroup.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$AJAX_MODE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$AJAX_MODE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$MyAdapter$MyAjaxCallback.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$MyAdapter$MyAjaxCallback.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$MyAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity$MyAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CollectActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/CollectAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/CollectAdapter$ViewHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/CollectAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/CollectAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Comment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Comment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$AJAX_MODE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$AJAX_MODE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$MyAjaxCallback.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity$MyAjaxCallback.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/CommentActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/CommonDialogHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/CommonDialogHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/CommonGridView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/CommonGridView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/CommonListView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/CommonListView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/Compat.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/Compat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ConfirmDialogHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewAbove.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewBehind.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/CustomViewBehind.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/DecodeFormatManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/DecodeFormatManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/DecodeHandler.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/DecodeHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$AJAX_MODE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$AJAX_MODE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$GoodsAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$GoodsAdapter$ViewHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$GoodsAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$GoodsAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$MyAjaxCallBack.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$MyAjaxCallBack.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$StepAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$StepAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$StepAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity$StepAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/DishDetailActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/DishGridAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/DishGridAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/DishGridAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/DishGridAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/DiskLruCache$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/DiskLruCache$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/DiskLruCache.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/DiskLruCache.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/DisplayUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/DisplayUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/EditActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$4$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$4$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$7.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$8.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/EditPage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ExitApplication.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ExitApplication.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/FileUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/FlashlightManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/FlashlightManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/FlipLoadingLayout$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/FlipLoadingLayout$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/FlipLoadingLayout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/FlipLoadingLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$FollowAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$FollowAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$FollowListItem.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$FollowListItem.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$Following.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$Following.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$PRTHeader.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList$PRTHeader.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/FollowList.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Footprint.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Footprint.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$4$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$4$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$AJAX_MODE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$AJAX_MODE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$MyAjaxCallback.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity$MyAjaxCallback.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/FootprintActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/HomeFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/HomeFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/Httpclient.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/Httpclient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/IO.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/IO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageAsyncTask.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageAsyncTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache$ImageCacheParams.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache$ImageCacheParams.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageCache.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ImageDialogHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ImageDialogHelper$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ImageDialogHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ImageDialogHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageFetcher.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageFetcher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache$FileLastModifSort.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache$FileLastModifSort.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageFileCache.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageGetFromHttp.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageGetFromHttp.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper2/ImageMemoryCache.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$ImagePagerAdapter$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$ImagePagerAdapter$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$ImagePagerAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity$ImagePagerAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/ImagePagerActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageResizer.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageResizer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$ImageAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper$ImageAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/ImageViewPagerHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageWorker$BitmapWorkerTask.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageWorker$BitmapWorkerTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageWorker.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/ImageWorker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer$DaemonThreadFactory.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer$DaemonThreadFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/InactivityTimer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/IndicatorLayout$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/IndicatorLayout$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/IndicatorLayout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/IndicatorLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/uihelper/ListDialogHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayout$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayout$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayoutProxy.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/LoadingLayoutProxy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/MD5Util.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/MD5Util.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$MyOnClickListener.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity$MyOnClickListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MainActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuAdapter$Holder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuAdapter$Holder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/MenuFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MessageAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MessageAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MessageAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MessageAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MyAjaxCallBack.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity$MyAjaxCallBack.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/MessageActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/push/MyPushMessageReceiver.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/push/MyPushMessageReceiver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/NetworkUtil$ConnectionReceiver.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/NetworkUtil$ConnectionReceiver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/NetworkUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/NetworkUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$AccessibilityNodeProviderImpl.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$AccessibilityNodeProviderImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$BeginSoftInputOnLongPressCommand.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$BeginSoftInputOnLongPressCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$ChangeCurrentByOneFromLongPressCommand.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$ChangeCurrentByOneFromLongPressCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$CustomEditText.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$CustomEditText.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$InputTextFilter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$InputTextFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$PressedStateHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$PressedStateHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$SetSelectionCommand.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$SetSelectionCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$SupportAccessibilityNodeProvider.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker$SupportAccessibilityNodeProvider.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/NumberPicker.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/OnekeyShare.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/OverscrollHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/OverscrollHelper$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/OverscrollHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/OverscrollHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$AnimatedZoomRunnable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$AnimatedZoomRunnable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$FlingRunnable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher$FlingRunnable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/PhotoViewAttacher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$GridView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$GridView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$PlatformAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView$PlatformAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/PlatformGridView.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PopupWindowUtil$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PopupWindowUtil$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PopupWindowUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PopupWindowUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$MyAMapLocationListener.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager$MyAMapLocationListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/PositionManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/PreviewCallback.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/PreviewCallback.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$AnimationStyle.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$AnimationStyle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$Mode.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$Mode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$Orientation.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$Orientation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$SmoothScrollRunnable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$SmoothScrollRunnable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$State.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase$State.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshBase.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshScrollView$InternalScrollViewSDK9.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshScrollView$InternalScrollViewSDK9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshScrollView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/PullToRefreshScrollView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/push/PushUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/push/PushUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/QuickAlphabeticBar.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$drawable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$drawable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$id.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$id.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$layout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$layout.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$menu.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$menu.class" />
@@ -92,20 +303,112 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$style.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$style.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$styleable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R$styleable.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/R.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$STYLE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment$STYLE.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/RecommendFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/RecordAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Region$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Region$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Region.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Region.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$AJAX_VALUE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$AJAX_VALUE.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$MyAjaxCallBack.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$SMSEventHandler.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$SMSEventHandler.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$SUBMIT_TYPE.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity$SUBMIT_TYPE.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/RegisterActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Reply.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/entity/Reply.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/ReplyAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/ReplyAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/ReplyAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/adapter/ReplyAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/RetainFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/RetainFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/RotateLoadingLayout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/RotateLoadingLayout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/RoundImageView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/RoundImageView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ScaleImageView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ScaleImageView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/Scroller.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/Scroller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/ScrollerProxy.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/ScrollerProxy.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$HotSearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$HotSearchAdapter$ViewHolder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$HotSearchAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment$HotSearchAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/SearchFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$SearchAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$SearchAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$SearchAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity$SearchAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SearchResultActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/SettingActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/Shake2Share.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/Shake2Share.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/ShareCore.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/onekeyshare/ShareCore.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/SharedPreferencesUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/SharedPreferencesUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ShowDialog.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingActivityHelper$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingActivityHelper$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingActivityHelper.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingActivityHelper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingListActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/app/SlidingListActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$SavedState$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$SavedState$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$SavedState.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu$SavedState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/lib/SlidingMenu.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/StringUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/StringUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ToastUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/ToastUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/UploadUtil.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/utils/UploadUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$3$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$3$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$5.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$6.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$MyAjaxCallBack.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$MyAjaxCallBack.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$MyOnClickListener.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity$MyOnClickListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserInfoDetailActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$OptionAdapter$ViewHolder.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$OptionAdapter$ViewHolder.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$OptionAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment$OptionAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/slidingmenu/fragment/UserInfoFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$3.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$4.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/UserLoginActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/Utils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/Utils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/Utils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/imghelper/Utils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$EclairDetector.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$EclairDetector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$FroyoDetector$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$FroyoDetector$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$FroyoDetector.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector$FroyoDetector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/photoview/VersionedGestureDetector.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/ViewCompat.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/pulltorefresh/lib/ViewCompat.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ViewPagerScroller.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/widget/ViewPagerScroller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/ViewfinderView.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/qrcode/ViewfinderView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/wxapi/WXEntryActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/cn/sharesdk/wxapi/WXEntryActivity.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$WelcomeAdapter$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$WelcomeAdapter$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$WelcomeAdapter.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity$WelcomeAdapter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/sky/cookbooksa/WelcomeActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
@@ -114,22 +417,125 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/outputs/apk/cookbooksa-debug.apk" afterPath="$PROJECT_DIR$/build/outputs/apk/cookbooksa-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/outputFileStates.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/build/intermediates/resources/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/build/intermediates/resources/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/buildConfig/androidTest/debug/com/sky/cookbooksa/test/BuildConfig.java" afterPath="$PROJECT_DIR$/build/generated/source/buildConfig/androidTest/debug/com/sky/cookbooksa/test/BuildConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/buildConfig/debug/com/sky/cookbooksa/BuildConfig.java" afterPath="$PROJECT_DIR$/build/generated/source/buildConfig/debug/com/sky/cookbooksa/BuildConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sky/cookbooksa/NearbyMapActivity.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/NearbyMapActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/PopupWindowUtil.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/PopupWindowUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/r/debug/com/sky/cookbooksa/R.java" afterPath="$PROJECT_DIR$/build/generated/source/r/debug/com/sky/cookbooksa/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/sky/cookbooksa/widget/TurntableView.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/widget/TurntableView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/actionbar_background.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/actionbar_background.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/activity_main.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/blank.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/blank.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/classify_popup_in.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/classify_popup_in.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/classify_popup_out.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/classify_popup_out.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/classify_show_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/classify_show_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect_main.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/collect_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/comment.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/comment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/comment_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/comment_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/confirm_dialog.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/confirm_dialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/content_layout.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/content_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cookbooksa.iml" afterPath="$PROJECT_DIR$/cookbooksa.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/dialog_repeat_titlebg.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/dialog_repeat_titlebg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify_show.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_classify_show.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_detail.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_grid_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_grid_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_search.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/dish_search.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/edit.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/edit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/exit_choice.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/exit_choice.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footer_clearrecord.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footer_clearrecord.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footprint.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footprint.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footprint_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/footprint_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/goods_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/goods_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/home.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/menu/home.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/menu/home.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/hot_grid_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/hot_grid_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_dialog.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_dialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_page.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_page.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_page_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/image_page_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/indicator_bg_bottom.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/indicator_bg_bottom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/indicator_bg_top.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/indicator_bg_top.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/item_background_holo_dark.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/item_background_holo_dark.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/item_background_holo_light.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/item_background_holo_light.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/line.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/line.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/list_dialog.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/list_dialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/list_selector_background_transition_holo_dark.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/list_selector_background_transition_holo_dark.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/list_selector_background_transition_holo_light.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/list_selector_background_transition_holo_light.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/listdialog_item_bg_shape.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/listdialog_item_bg_shape.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/loading.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/loading.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/luck_draw.xml" afterPath="$PROJECT_DIR$/res/layout/luck_draw.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/map_nearby.xml" afterPath="$PROJECT_DIR$/res/layout/map_nearby.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/menu_items.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/menu_items.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/menu_layout.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/menu_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeAssets/debug/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeAssets/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeResources/debug/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeResources/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/message.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/message.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/message_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/message_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/msg_bg_shape.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/msg_bg_shape.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/navigation_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/navigation_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/number_picker_with_selector_wheel.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/number_picker_with_selector_wheel.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pull_to_refresh_header_horizontal.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pull_to_refresh_header_horizontal.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pull_to_refresh_header_vertical.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pull_to_refresh_header_vertical.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pup_delete.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/pup_delete.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_left_in.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_left_in.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_left_out.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_left_out.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_right_in.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_right_in.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_right_out.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/push_right_out.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/qr_code_scan.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/qr_code_scan.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/record.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/record.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/region_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/region_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/region_main.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/region_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/register.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/register.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/reply_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/reply_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/search_result.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/search_result.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/setting.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/setting.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/sex_popdialog.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/sex_popdialog.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable-hdpi/shadow.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable-hdpi/shadow.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_in_from_bottom.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_in_from_bottom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_in_from_top.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_in_from_top.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_out_to_bottom.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_out_to_bottom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_out_to_top.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/anim/slide_out_to_top.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/slidingmenumain.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/slidingmenumain.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable-xhdpi/ssdk_oks_shake_to_share_back.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable-xhdpi/ssdk_oks_shake_to_share_back.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/step_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/step_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_cancel_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_cancel_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_classify_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_classify_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_dish_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_dish_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_home_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_home_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_liststyle_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_liststyle_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_search_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_search_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_textcolor_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_textcolor_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_user_selector.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/drawable/tab_user_selector.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/timeaxis.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/timeaxis.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/title.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/title.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_basic_info.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_basic_info.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_center.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_center.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_grid_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_grid_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_login.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/user_login.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/values-sw720dp-land/values-sw720dp-land.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/values-sw720dp-land/values-sw720dp-land.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/values-v11/values-v11.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/values-v11/values-v11.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/values-v14/values-v14.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/values-v14/values-v14.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/values/values.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/values/values.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/welcome.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/welcome.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/debug/layout/welcome_item.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/debug/layout/welcome_item.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\MyAndroid\studioproject\cookbooksa\src\com\sky\cookbooksa\uihelper\MapGeocoderHelper.java" afterPath="$PROJECT_DIR$/src/com/sky/cookbooksa/map/GeocoderHelper.java" />
     </list>
     <ignored path="cookbooksa.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -157,19 +563,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LuckDrawActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LuckDrawActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76119405">
-              <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1601#2538#0" expanded="true" />
-                <element signature="e#2537#2538#0" expanded="true" />
-                <element signature="e#2577#2721#0" expanded="true" />
-                <element signature="e#2720#2721#0" expanded="true" />
-                <element signature="e#2761#3157#0" expanded="true" />
-                <element signature="e#3156#3157#0" expanded="true" />
+                <element signature="e#1832#2929#0" expanded="true" />
+                <element signature="e#2928#2929#0" expanded="true" />
+                <element signature="e#2968#3112#0" expanded="true" />
+                <element signature="e#3111#3112#0" expanded="true" />
+                <element signature="e#3152#3548#0" expanded="true" />
+                <element signature="e#3547#3548#0" expanded="true" />
+                <element signature="e#5166#5940#0" expanded="true" />
+                <element signature="e#5290#5914#0" expanded="true" />
+                <element signature="e#5913#5914#0" expanded="true" />
+                <element signature="e#5939#5940#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,22 +589,38 @@
         <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="545" column="0" selection-start-line="545" selection-start-column="0" selection-end-line="545" selection-end-column="0" />
+              <caret line="508" column="0" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <marker date="1439816185225" expanded="false" signature="18563:18564" placeholder=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="luck_draw.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/res/layout/luck_draw.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.1402439">
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="luck_draw.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/luck_draw.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2702703">
-              <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
+      <file leaf-file-name="title.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/layout/title.xml">
           <provider editor-type-id="android-designer">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.5675676">
+              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -757,7 +1183,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1438914551808" />
+        <entry key="$PROJECT_DIR$" value="1439817829699" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -1039,11 +1465,11 @@
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/ProgressDialogUtil.java" />
         <option value="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/RandomUtil.java" />
-        <option value="$PROJECT_DIR$/res/layout/luck_draw.xml" />
         <option value="$PROJECT_DIR$/res/drawable-xhdpi/common_grey_shape.xml" />
         <option value="$PROJECT_DIR$/src/com/sky/cookbooksa/widget/TurntableView.java" />
         <option value="$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java" />
         <option value="$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/luck_draw.xml" />
       </list>
     </option>
   </component>
@@ -1060,8 +1486,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -1193,7 +1619,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1246,11 +1672,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="android.project.structure.last.selected" value="cookbooksa" />
@@ -1265,6 +1691,7 @@
     <property name="ExportApk.ApkPath" value="C:\Users\arvin.li.MM\Desktop" />
     <property name="ExportApk.Flavors" value="" />
     <property name="ExportApk.BuildType" value="release" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_19" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -1487,65 +1914,65 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921588" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64424175" sideWeight="0.50215286" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8027366" sideWeight="0.49784714" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64424175" sideWeight="0.50215286" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32874617" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32743362" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32920355" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8017699" sideWeight="0.49784714" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22859327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22932331" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64424175" sideWeight="0.50215286" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22932331" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921588" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8084379" sideWeight="0.49784714" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.64424175" sideWeight="0.50215286" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="1.0" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921588" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32839224" sideWeight="0.49784714" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295325" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.8027366" sideWeight="0.49784714" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22859327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1566,36 +1993,81 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1832#2929#0" expanded="true" />
+            <element signature="e#2928#2929#0" expanded="true" />
+            <element signature="e#2968#3112#0" expanded="true" />
+            <element signature="e#3111#3112#0" expanded="true" />
+            <element signature="e#3152#3548#0" expanded="true" />
+            <element signature="e#3547#3548#0" expanded="true" />
+            <element signature="e#5166#5940#0" expanded="true" />
+            <element signature="e#5290#5914#0" expanded="true" />
+            <element signature="e#5913#5914#0" expanded="true" />
+            <element signature="e#5939#5940#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="545" column="0" selection-start-line="545" selection-start-column="0" selection-end-line="545" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1439816185225" expanded="false" signature="18563:18564" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/luck_draw.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/widget/TurntableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/user_grid_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/user_center.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/user_center.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="72" column="45" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="45" />
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/love_icon.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../software/adt-bundle-windows-x86_64-20140321/sdk/platforms/android-19/android.jar!/android/widget/GridView.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34313726">
-          <caret line="52" column="16" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/DisplayUtil.java">
@@ -1605,71 +2077,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/location_marker.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/map_infocontent.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5319426">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/res/layout/dish_search.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/widget/RadarScanView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/ChString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="74" selection-start-line="17" selection-start-column="74" selection-end-line="17" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/Android_2DMapApi_V2.4.1.jar!/com/amap/api/maps2d/model/MarkerOptions.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.2">
-          <caret line="59" column="25" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/AMap_Services_V2.4.0.jar!/com/amap/api/services/geocoder/RegeocodeResult.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.24">
-          <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/AMap_Services_V2.4.0.jar!/com/amap/api/services/geocoder/GeocodeQuery.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.68">
-          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/Android_2DMapApi_V2.4.1.jar!/com/amap/api/maps2d/model/LatLngBounds.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36554623">
-          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/dish_search.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="52" column="19" selection-start-line="8" selection-start-column="4" selection-end-line="52" selection-end-column="19" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/Utils.java">
@@ -1679,31 +2094,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/MapUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0844233">
-          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17122473">
           <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../software/adt-bundle-windows-x86_64-20140321/sdk/platforms/android-19/android.jar!/android/app/ProgressDialog.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1470588">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/AMap_Services_V2.4.0.jar!/com/amap/api/services/poisearch/PoiSearch.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34313726">
-          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1722,23 +2116,23 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/map_auto_item.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29850745">
           <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/map_nearby.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/map_nearby.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41666666">
           <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/map/GeocoderHelper.java">
@@ -1804,26 +2198,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/title.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.26865673">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ticket_bottom_bg_02.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/drawable/common_yellow_shape.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/drawable-xhdpi/common_grey_shape.xml">
@@ -1848,13 +2225,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/confirm_dialog.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.4328358">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/uihelper/ConfirmDialogHelper.java">
@@ -1865,14 +2242,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/image_dialog.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17910448">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/uihelper/ImageDialogHelper.java">
@@ -1889,48 +2266,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../software/adt-bundle-windows-x86_64-20140321/sdk/platforms/android-19/sources/android-19/android/app/ActivityThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="2330" column="0" selection-start-line="2330" selection-start-column="0" selection-end-line="2330" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/luck_draw.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2702703">
-          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../software/adt-bundle-windows-x86_64-20140321/sdk/platforms/android-19/sources/android-19/android/app/SharedPreferencesImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="246" column="0" selection-start-line="246" selection-start-column="0" selection-end-line="246" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../software/adt-bundle-windows-x86_64-20140321/sdk/platforms/android-19/android.jar!/java/text/DateFormat.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34313726">
-          <caret line="130" column="16" selection-start-line="130" selection-start-column="16" selection-end-line="130" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/SharedPreferencesUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33293697">
           <caret line="96" column="16" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
           <folding>
-            <element signature="e#2521#2522#0" expanded="true" />
-            <element signature="e#2569#2570#0" expanded="true" />
+            <element signature="e#2521#2522#0" expanded="false" />
+            <element signature="e#2569#2570#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1938,7 +2280,34 @@
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/utils/StringUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="545" column="0" selection-start-line="545" selection-start-column="0" selection-end-line="545" selection-end-column="0" />
+          <caret line="508" column="0" selection-start-line="508" selection-start-column="0" selection-end-line="508" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1439816185225" expanded="false" signature="18563:18564" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/dialog_titlebg.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable/dialog_repeat_titlebg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19186047">
+          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/title.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5675676">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1955,17 +2324,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/sky/cookbooksa/LuckDrawActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76119405">
-          <caret line="142" column="0" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1601#2538#0" expanded="true" />
-            <element signature="e#2537#2538#0" expanded="true" />
-            <element signature="e#2577#2721#0" expanded="true" />
-            <element signature="e#2720#2721#0" expanded="true" />
-            <element signature="e#2761#3157#0" expanded="true" />
-            <element signature="e#3156#3157#0" expanded="true" />
+            <element signature="e#1832#2929#0" expanded="true" />
+            <element signature="e#2928#2929#0" expanded="true" />
+            <element signature="e#2968#3112#0" expanded="true" />
+            <element signature="e#3111#3112#0" expanded="true" />
+            <element signature="e#3152#3548#0" expanded="true" />
+            <element signature="e#3547#3548#0" expanded="true" />
+            <element signature="e#5166#5940#0" expanded="true" />
+            <element signature="e#5290#5914#0" expanded="true" />
+            <element signature="e#5913#5914#0" expanded="true" />
+            <element signature="e#5939#5940#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/luck_draw.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1402439">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

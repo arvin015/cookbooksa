@@ -2,7 +2,6 @@ package com.sky.cookbooksa;
 
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,13 +13,16 @@ import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.TurntableView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by arvin.li on 2015/7/23.
  */
 public class LuckDrawActivity extends BaseActivity {
 
     private ImageButton backBtn;
-    private TextView titleText;
+    private TextView titleText, ruleText;
     private Button beginBtn;
 
     private TurntableView turntableView;
@@ -29,6 +31,10 @@ public class LuckDrawActivity extends BaseActivity {
     private int leftNum = 3;//抽奖剩余次数
 
     private final int waitingTime = 1;
+
+    private float timeAfter = -1;//距离下次抽奖时间
+
+    private Timer timer;
 
     private final String[] areaStrs = new String[]{
             "5元红包", "OPPO MP3", "DNF 钱包",
@@ -48,12 +54,14 @@ public class LuckDrawActivity extends BaseActivity {
 
         backBtn = (ImageButton) findViewById(R.id.back);
         titleText = (TextView) findViewById(R.id.title);
+        ruleText = (TextView) findViewById(R.id.ruleText);
         beginBtn = (Button) findViewById(R.id.beginBtn);
         turntableView = (TurntableView) findViewById(R.id.turntableView);
 
         backBtn.setVisibility(View.VISIBLE);
 
         titleText.setText("抽奖");
+        ruleText.setText("每轮抽奖有3次机会，每轮抽完，需等待1分钟，才可再进行下一轮抽奖。");
 
         beginBtnCheck();
 
@@ -70,10 +78,16 @@ public class LuckDrawActivity extends BaseActivity {
 
                     setBeginBtnText("");
                 } else {
-                    setBeginBtnText("02:00");
+                    setBeginBtnText(convertTime(waitingTime * 60 * 1000));
+
+                    leftNum = 3;//重设
 
                     SharedPreferencesUtils.getInstance(context, "luck").saveSharedPreferences("lastTime",
                             System.currentTimeMillis() + "");
+
+                    timeAfter = waitingTime * 60 * 1000;
+
+                    startTimer();
                 }
 
                 if (currentAreaId != areaId) {
@@ -118,12 +132,10 @@ public class LuckDrawActivity extends BaseActivity {
      */
     private void beginBtnCheck() {
 
-        String lastTime = SharedPreferencesUtils.getInstance(context, "ac").loadStringSharedPreference("lastTime");
-        String leftNumS = SharedPreferencesUtils.getInstance(context, "ac").loadStringSharedPreference("leftNum");
+        String lastTime = SharedPreferencesUtils.getInstance(context, "luck").loadStringSharedPreference("lastTime");
+        String leftNumS = SharedPreferencesUtils.getInstance(context, "luck").loadStringSharedPreference("leftNum");
 
-        float timeAfter = -1;
-
-        if (lastTime != null || lastTime != "") {
+        if (lastTime != null && lastTime != "") {
             timeAfter = StringUtil.TimeLeft2(waitingTime, lastTime);
         }
 
@@ -131,22 +143,18 @@ public class LuckDrawActivity extends BaseActivity {
             leftNum = Integer.parseInt(leftNumS);
         }
 
-        if (timeAfter > 0 && leftNum == 0) {//上次抽完，还在等待中
+        if (timeAfter > 0) {//上次抽完，还在等待中
 
-            setBeginBtnText(String.format("%02d:%02d", (int) (timeAfter / (1000 * 60)),
-                    (int) (timeAfter % (1000 * 60) / 1000)));
+            setBeginBtnText(convertTime(timeAfter));
 
             beginBtn.setEnabled(false);
             beginBtn.setBackgroundResource(R.drawable.common_grey_shape);
 
+            startTimer();
+
         } else {
 
-            if (timeAfter != -1) {//下次抽奖时间到了
-
-                leftNum = 3;
-
-                SharedPreferencesUtils.getInstance(context, "ac").saveSharedPreferences("lastTime", "");
-            }
+            SharedPreferencesUtils.getInstance(context, "luck").saveSharedPreferences("lastTime", "");
 
             setBeginBtnText("");
         }
@@ -156,10 +164,60 @@ public class LuckDrawActivity extends BaseActivity {
      * 设置开始按钮Text
      */
     private void setBeginBtnText(String text) {
-        if (leftNum > 0) {
+        if (StringUtil.isEmpty(text)) {
             beginBtn.setText("开始抽奖" + " x" + leftNum);
         } else {
-            beginBtn.setText(Html.fromHtml("距离下次抽奖时间还有 <span color=\"#FF00FF\">" + text + "</span>"));
+            beginBtn.setText(Html.fromHtml("距离下次抽奖时间 <font color=\"#FF0000\">" + text + "</font>"));
+        }
+    }
+
+    /**
+     * 转换计时时间
+     */
+    private String convertTime(float time) {
+        int m = (int) (time / 1000 / 60);
+        int s = (int) (time % (1000 * 60) / 1000);
+
+        return String.format("%02d:%02d", m, s);
+    }
+
+    /**
+     * 开始计时
+     */
+    private void startTimer() {
+        cancelTimer();
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                LuckDrawActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        timeAfter -= 1000;
+
+                        setBeginBtnText(convertTime(timeAfter));
+
+                        if (timeAfter <= 0) {
+                            SharedPreferencesUtils.getInstance(context, "luck").saveSharedPreferences("lastTime", "");
+                            setBeginBtnText("");
+
+                            beginBtn.setEnabled(true);
+                            beginBtn.setBackgroundResource(R.drawable.common_yellow_shape);
+                        }
+                    }
+                });
+            }
+        }, 1000, 1000);
+    }
+
+    /**
+     * 取消计时
+     */
+    private void cancelTimer() {
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
         }
     }
 
@@ -167,6 +225,8 @@ public class LuckDrawActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        SharedPreferencesUtils.getInstance(context, "ac").saveSharedPreferences("leftNum", leftNum + "");
+        cancelTimer();
+
+        SharedPreferencesUtils.getInstance(context, "luck").saveSharedPreferences("leftNum", leftNum + "");
     }
 }

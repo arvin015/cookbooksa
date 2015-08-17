@@ -1,8 +1,6 @@
 -- Merging decision tree log ---
 manifest
 ADDED from AndroidManifest.xml:2:1
-	xmlns:android
-		ADDED from AndroidManifest.xml:2:11
 	package
 		ADDED from AndroidManifest.xml:3:5
 	android:versionName
@@ -11,6 +9,8 @@ ADDED from AndroidManifest.xml:2:1
 		ADDED from AndroidManifest.xml:4:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
 uses-sdk
 ADDED from AndroidManifest.xml:7:5
 	android:targetSdkVersion
@@ -49,10 +49,10 @@ ADDED from AndroidManifest.xml:25:17
 		ADDED from AndroidManifest.xml:25:27
 activity#cn.sharesdk.framework.ShareSDKUIShell
 ADDED from AndroidManifest.xml:30:9
-	android:windowSoftInputMode
-		ADDED from AndroidManifest.xml:35:13
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:33:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:35:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:32:13
 	android:theme
@@ -81,12 +81,12 @@ activity#cn.sharesdk.wxapi.WXEntryActivity
 ADDED from AndroidManifest.xml:47:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:51:13
+	android:exported
+		ADDED from AndroidManifest.xml:50:13
 	android:configChanges
 		ADDED from AndroidManifest.xml:49:13
 	android:theme
 		ADDED from AndroidManifest.xml:52:13
-	android:exported
-		ADDED from AndroidManifest.xml:50:13
 	android:name
 		ADDED from AndroidManifest.xml:48:13
 activity#cn.smssdk.SMSSDKUIShell
@@ -211,16 +211,16 @@ ADDED from AndroidManifest.xml:112:9
 		ADDED from AndroidManifest.xml:113:13
 meta-data#api_key
 ADDED from AndroidManifest.xml:176:9
-	android:name
-		ADDED from AndroidManifest.xml:177:13
 	android:value
 		ADDED from AndroidManifest.xml:178:13
+	android:name
+		ADDED from AndroidManifest.xml:177:13
 meta-data#com.amap.api.v2.apikey
 ADDED from AndroidManifest.xml:181:9
-	android:name
-		ADDED from AndroidManifest.xml:182:13
 	android:value
 		ADDED from AndroidManifest.xml:183:13
+	android:name
+		ADDED from AndroidManifest.xml:182:13
 uses-permission#android.permission.INTERNET
 ADDED from AndroidManifest.xml:186:5
 	android:name
