@@ -1,7 +1,9 @@
 package com.sky.cookbooksa;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,7 +13,8 @@ import com.sky.cookbooksa.utils.RandomUtil;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
-import com.sky.cookbooksa.widget.TurntableView;
+import com.sky.cookbooksa.widget.LuckDrawView;
+import com.sky.cookbooksa.widget.RollSurfaceView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,16 +28,19 @@ public class LuckDrawActivity extends BaseActivity {
     private TextView titleText, ruleText;
     private Button beginBtn;
 
-    private TurntableView turntableView;
+    private LuckDrawView luckDrawView;
+    private RollSurfaceView rollView;
 
     private int currentAreaId;
     private int leftNum = 3;//抽奖剩余次数
 
-    private final int waitingTime = 1;
+    private final float waitingTime = 1;
 
     private float timeAfter = -1;//距离下次抽奖时间
 
     private Timer timer;
+
+    private boolean canBack = true;//是否可返回
 
     private final String[] areaStrs = new String[]{
             "5元红包", "OPPO MP3", "DNF 钱包",
@@ -56,7 +62,8 @@ public class LuckDrawActivity extends BaseActivity {
         titleText = (TextView) findViewById(R.id.title);
         ruleText = (TextView) findViewById(R.id.ruleText);
         beginBtn = (Button) findViewById(R.id.beginBtn);
-        turntableView = (TurntableView) findViewById(R.id.turntableView);
+        luckDrawView = (LuckDrawView) findViewById(R.id.luckDrawView);
+        rollView = (RollSurfaceView) findViewById(R.id.rollView);
 
         backBtn.setVisibility(View.VISIBLE);
 
@@ -65,11 +72,13 @@ public class LuckDrawActivity extends BaseActivity {
 
         beginBtnCheck();
 
-        turntableView.setDefaultAngle(1080, 60);
+        luckDrawView.setDefaultAngle(1080, 60);
 
-        turntableView.setListener(new TurntableView.ITurntableListener() {
+        luckDrawView.setListener(new LuckDrawView.ILuckDrawListener() {
             @Override
             public void luckDrawEnd(int areaId) {
+
+                canBack = true;//可以返回了
 
                 if (leftNum > 0) {
                     beginBtn.setEnabled(true);
@@ -99,7 +108,6 @@ public class LuckDrawActivity extends BaseActivity {
                 } else {
                     ToastUtil.toastShort(context, "恭喜你，获得" + areaStrs[areaId - 1] + "！");
                 }
-
             }
         });
 
@@ -107,7 +115,12 @@ public class LuckDrawActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                back();
+                if (canBack) {
+                    back();
+                } else {
+                    ToastUtil.toastShort(context, "抽奖中，无法退出！");
+                }
+
             }
         });
 
@@ -115,16 +128,30 @@ public class LuckDrawActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
+                canBack = false;//禁止返回了
+
                 beginBtn.setEnabled(false);
                 beginBtn.setBackgroundResource(R.drawable.common_grey_shape);
 
                 currentAreaId = RandomUtil.randomNum(360 / 60) + 1;
 
-                turntableView.startTurn(currentAreaId);
+                luckDrawView.startTurn(currentAreaId);
 
                 leftNum--;
             }
         });
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LuckDrawActivity.this.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        rollView.addText("136xxxx5103");
+                    }
+                });
+            }
+        }, 5000);
     }
 
     /**
@@ -199,6 +226,9 @@ public class LuckDrawActivity extends BaseActivity {
                         setBeginBtnText(convertTime(timeAfter));
 
                         if (timeAfter <= 0) {
+
+                            cancelTimer();
+
                             SharedPreferencesUtils.getInstance(context, "luck").saveSharedPreferences("lastTime", "");
                             setBeginBtnText("");
 
@@ -219,6 +249,22 @@ public class LuckDrawActivity extends BaseActivity {
             timer.cancel();
             timer = null;
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if (keyCode == KeyEvent.KEYCODE_BACK & event.getRepeatCount() == 0) {
+
+            if (!canBack) {
+
+                ToastUtil.toastShort(context, "抽奖中，无法退出！");
+
+                return false;
+            }
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

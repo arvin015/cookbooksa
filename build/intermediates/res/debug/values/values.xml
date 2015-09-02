@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/themes.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/themes.xml -->
     <eat-comment/>
     <attr format="reference" name="numberPickerStyle"/>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/color.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/color.xml -->
     <eat-comment/>
     <color name="actionbar_background_end">#42403f</color>
     <color name="actionbar_background_start">#4d4b4a</color>
@@ -17,7 +17,7 @@
     <declare-styleable name="NumberPicker"><attr format="color|reference" name="solidColor"/><attr format="reference" name="selectionDivider"/><attr format="dimension" name="selectionDividerHeight"/><attr format="dimension" name="selectionDividersDistance"/><attr format="dimension" name="internalMinHeight"/><attr format="dimension" name="internalMaxHeight"/><attr format="dimension" name="internalMinWidth"/><attr format="dimension" name="internalMaxWidth"/><attr format="reference" name="internalLayout"/><attr format="reference" name="virtualButtonPressedDrawable"/></declare-styleable>
     <declare-styleable name="PullToRefresh"><attr format="reference|color" name="ptrRefreshableViewBackground"/><attr format="reference|color" name="ptrHeaderBackground"/><attr format="reference|color" name="ptrHeaderTextColor"/><attr format="reference|color" name="ptrHeaderSubTextColor"/><attr name="ptrMode"><flag name="disabled" value="0x0"/><flag name="pullFromStart" value="0x1"/><flag name="pullFromEnd" value="0x2"/><flag name="both" value="0x3"/><flag name="manualOnly" value="0x4"/><flag name="pullDownFromTop" value="0x1"/><flag name="pullUpFromBottom" value="0x2"/></attr><attr format="reference|boolean" name="ptrShowIndicator"/><attr format="reference" name="ptrDrawable"/><attr format="reference" name="ptrDrawableStart"/><attr format="reference" name="ptrDrawableEnd"/><attr format="reference|boolean" name="ptrOverScroll"/><attr format="reference" name="ptrHeaderTextAppearance"/><attr format="reference" name="ptrSubHeaderTextAppearance"/><attr name="ptrAnimationStyle"><flag name="rotate" value="0x0"/><flag name="flip" value="0x1"/></attr><attr format="reference|boolean" name="ptrScrollingWhileRefreshingEnabled"/><attr format="reference|boolean" name="ptrListViewExtrasEnabled"/><attr format="reference|boolean" name="ptrRotateDrawableWhilePulling"/><attr format="reference|color" name="ptrAdapterViewBackground"/><attr format="reference" name="ptrDrawableTop"/><attr format="reference" name="ptrDrawableBottom"/></declare-styleable>
     <declare-styleable name="SlidingMenu"><attr name="mode"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="reference" name="viewAbove"/><attr format="reference" name="viewBehind"/><attr format="dimension" name="behindOffset"/><attr format="dimension" name="behindWidth"/><attr format="float" name="behindScrollScale"/><attr name="touchModeAbove"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr name="touchModeBehind"><enum name="margin" value="0"/><enum name="fullscreen" value="1"/></attr><attr format="reference" name="shadowDrawable"/><attr format="dimension" name="shadowWidth"/><attr format="boolean" name="fadeEnabled"/><attr format="float" name="fadeDegree"/><attr format="boolean" name="selectorEnabled"/><attr format="reference" name="selectorDrawable"/></declare-styleable>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/dimens.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -30,7 +30,7 @@
     <dimen name="slidingmenu_offset">150dp</dimen>
     <dimen name="text_padding">20dp</dimen>
     <dimen name="text_size">20sp</dimen>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ids.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ids.xml -->
     <eat-comment/>
     <item name="auto_focus" type="id"/>
     <item name="decode" type="id"/>
@@ -48,36 +48,36 @@
     <item name="search_book_contents_failed" type="id"/>
     <item name="search_book_contents_succeeded" type="id"/>
     <item name="selected_view" type="id"/>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">饭吧</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="bluetooth">蓝牙</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="cancel">取消</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="douban">豆瓣</string>
     <string name="dropbox">Dropbox</string>
     <string name="email">邮件</string>
     <string name="evernote">印象笔记</string>
     <string name="facebook">Facebook</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="finish">完成</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="flickr">Flickr</string>
     <string name="foursquare">FourSquare</string>
     <string name="google_plus_client_inavailable">Google+ 版本过低或者没有安装，需要升级或安装Google+才能使用！</string>
     <string name="googleplus">Google+</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/strings.xml -->
     <eat-comment/>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="instagram">Instagram</string>
     <string name="instagram_client_inavailable">Instagram版本过低或者没有安装，需要升级或安装Instagram才能使用！</string>
@@ -89,29 +89,29 @@
     <string name="line">Line</string>
     <string name="line_client_inavailable">目前您的Line版本过低或未安装，需要安装Line才能使用</string>
     <string name="linkedin">领英</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="list_friends">%s的朋友</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/strings.xml -->
     <eat-comment/>
     <string name="loading_msg">数据加载中...</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="mingdao">明道</string>
     <string name="mingdao_share_content">网页分享</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="multi_share">图文分享</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="neteasemicroblog">网易微博</string>
     <string name="pinterest">Pinterest</string>
     <string name="pinterest_client_inavailable">Pinterest版本过低或者没有安装，需要升级或安装Pinterest才能使用！</string>
     <string name="pocket">Pocket</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="pull_to_refresh">下拉刷新</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/pull_refresh_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/pull_refresh_strings.xml -->
     <eat-comment/>
     <string name="pull_to_refresh_from_bottom_pull_label">@string/pull_to_refresh_pull_label</string>
     <string name="pull_to_refresh_from_bottom_refreshing_label">@string/pull_to_refresh_refreshing_label</string>
@@ -119,19 +119,19 @@
     <string name="pull_to_refresh_pull_label">Pull to refresh…</string>
     <string name="pull_to_refresh_refreshing_label">Loading…</string>
     <string name="pull_to_refresh_release_label">Release to refresh…</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="qq">QQ</string>
     <string name="qq_client_inavailable">QQ 版本过低或者没有安装，需要升级或安装QQ才能使用！</string>
     <string name="qzone">QQ空间</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="refreshing">刷新中…</string>
     <string name="release_to_refresh">松开刷新</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="renren">人人网</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="select_one_plat_at_least">请选择一个目标平台</string>
     <string name="shake2share">摇晃手机！</string>
@@ -140,16 +140,16 @@
     <string name="share_completed">分享成功</string>
     <string name="share_failed">分享失败</string>
     <string name="share_to">分享到</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="share_to_mingdao">分享到明道</string>
     <string name="share_to_qq">分享到QQ</string>
     <string name="share_to_qzone">分享到QQ空间</string>
     <string name="share_to_qzone_default">来自%s的分享</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/oks_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/oks_strings.xml -->
     <eat-comment/>
     <string name="sharing">分享操作正在后台进行…</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/ssdk_strings.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/ssdk_strings.xml -->
     <eat-comment/>
     <string name="shortmessage">信息</string>
     <string name="sinaweibo">新浪微博</string>
@@ -172,7 +172,7 @@
     <string name="yixin_client_inavailable">目前您的易信版本过低或未安装，需要安装易信才能使用</string>
     <string name="yixinmoments">易信朋友圈</string>
     <string name="youdao">有道云笔记</string>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/styles.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
@@ -191,7 +191,7 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
     </style>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/themes.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/themes.xml -->
     <eat-comment/>
     <style name="NPWidget">
         <item name="android:textAppearance">?android:attr/textAppearance</item>
@@ -219,7 +219,7 @@
     <style name="SampleTheme.Light" parent="android:Theme.Light">
         <item name="numberPickerStyle">@style/NPWidget.Holo.Light.NumberPicker</item>
     </style>
-    <!-- From: file:/D:/android/projects/cookbooksa/res/values/styles.xml -->
+    <!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/values/styles.xml -->
     <eat-comment/>
     <style mce_bogus="1" name="classify_popup_animation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/classify_popup_in</item>

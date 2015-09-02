@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -33,7 +34,7 @@ public class CollectAdapter extends BaseAdapter{
 
 	private AJAX_MODE mode;
 
-	public CollectAdapter(Context context, List<Collect> list, 
+	public CollectAdapter(Context context, List<Collect> list,
 			FinalBitmap fb, AJAX_MODE mode){
 		this.context = context;
 		this.list = list;
@@ -73,7 +74,7 @@ public class CollectAdapter extends BaseAdapter{
 			viewHolder = new ViewHolder();
 			convertView = inflater.inflate(R.layout.collect_item, null);
 
-			viewHolder.rlImg = (RelativeLayout) convertView.findViewById(R.id.rl_img);
+			viewHolder.rlImg = (FrameLayout) convertView.findViewById(R.id.rl_img);
 			viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageview);
 			viewHolder.textView = (TextView) convertView.findViewById(R.id.textview);
 
@@ -83,7 +84,7 @@ public class CollectAdapter extends BaseAdapter{
 		}
 
 		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				(int)((screenWidth - 60) / 3), (int)((screenWidth - 60) / 3));
+				(int)((screenWidth - DisplayUtil.dip2px(40)) / 3), (int)((screenWidth - DisplayUtil.dip2px(40)) / 3));
 		viewHolder.rlImg.setLayoutParams(params);
 
 		String path = list.get(position).getMainPic();
@@ -97,13 +98,13 @@ public class CollectAdapter extends BaseAdapter{
 		}
 
 		fb.display(viewHolder.imageView, Constant.DIR + path,
-				(int)((screenWidth - 60) / 3), (int)((screenWidth - 60) / 3));
+				(int)((screenWidth - DisplayUtil.dip2px(40)) / 3), (int)((screenWidth - DisplayUtil.dip2px(40)) / 3));
 
 		return convertView;
 	}
 
 	class ViewHolder{
-		RelativeLayout rlImg;
+		FrameLayout rlImg;
 		ImageView imageView;
 		TextView textView;
 	}

@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_repeat_titlebg"
-    android:padding="3dp" >
+    android:padding="3dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_vertical"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/back"
@@ -45,14 +45,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|center_vertical"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:id="@+id/messageContainer"
-            android:layout_width="65px"
-            android:layout_height="65px"
+            android:layout_width="40dp"
+            android:layout_height="32dp"
             android:gravity="center"
-            android:visibility="gone" >
+            android:visibility="gone">
 
             <ImageButton
                 android:id="@+id/messageBtn"
@@ -113,4 +113,4 @@
             android:visibility="gone" />
     </LinearLayout>
 
-</FrameLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/title.xml -->
+</FrameLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/title.xml -->

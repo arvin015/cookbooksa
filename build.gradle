@@ -9,7 +9,7 @@ buildscript {
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile fileTree(include: '*.jar', dir: 'libs')
+    compile fileTree(dir: 'libs', include: '*.jar')
     compile files('libs/Android_2DMapApi_V2.4.1.jar')
     compile files('libs/AMap_Services_V2.4.0.jar')
 }
@@ -19,16 +19,8 @@ android {
         arvinli {
             keyAlias 'arvinli'
             keyPassword 'arvinli'
-            storeFile file('C:/Users/Administrator/Desktop/arvin.jks')
+            storeFile file('C:/Users/arvin.li.MM/Desktop/arvinli.jks')
             storePassword 'arvinli'
-        }
-    }
-    buildTypes {
-        debug {
-            signingConfig signingConfigs.arvinli
-        }
-        release {
-            signingConfig signingConfigs.arvinli
         }
     }
     compileSdkVersion 19
@@ -55,5 +47,13 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.arvinli
+        }
+        debug {
+            signingConfig signingConfigs.arvinli
+        }
     }
 }

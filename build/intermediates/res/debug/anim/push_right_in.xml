@@ -3,4 +3,4 @@
 	<translate android:fromXDelta="-100%p" android:toXDelta="0"
 		android:duration="300" />
 </set>
-<!-- From: file:/D:/android/projects/cookbooksa/res/anim/push_right_in.xml -->
+<!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/anim/push_right_in.xml -->

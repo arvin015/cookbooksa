@@ -1,104 +1,115 @@
 package com.sky.cookbooksa;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+
 import com.sky.cookbooksa.utils.ExitApplication;
 import com.sky.cookbooksa.utils.NetworkUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 public class BaseActivity extends Activity {
 
-	protected Context context;
+    protected Context context;
 
-	protected FinalHttp fh;
+    protected FinalHttp fh;
 
-	protected FinalBitmap fb;
+    protected FinalBitmap fb;
 
-	protected ProgressDialog pb;
+    protected ProgressDialog pb;
 
-	private Intent intent;
+    private Intent intent;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
 
-		init();
-	}
+        init();
+    }
 
-	private void init() {
-		// TODO Auto-generated method stub
+    private void init() {
+        // TODO Auto-generated method stub
 
-		ExitApplication.getInstance(context).addActivity(this);
-		if(!NetworkUtil.isNetworkConnected(this)){
-			ToastUtil.toastShort(this, "当前网络未连接，请检测网络！");
-		}
+        ExitApplication.getInstance(context).addActivity(this);
+        if (!NetworkUtil.isNetworkConnected(this)) {
+            ToastUtil.toastShort(this, "当前网络未连接，请检测网络！");
+        }
 
-		context = this;
+        context = this;
 
-		fh = new FinalHttp();
+        fh = new FinalHttp();
 
-		fb = FinalBitmap.create(this);
-		fb.configLoadfailImage(R.drawable.photo_loading);
-		fb.configLoadingImage(R.drawable.photo_loading);
-	}
+        fb = FinalBitmap.create(this);
+        fb.configLoadfailImage(R.drawable.photo_loading);
+        fb.configLoadingImage(R.drawable.photo_loading);
+    }
 
-	protected void loading(String msg){
-		pb = new ProgressDialog(context);
-		pb.setCancelable(true);
-		pb.setMessage(msg);
-		pb.show();
-	}
+    protected void loading(String msg) {
+        pb = new ProgressDialog(context);
+        pb.setCancelable(true);
+        pb.setMessage(msg);
+        pb.show();
+    }
 
-	protected void loadMissed(){
-		if(pb != null && pb.isShowing()){
-			pb.dismiss();
-		}
-	}
+    protected void loadMissed() {
+        if (pb != null && pb.isShowing()) {
+            pb.dismiss();
+        }
+    }
 
-	protected void intentHandle(Class<?> to, Bundle bundle, boolean needFinish){
-		if(intent == null){
-			intent = new Intent();
-		}
+    protected void intentHandle(Class<?> to, Bundle bundle, boolean needFinish) {
+        if (intent == null) {
+            intent = new Intent();
+        }
 
-		if(bundle != null){
-			intent.putExtras(bundle);
-		}
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
 
-		intent.setClass(this, to);
+        intent.setClass(this, to);
 
-		startActivity(intent);
+        startActivity(intent);
 
-		if(needFinish){
-			finish();
-		}
-	}
+        if (needFinish) {
+            finish();
+        }
+    }
 
-	//toggle keyboard
-	protected void toggleKeyboard(EditText edit, boolean needOpen){
-		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-		if(needOpen){
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_NOT_ALWAYS);
-		}else{
-			imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
-		}
-	}
+    //toggle keyboard
+    protected void toggleKeyboard(EditText edit, boolean needOpen) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (needOpen) {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_NOT_ALWAYS);
+        } else {
+            imm.hideSoftInputFromWindow(edit.getWindowToken(), 0);
+        }
+    }
 
-	//finish current Activity
-	protected void back(){
-		finish();
-	}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-	//exit app
-	protected void exitApp(){
-		ExitApplication.getInstance(context).exit();
-	}
+        if (keyCode == KeyEvent.KEYCODE_BACK & event.getRepeatCount() == 0) {
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //finish current Activity
+    protected void back() {
+        finish();
+    }
+
+    //exit app
+    protected void exitApp() {
+        ExitApplication.getInstance(context).exit();
+    }
 }

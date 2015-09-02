@@ -1,14 +1,5 @@
 package com.sky.cookbooksa;
 
-import java.util.ArrayList;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentTransaction;
@@ -34,10 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.sky.cookbooksa.adapter.MyViewPagerAdapter;
-import com.sky.cookbooksa.push.PushUtils;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ExitApplication;
@@ -55,6 +43,15 @@ import com.slidingmenu.fragment.SearchFragment;
 import com.slidingmenu.fragment.UserInfoFragment;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
+
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class MainActivity extends SlidingFragmentActivity implements OnPageChangeListener,
         IUserLoadedCallback, IRecommendFragmentCallback {
@@ -113,6 +110,8 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
         if (Utils.isLoaded) {
             loadMsg();
         }
+
+        Log.d("print", "onCreate");
     }
 
     /**

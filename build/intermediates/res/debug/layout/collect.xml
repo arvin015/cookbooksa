@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/empty_tip"
@@ -16,13 +16,13 @@
         android:textSize="16sp"
         android:visibility="gone" />
 
-    <com.sky.cookbooksa.widget.CommonGridView
+    <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:horizontalSpacing="20dp"
         android:numColumns="3"
         android:padding="5dp"
-        android:verticalSpacing="20dp" />
+        android:stretchMode="spacingWidth"
+        android:verticalSpacing="10dp" />
 
-</LinearLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/collect.xml -->
+</LinearLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/collect.xml -->

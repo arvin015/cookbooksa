@@ -1,21 +1,4 @@
-package com.slidingmenu.fragment;
-
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.tsz.afinal.FinalBitmap;
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-
-import com.sky.cookbooksa.LuckDrawActivity;
-import com.sky.cookbooksa.MainActivity;
-import com.sky.cookbooksa.R;
-import com.sky.cookbooksa.entity.ActivityInfo;
-import com.sky.cookbooksa.utils.Constant;
-import com.sky.cookbooksa.utils.ToastUtil;
+package com.sky.cookbooksa.uihelper;
 
 import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
@@ -28,6 +11,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+
+import com.sky.cookbooksa.LuckDrawActivity;
+import com.sky.cookbooksa.MainActivity;
+import com.sky.cookbooksa.R;
+import com.sky.cookbooksa.entity.ActivityInfo;
+import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.ToastUtil;
+
+import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class ImageViewPagerHelper {
 
@@ -148,7 +148,7 @@ public class ImageViewPagerHelper {
         });
     }
 
-    protected void refresh() {
+    public void refresh() {
         ll_circle.removeAllViews();
         resetImages();
         resetCircles();
@@ -214,7 +214,6 @@ public class ImageViewPagerHelper {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ToastUtil.toastShort(act, "position=" + (position + 1));
 
                     Intent intent = new Intent(act, LuckDrawActivity.class);
                     intent.putExtra("id", (position + 1) + "");

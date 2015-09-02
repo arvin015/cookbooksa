@@ -30,11 +30,37 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <com.sky.cookbooksa.widget.TurntableView
-        android:id="@+id/turntableView"
+    <com.sky.cookbooksa.widget.LuckDrawView
+        android:id="@+id/luckDrawView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
+
+    <!--文字跑马灯效果
+    <TextView
+        android:id="@+id/luckDrawTipText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="60dp"
+        android:background="#50FFFF00"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:singleLine="true"
+        android:text="以下是中奖用户：130xxxxxxxx、130xxxxxxxx、130xxxxxxxx、130xxxxxxxx、130xxxxxxxx"
+        android:textColor="@color/main_gray"
+        android:textSize="18sp" />-->
+
+    <com.sky.cookbooksa.widget.RollSurfaceView
+        android:id="@+id/rollView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="60dp" />
 
     <FrameLayout
         android:layout_width="match_parent"

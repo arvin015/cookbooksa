@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/tabbar_home_highlighted" android:state_checked="true"/>
     <item android:drawable="@drawable/tabbar_home" android:state_checked="false"/>
 
-</selector><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/tab_home_selector.xml -->
+</selector><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/tab_home_selector.xml -->

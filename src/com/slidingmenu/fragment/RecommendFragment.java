@@ -1,49 +1,51 @@
 package com.slidingmenu.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.tsz.afinal.FinalBitmap;
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import com.pulltorefresh.lib.ILoadingLayout;
-import com.pulltorefresh.lib.PullToRefreshBase;
-import com.pulltorefresh.lib.PullToRefreshBase.OnPullEventListener;
-import com.pulltorefresh.lib.PullToRefreshBase.State;
-import com.pulltorefresh.lib.PullToRefreshScrollView;
-import com.pulltorefresh.lib.PullToRefreshBase.Mode;
-import com.sky.cookbooksa.IRecommendFragmentCallback;
-import com.sky.cookbooksa.R;
-import com.sky.cookbooksa.DishDetailActivity;
-import com.sky.cookbooksa.MainActivity;
-import com.sky.cookbooksa.entity.Dish;
-import com.sky.cookbooksa.utils.Constant;
-import com.sky.cookbooksa.utils.SharedPreferencesUtils;
-import com.sky.cookbooksa.utils.StringUtil;
-import com.sky.cookbooksa.utils.ToastUtil;
-
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.pulltorefresh.lib.ILoadingLayout;
+import com.pulltorefresh.lib.PullToRefreshBase;
+import com.pulltorefresh.lib.PullToRefreshBase.Mode;
+import com.pulltorefresh.lib.PullToRefreshBase.OnPullEventListener;
+import com.pulltorefresh.lib.PullToRefreshBase.State;
+import com.pulltorefresh.lib.PullToRefreshScrollView;
+import com.sky.cookbooksa.DishDetailActivity;
+import com.sky.cookbooksa.IRecommendFragmentCallback;
+import com.sky.cookbooksa.MainActivity;
+import com.sky.cookbooksa.R;
+import com.sky.cookbooksa.entity.Dish;
+import com.sky.cookbooksa.uihelper.ImageViewPagerHelper;
+import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.SharedPreferencesUtils;
+import com.sky.cookbooksa.utils.StringUtil;
+import com.sky.cookbooksa.utils.ToastUtil;
+
+import net.tsz.afinal.FinalBitmap;
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressLint("ValidFragment")
 public class RecommendFragment extends Fragment {
@@ -162,6 +164,7 @@ public class RecommendFragment extends Fragment {
         loadLayoutBottom.setLoadingDrawable(null);
 
         mScrollView.setScrollingWhileRefreshingEnabled(true);
+//        mScrollView.setPullToRefreshOverScrollEnabled(false);//设置滑动是否引起刷新
 
         mScrollView.setOnPullEventListener(new OnPullEventListener<ScrollView>() {
 
@@ -169,14 +172,30 @@ public class RecommendFragment extends Fragment {
             public void onPullEvent(PullToRefreshBase<ScrollView> refreshView,
                                     State state, Mode direction) {
                 // TODO Auto-generated method stub
-                if (state == State.PULL_TO_REFRESH) {
+
+                Log.d("print", "onPullEvent====" + state + "   direction=" + direction);
+
+                //位于顶部下拉设置上次更新时间
+                if (state == State.PULL_TO_REFRESH &&
+                        direction == Mode.PULL_FROM_START) {
                     setLastRefreshTime();
+                }
+
+                //滑动到底部立马执行加载更多操作
+                if (state == State.OVERSCROLLING &&
+                        direction == Mode.PULL_FROM_END) {
+
+                    mScrollView.setRefreshing();
                 }
             }
         });
 
         mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
 
+            /**
+             * 该刷新了回调方法
+             * @param refreshView
+             */
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
                 // TODO Auto-generated method stub
@@ -189,8 +208,14 @@ public class RecommendFragment extends Fragment {
                 loadData(true);
                 ivpHelper.refresh();
 
+                mScrollView.setMode(Mode.BOTH);//重新设置上下都可刷新
+
             }
 
+            /**
+             * 该加载更多了回调方法
+             * @param refreshView
+             */
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
                 // TODO Auto-generated method stub
@@ -201,10 +226,15 @@ public class RecommendFragment extends Fragment {
                     currentCount = ll_right.getChildCount();
                 }
                 if (count == currentCount) {
-                    if (isFirst) {
-                        Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
-                        isFirst = false;
-                    }
+//                    if (isFirst) {
+                    Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
+//                        isFirst = false;
+//                    }
+
+                    mScrollView.onRefreshComplete();//停止刷新
+
+                    mScrollView.setMode(Mode.PULL_FROM_START);//移除底部加载更多View
+
                 } else {
                     loadData(false);
                 }

@@ -1,12 +1,4 @@
-package com.slidingmenu.fragment;
-
-import com.sky.cookbooksa.MainActivity;
-import com.sky.cookbooksa.R;
-import com.sky.cookbooksa.SearchResultActivity;
-import com.sky.cookbooksa.utils.PopupWindowUtil;
-import com.sky.cookbooksa.utils.PopupWindowUtil.IPopupWindowCallback;
-import com.sky.cookbooksa.utils.Utils;
-import com.sky.cookbooksa.widget.ClassifyNavigationRadioGroup;
+package com.sky.cookbooksa.uihelper;
 
 import android.content.Context;
 import android.content.Intent;
@@ -28,13 +20,21 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.sky.cookbooksa.MainActivity;
+import com.sky.cookbooksa.R;
+import com.sky.cookbooksa.SearchResultActivity;
+import com.sky.cookbooksa.utils.PopupWindowUtil;
+import com.sky.cookbooksa.utils.PopupWindowUtil.IPopupWindowCallback;
+import com.sky.cookbooksa.utils.Utils;
+import com.sky.cookbooksa.widget.ClassifyNavigationRadioGroup;
+
 public class ClassifyNavigationHelper {
 
 	private View showView;
 
 	private MainActivity act;
 
-	protected ClassifyNavigationRadioGroup cnLayout;
+	public ClassifyNavigationRadioGroup cnLayout;
 	private ListView listView;
 	protected LinearLayout content_container;
 	private ImageView backImage;

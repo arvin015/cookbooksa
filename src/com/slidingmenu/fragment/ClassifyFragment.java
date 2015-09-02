@@ -2,8 +2,8 @@ package com.slidingmenu.fragment;
 
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.MainActivity;
+import com.sky.cookbooksa.uihelper.ClassifyNavigationHelper;
 import com.sky.cookbooksa.utils.Utils;
-import com.slidingmenu.fragment.ClassifyNavigationHelper.INavigationCallback;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -84,7 +84,7 @@ public class ClassifyFragment extends Fragment implements OnItemClickListener{
 
 		ClassifyNavigationHelper cnHelper = ClassifyNavigationHelper.instance(act);
 		cnHelper.setNavTitle(Utils.navigations[arg2], arg2);
-		cnHelper.showNavigation(coverContainer, new INavigationCallback() {
+		cnHelper.showNavigation(coverContainer, new ClassifyNavigationHelper.INavigationCallback() {
 
 			@Override
 			public void popWindowDismissed() {

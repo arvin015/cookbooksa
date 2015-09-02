@@ -66,13 +66,13 @@ public class ClassifyNavigationRadioGroup extends RadioGroup{
 
 		imageBtn.setTextSize(16);
 
-		imageBtn.setPadding(0, 50, 0, 0);
+		imageBtn.setPadding(0, DisplayUtil.dip2px(20), 0, 0);
 
 		imageBtn.setButtonDrawable(android.R.color.transparent);
 
-		RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(LayoutParams.MATCH_PARENT, 
-				screenHeight / 6 - 60);
-		params.bottomMargin = 20;
+		RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(LayoutParams.MATCH_PARENT,
+				screenHeight / 6 - DisplayUtil.dip2px(30));
+		params.bottomMargin = DisplayUtil.dip2px(10);
 
 		imageBtn.setLayoutParams(params);
 
