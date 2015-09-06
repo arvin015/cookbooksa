@@ -3,9 +3,7 @@ package com.slidingmenu.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pulltorefresh.lib.ILoadingLayout;
+import com.pulltorefresh.lib.MyOnBorderListener;
 import com.pulltorefresh.lib.PullToRefreshBase;
 import com.pulltorefresh.lib.PullToRefreshBase.Mode;
 import com.pulltorefresh.lib.PullToRefreshBase.OnPullEventListener;
@@ -34,6 +32,7 @@ import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
+import com.sky.cookbooksa.widget.ScrollViewExtend;
 
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
@@ -53,9 +52,11 @@ public class RecommendFragment extends Fragment {
     private View view;//缓存页面
 
     private PullToRefreshScrollView mScrollView;
+    private ScrollViewExtend scrollView;
 
     private ILoadingLayout loadLayoutTop, loadLayoutBottom;
 
+    private ImageView goTopImg;
     private List<View> views, newviews;
     private List<Dish> dishs;
     private MainActivity act;
@@ -137,6 +138,19 @@ public class RecommendFragment extends Fragment {
         ll_left = (LinearLayout) view.findViewById(R.id.ll_left);
         ll_right = (LinearLayout) view.findViewById(R.id.ll_right);
         empty_tip = (TextView) view.findViewById(R.id.empty_tip);
+        goTopImg = (ImageView) view.findViewById(R.id.goTopImg);
+
+        goTopImg.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (scrollView != null) {
+                    scrollView.setScrollY(0);
+                }
+
+                goTopImg.setVisibility(View.GONE);
+            }
+        });
 
         initPullRefreshScrollView();
 
@@ -148,6 +162,8 @@ public class RecommendFragment extends Fragment {
     private void initPullRefreshScrollView() {
         // TODO Auto-generated method stub
         mScrollView.setMode(Mode.BOTH);//上下都可刷新
+
+        scrollView = mScrollView.getRefreshableView();
 
         loadLayoutTop = mScrollView.getLoadingLayoutProxy(true, false);
         loadLayoutBottom = mScrollView.getLoadingLayoutProxy(false, true);
@@ -164,16 +180,67 @@ public class RecommendFragment extends Fragment {
         loadLayoutBottom.setLoadingDrawable(null);
 
         mScrollView.setScrollingWhileRefreshingEnabled(true);
-//        mScrollView.setPullToRefreshOverScrollEnabled(false);//设置滑动是否引起刷新
+        mScrollView.setPullToRefreshOverScrollEnabled(false);//设置滑动是否引起刷新
 
-        mScrollView.setOnPullEventListener(new OnPullEventListener<ScrollView>() {
+        mScrollView.setOnScrollListener(new ScrollViewExtend.IScrollViewListener() {
+            @Override
+            public void scrollStop() {
+
+                if (!mScrollView.isRefreshing()) {
+                    setTopImgVisibility();
+                }
+            }
+        });
+
+        mScrollView.setOnBorderListener(new MyOnBorderListener() {
 
             @Override
-            public void onPullEvent(PullToRefreshBase<ScrollView> refreshView,
+            public void onScroll() {
+
+                goTopImg.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onScrollToBottom() {
+
+                if (style == STYLE.GRID) {
+                    currentCount = ll_left.getChildCount() + ll_right.getChildCount();
+                } else {
+                    currentCount = ll_right.getChildCount();
+                }
+
+                if (count == currentCount) {
+                    if (isFirst) {
+                        Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
+                        isFirst = false;
+
+                        mScrollView.onRefreshComplete();//停止刷新
+
+                        mScrollView.setMode(Mode.PULL_FROM_START);//移除底部加载更多View
+                    }
+
+                } else {
+
+                    mScrollView.setDirectionMode(Mode.PULL_FROM_END);
+
+                    if (mScrollView.getCurrentMode() == Mode.PULL_FROM_END) {
+
+                        mScrollView.setRefreshing();
+
+                        goTopImg.setVisibility(View.GONE);
+
+                    }
+                }
+
+            }
+        });
+
+        mScrollView.setOnPullEventListener(new OnPullEventListener<ScrollViewExtend>() {
+
+            @Override
+            public void onPullEvent(PullToRefreshBase<ScrollViewExtend> refreshView,
                                     State state, Mode direction) {
                 // TODO Auto-generated method stub
-
-                Log.d("print", "onPullEvent====" + state + "   direction=" + direction);
 
                 //位于顶部下拉设置上次更新时间
                 if (state == State.PULL_TO_REFRESH &&
@@ -181,23 +248,17 @@ public class RecommendFragment extends Fragment {
                     setLastRefreshTime();
                 }
 
-                //滑动到底部立马执行加载更多操作
-                if (state == State.OVERSCROLLING &&
-                        direction == Mode.PULL_FROM_END) {
-
-                    mScrollView.setRefreshing();
-                }
             }
         });
 
-        mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollView>() {
+        mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollViewExtend>() {
 
             /**
              * 该刷新了回调方法
              * @param refreshView
              */
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+            public void onPullDownToRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
                 // TODO Auto-generated method stub
 
                 resetDishs();
@@ -217,29 +278,27 @@ public class RecommendFragment extends Fragment {
              * @param refreshView
              */
             @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ScrollView> refreshView) {
+            public void onPullUpToRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
                 // TODO Auto-generated method stub
-
-                if (style == STYLE.GRID) {
-                    currentCount = ll_left.getChildCount() + ll_right.getChildCount();
-                } else {
-                    currentCount = ll_right.getChildCount();
-                }
-                if (count == currentCount) {
-//                    if (isFirst) {
-                    Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
-//                        isFirst = false;
-//                    }
-
-                    mScrollView.onRefreshComplete();//停止刷新
-
-                    mScrollView.setMode(Mode.PULL_FROM_START);//移除底部加载更多View
-
-                } else {
-                    loadData(false);
-                }
+                loadData(false);
             }
         });
+    }
+
+    /**
+     * 设置向上图片显示隐藏
+     */
+    private void setTopImgVisibility() {
+        if (scrollView != null) {
+
+            if (scrollView.getScrollY() >= scrollView.getHeight() * 2) {
+
+                goTopImg.setVisibility(View.VISIBLE);
+            } else {
+                goTopImg.setVisibility(View.GONE);
+            }
+        }
+
     }
 
     private void setListener() {
@@ -271,6 +330,8 @@ public class RecommendFragment extends Fragment {
                 ToastUtil.toastLong(act, "数据加载失败=" + strMsg);
 
                 mScrollView.onRefreshComplete();
+
+                setTopImgVisibility();
             }
 
             @Override
@@ -304,6 +365,10 @@ public class RecommendFragment extends Fragment {
                     page++;
 
                     mScrollView.onRefreshComplete();
+
+                    isFirst = true;
+
+                    setTopImgVisibility();
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block

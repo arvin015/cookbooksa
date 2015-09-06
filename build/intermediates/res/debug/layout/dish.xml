@@ -91,4 +91,15 @@
         </LinearLayout>
     </com.pulltorefresh.lib.PullToRefreshScrollView>
 
+    <ImageView
+        android:id="@+id/goTopImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:alpha="0.6"
+        android:src="@drawable/topimg"
+        android:visibility="gone" />
+
 </FrameLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/dish.xml -->
