@@ -300,7 +300,7 @@ public class ShowDialog {
 
 	public static ProgressDialog showDialog(Context context, String strText) {
 		ProgressDialog dialog = new ProgressDialog(context);
-		dialog.setCancelable(false);
+		dialog.setCancelable(true);
 		dialog.setMessage(strText);
 		dialog.show();
 		return dialog;

@@ -43,6 +43,8 @@ public class PoiKeywordSearchHelper {
 
     private String searchType = "";//搜索类型
 
+    private ProgressDialogUtil dialog;
+
     public PoiKeywordSearchHelper(NearbyMapActivity act, AMap aMap,
                                   AutoCompleteTextView searchEdit) {
         this.act = act;
@@ -137,8 +139,8 @@ public class PoiKeywordSearchHelper {
      */
     private void doSearchQuery() {
 
-        ProgressDialogUtil.getInstance(act).setDialogText("处理中...");
-        ProgressDialogUtil.getInstance(act).showDialog();
+        dialog = new ProgressDialogUtil(act, "处理中...");
+        dialog.showDialog();
 
         // 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query = new PoiSearch.Query(searchEdit.getText().toString(), searchType, searchCity);
@@ -151,7 +153,7 @@ public class PoiKeywordSearchHelper {
             @Override
             public void onPoiSearched(PoiResult poiResult, int i) {
 
-                ProgressDialogUtil.getInstance(act).closeDialog();
+                dialog.closeDialog();
 
                 searchResultHandle(poiResult, i);
             }

@@ -3,6 +3,7 @@ package com.slidingmenu.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +56,8 @@ public class RecommendFragment extends Fragment {
     private PullToRefreshScrollView mScrollView;
     private ScrollViewExtend scrollView;
 
-    private ILoadingLayout loadLayoutTop, loadLayoutBottom;
+    private ILoadingLayout loadLayoutTop;//顶部刷新View
+    private View footerView;//底部加载更多View
 
     private ImageView goTopImg;
     private List<View> views, newviews;
@@ -79,6 +82,8 @@ public class RecommendFragment extends Fragment {
     private IRecommendFragmentCallback listener;
 
     private STYLE style = STYLE.GRID;
+
+    private boolean isLoading = false;
 
     public enum STYLE {
         LIST, GRID
@@ -157,31 +162,25 @@ public class RecommendFragment extends Fragment {
         ivpHelper = new ImageViewPagerHelper(act, view, fh, fb);
 
         loadData(false);
+
     }
 
     private void initPullRefreshScrollView() {
         // TODO Auto-generated method stub
-        mScrollView.setMode(Mode.BOTH);//上下都可刷新
+        mScrollView.setMode(Mode.PULL_FROM_START);
 
         scrollView = mScrollView.getRefreshableView();
 
         loadLayoutTop = mScrollView.getLoadingLayoutProxy(true, false);
-        loadLayoutBottom = mScrollView.getLoadingLayoutProxy(false, true);
-
         loadLayoutTop.setPullLabel("下拉刷新...");
         loadLayoutTop.setRefreshingLabel("正在刷新...");
         loadLayoutTop.setReleaseLabel("松开刷新...");
-
-        loadLayoutBottom.setPullLabel("加载更多数据...");
-        loadLayoutBottom.setRefreshingLabel("加载更多数据...");
-        loadLayoutBottom.setReleaseLabel("加载更多数据...");
-
         loadLayoutTop.setLoadingDrawable(act.getResources().getDrawable(R.drawable.default_ptr_rotate));
-        loadLayoutBottom.setLoadingDrawable(null);
 
-        mScrollView.setScrollingWhileRefreshingEnabled(true);
+        mScrollView.setScrollingWhileRefreshingEnabled(true);//刷新时是否可滑动
         mScrollView.setPullToRefreshOverScrollEnabled(false);//设置滑动是否引起刷新
 
+        //设置滑动停止事件
         mScrollView.setOnScrollListener(new ScrollViewExtend.IScrollViewListener() {
             @Override
             public void scrollStop() {
@@ -192,6 +191,7 @@ public class RecommendFragment extends Fragment {
             }
         });
 
+        //设置滑动到达边界事件
         mScrollView.setOnBorderListener(new MyOnBorderListener() {
 
             @Override
@@ -210,24 +210,36 @@ public class RecommendFragment extends Fragment {
                 }
 
                 if (count == currentCount) {
+
                     if (isFirst) {
                         Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
                         isFirst = false;
-
-                        mScrollView.onRefreshComplete();//停止刷新
-
-                        mScrollView.setMode(Mode.PULL_FROM_START);//移除底部加载更多View
                     }
 
                 } else {
 
-                    mScrollView.setDirectionMode(Mode.PULL_FROM_END);
+                    if (!isLoading) {
 
-                    if (mScrollView.getCurrentMode() == Mode.PULL_FROM_END) {
+                        if (footerView == null) {
+                            footerView = LayoutInflater.from(act).inflate(R.layout.loadingmore, null);
+                        }
 
-                        mScrollView.setRefreshing();
+                        if (scrollView.getChildAt(0) != null) {
+                            ((ViewGroup) (scrollView.getChildAt(0))).addView(footerView);
+                        }
+
+                        new Handler().post(new Runnable() {
+                            @Override
+                            public void run() {
+                                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                            }
+                        });
+
+                        loadData(false);
 
                         goTopImg.setVisibility(View.GONE);
+
+                        isLoading = true;
 
                     }
                 }
@@ -235,6 +247,7 @@ public class RecommendFragment extends Fragment {
             }
         });
 
+        //设置拉动事件
         mScrollView.setOnPullEventListener(new OnPullEventListener<ScrollViewExtend>() {
 
             @Override
@@ -251,16 +264,15 @@ public class RecommendFragment extends Fragment {
             }
         });
 
-        mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ScrollViewExtend>() {
+        //设置刷新事件
+        mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollViewExtend>() {
 
             /**
              * 该刷新了回调方法
              * @param refreshView
              */
             @Override
-            public void onPullDownToRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
-                // TODO Auto-generated method stub
-
+            public void onRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
                 resetDishs();
                 resetViews();
 
@@ -268,21 +280,9 @@ public class RecommendFragment extends Fragment {
 
                 loadData(true);
                 ivpHelper.refresh();
-
-                mScrollView.setMode(Mode.BOTH);//重新设置上下都可刷新
-
-            }
-
-            /**
-             * 该加载更多了回调方法
-             * @param refreshView
-             */
-            @Override
-            public void onPullUpToRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
-                // TODO Auto-generated method stub
-                loadData(false);
             }
         });
+
     }
 
     /**
@@ -316,7 +316,7 @@ public class RecommendFragment extends Fragment {
         });
     }
 
-    private void loadData(final boolean isRefresh) {
+    private void loadData(final boolean isTopRefresh) {
         String url = null;
         AjaxParams params = new AjaxParams();
         url = Constant.url_dishlist;
@@ -329,7 +329,14 @@ public class RecommendFragment extends Fragment {
                 super.onFailure(t, errorNo, strMsg);
                 ToastUtil.toastLong(act, "数据加载失败=" + strMsg);
 
-                mScrollView.onRefreshComplete();
+                if (isTopRefresh) {
+                    mScrollView.onRefreshComplete();
+                } else {
+                    isLoading = false;
+                    if (scrollView.getChildAt(0) != null) {
+                        ((ViewGroup) (scrollView.getChildAt(0))).removeView(footerView);
+                    }
+                }
 
                 setTopImgVisibility();
             }
@@ -355,18 +362,23 @@ public class RecommendFragment extends Fragment {
                         newviews.add(setView(dish));
                     }
 
-                    if (isRefresh) {//刷新，清空原有布局View
+                    if (isTopRefresh) {//刷新，清空原有布局View
                         ll_left.removeAllViews();
                         ll_right.removeAllViews();
+
+                        isFirst = true;
+
+                        mScrollView.onRefreshComplete();
+                    } else {//加载更多
+                        isLoading = false;
+                        if (scrollView.getChildAt(0) != null) {
+                            ((ViewGroup) (scrollView.getChildAt(0))).removeView(footerView);
+                        }
                     }
 
                     addView(newviews);
                     views.addAll(newviews);
                     page++;
-
-                    mScrollView.onRefreshComplete();
-
-                    isFirst = true;
 
                     setTopImgVisibility();
 

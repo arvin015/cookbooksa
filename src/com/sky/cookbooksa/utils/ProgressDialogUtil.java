@@ -17,9 +17,7 @@ public class ProgressDialogUtil {
 
     private ProgressDialog dialog;
 
-    private static ProgressDialogUtil dialogUtil;
-
-    private final String dialogText = "加载中...";
+    private String dialogText = "加载中...";
 
     private Timer timer;//计时器
 
@@ -36,20 +34,16 @@ public class ProgressDialogUtil {
         }
     };
 
-    private ProgressDialogUtil(Context context) {
+    public ProgressDialogUtil(Context context, String text) {
 
         dialog = new ProgressDialog(context, R.style.CustomDialogTheme);
-        dialog.setCancelable(false);
-        dialog.setMessage(dialogText);
-    }
+        dialog.setCancelable(true);
 
-    public static ProgressDialogUtil getInstance(Context context) {
-
-        if (dialogUtil == null) {
-            dialogUtil = new ProgressDialogUtil(context);
+        if (text != null && text != "") {
+            dialogText = text;
         }
 
-        return dialogUtil;
+        dialog.setMessage(dialogText);
     }
 
     /**
@@ -59,15 +53,6 @@ public class ProgressDialogUtil {
      */
     public void setCancelable(boolean enable) {
         dialog.setCancelable(enable);
-    }
-
-    /**
-     * 设置提示信息
-     *
-     * @param text
-     */
-    public void setDialogText(String text) {
-        dialog.setMessage(text);
     }
 
     /**
@@ -83,7 +68,7 @@ public class ProgressDialogUtil {
      * 隐藏
      */
     public void closeDialog() {
-        if (dialog.isShowing()) {
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
         }
 

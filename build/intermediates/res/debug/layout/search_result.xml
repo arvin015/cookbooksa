@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/title" />
 
@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:paddingTop="5dp" >
+        android:paddingTop="5dp">
 
         <TextView
             android:id="@+id/search_empty_tip"
@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="#20E0E0E0"
-            android:dividerHeight="0dp" />
+            android:dividerHeight="0dp"
+            android:fastScrollEnabled="true" />
     </LinearLayout>
 
 </LinearLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/search_result.xml -->
