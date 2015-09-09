@@ -1,13 +1,18 @@
 package com.sky.cookbooksa;
 
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.sky.cookbooksa.adapter.ReplyAdapter;
 import com.sky.cookbooksa.entity.Comment;
@@ -20,448 +25,461 @@ import com.sky.cookbooksa.widget.CommonListView;
 import com.sky.cookbooksa.widget.CommonScrollView;
 import com.sky.cookbooksa.widget.CommonScrollView.OnBorderListener;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 
-public class CommentActivity extends BaseActivity{
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-	private LinearLayout contentContainer;
-	private ImageButton backBtn;
-	private TextView title;
-	private CommonScrollView scrollview;
-	private EditText contentEdit;
-	private Button submitBtn;
-	private TextView emptyTip;
+import java.util.ArrayList;
 
-	private View loadingView;
+public class CommentActivity extends BaseActivity {
 
-	private LayoutInflater inflater;
+    private LinearLayout contentContainer;
+    private ImageButton backBtn;
+    private TextView title;
+    private CommonScrollView scrollview;
+    private EditText contentEdit;
+    private Button submitBtn;
+    private TextView emptyTip;
 
-	private ArrayList<Comment> comments;
+    private View loadingView;
 
-	private String dishId;
+    private LayoutInflater inflater;
 
-	private String currentContent;
+    private ArrayList<Comment> comments;
 
-	private int totalCount = 0;
+    private String dishId;
 
-	private int currentPage = 1;
+    private String currentContent;
 
-	private boolean isLoading = false;//是否正在加载
+    private int totalCount = 0;
 
-	private boolean isFirst = true;//是否是第一次提示加载完毕
+    private int currentPage = 1;
 
-	private boolean isComment = true;//是否评论
+    private boolean isLoading = false;//是否正在加载
 
-	private int currentCommentId = 0;//当前评论
+    private boolean isFirst = true;//是否是第一次提示加载完毕
 
-	private ListView currentListView;//当前回复ListView
-	private ArrayList<Reply> currentReplies;//当前回复集合
+    private boolean isComment = true;//是否评论
 
-	protected enum AJAX_MODE{
-		GET, AGREE, PUBLISH, PUBLISHREPLY
-	}
+    private int currentCommentId = 0;//当前评论
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.comment);
+    private ListView currentListView;//当前回复ListView
+    private ArrayList<Reply> currentReplies;//当前回复集合
 
-		dishId = getIntent().getExtras().getString("dishId");
+    protected enum AJAX_MODE {
+        GET, AGREE, PUBLISH, PUBLISHREPLY
+    }
 
-		loading("正在加载数据...");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.comment);
 
-		init();
-	}
+        dishId = getIntent().getExtras().getString("dishId");
 
-	@SuppressLint("UseSparseArrays")
-	private void init(){
+        loading("正在加载数据...");
 
-		inflater = LayoutInflater.from(context);
+        init();
+    }
 
-		comments = new ArrayList<Comment>();
+    @SuppressLint("UseSparseArrays")
+    private void init() {
 
-		contentContainer = (LinearLayout) findViewById(R.id.content_container);
-		backBtn = (ImageButton) findViewById(R.id.back);
-		backBtn.setVisibility(View.VISIBLE);
-		title = (TextView) findViewById(R.id.title);
-		title.setVisibility(View.VISIBLE);
-		scrollview = (CommonScrollView) findViewById(R.id.comment_scrollview);
-		contentEdit = (EditText) findViewById(R.id.comment_edit);
-		submitBtn = (Button) findViewById(R.id.submit_btn);
-		emptyTip = (TextView) findViewById(R.id.empty_tip);
+        inflater = LayoutInflater.from(context);
 
-		//contentEdit进入无法获取焦点
-		getFouse(submitBtn);
+        comments = new ArrayList<Comment>();
 
-		setTitleText(totalCount);
+        contentContainer = (LinearLayout) findViewById(R.id.content_container);
+        backBtn = (ImageButton) findViewById(R.id.back);
+        backBtn.setVisibility(View.VISIBLE);
+        title = (TextView) findViewById(R.id.title);
+        title.setVisibility(View.VISIBLE);
+        scrollview = (CommonScrollView) findViewById(R.id.comment_scrollview);
+        contentEdit = (EditText) findViewById(R.id.comment_edit);
+        submitBtn = (Button) findViewById(R.id.submit_btn);
+        emptyTip = (TextView) findViewById(R.id.empty_tip);
 
-		backBtn.setOnClickListener(new OnClickListener() {
+        //contentEdit进入无法获取焦点
+        getFouse(submitBtn);
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				back();
-			}
-		});
+        setTitleText(totalCount);
 
-		submitBtn.setOnClickListener(new OnClickListener() {
+        backBtn.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				String content = contentEdit.getText().toString().trim();
-				currentContent = content;
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                back();
+            }
+        });
 
-				if(StringUtil.isEmpty(content)){
-					ToastUtil.toastShort(context, "内容不能为空！");
-					return;
-				}
+        submitBtn.setOnClickListener(new OnClickListener() {
 
-				toggleKeyboard(contentEdit, false);//close keyboard
-				contentEdit.setText("");
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                String content = contentEdit.getText().toString().trim();
+                currentContent = content;
 
-				loading("正在提交...");
+                if (StringUtil.isEmpty(content)) {
+                    ToastUtil.toastShort(context, "内容不能为空！");
+                    return;
+                }
 
-				AjaxParams params = new AjaxParams();
-				params.put("content", content);
-				params.put("userId", "0");
+                toggleKeyboard(contentEdit, false);//close keyboard
+                contentEdit.setText("");
 
-				if(isComment){
+                loading("正在提交...");
 
-					params.put("dishId", dishId);
+                AjaxParams params = new AjaxParams();
+                params.put("content", content);
+                String userId = Utils.isLoaded ? Utils.userId : "-1";
+                params.put("userId", userId);
+
+                if (isComment) {
 
-					fh.post(Constant.url_publishcomment, params, 
-							new MyAjaxCallback(AJAX_MODE.PUBLISH));
-				}else{
+                    params.put("dishId", dishId);
+
+                    fh.post(Constant.url_publishcomment, params,
+                            new MyAjaxCallback(AJAX_MODE.PUBLISH));
+                } else {
+
+                    params.put("commentId", currentCommentId + "");
+                    String userNick = Utils.isLoaded ? Utils.userNick : "匿名游客";
+                    params.put("userNick", userNick);
+
+                    fh.post(Constant.url_publishreply, params, new MyAjaxCallback(AJAX_MODE.PUBLISHREPLY));
+                }
+            }
+        });
+
+        //Touch事件为了解决当评论未超过一页屏幕时，通过Touch事件来将回复评论转成发布评论
+        scrollview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_UP:
+
+                        if (scrollview.getChildCount() > 0 &&
+                                scrollview.getHeight() >= scrollview.getChildAt(0).getHeight()) {
+                            changeReplyToComment();
+                        }
+
+                        break;
+                    default:
+                        break;
+                }
+
+                return false;
+            }
+        });
+
+        scrollview.setOnBorderListener(new OnBorderListener() {
 
-					params.put("commentId", currentCommentId + "");
-					params.put("userNick", "arvin");
+            @Override
+            public void onTop() {//scroll top
+                // TODO Auto-generated method stub
 
-					fh.post(Constant.url_publishreply, params, new MyAjaxCallback(AJAX_MODE.PUBLISHREPLY));
-				}
-			}
-		});
+            }
 
-		scrollview.setOnBorderListener(new OnBorderListener() {
+            @Override
+            public void onBottom() {//scroll bottom
+                // TODO Auto-generated method stub
+                scrollToBottomHandle();
+            }
 
-			@Override
-			public void onTop() {//scroll top
-				// TODO Auto-generated method stub
+            @Override
+            public void scroll() {
+                // TODO Auto-generated method stub
+                changeReplyToComment();
+            }
+        });
 
-			}
+        loadData();
+    }
 
-			@Override
-			public void onBottom() {//scroll bottom
-				// TODO Auto-generated method stub
-				scrollToBottomHandle();
-			}
+    private void loadData() {
+        // TODO Auto-generated method stub
 
-			@Override
-			public void scroll() {
-				// TODO Auto-generated method stub
-				if(!isComment){
-					isComment = true;
-					contentEdit.setHint("说点什么吧？");
-					submitBtn.setText("发表");
-				}
+        AjaxParams params = new AjaxParams();
+        params.put("dishId", dishId);
+        params.put("page", currentPage + "");
 
-				toggleKeyboard(contentEdit, false);
-			}
-		});
+        fh.get(Constant.url_getallcommentsbydish, params, new MyAjaxCallback(AJAX_MODE.GET));
+    }
 
-		loadData();
-	}
+    /**
+     * changeReplyToComment
+     */
+    private void changeReplyToComment() {
+        if (!isComment) {
+            isComment = true;
+            contentEdit.setHint("说点什么吧？");
+            submitBtn.setText("发表");
+        }
 
-	private void loadData() {
-		// TODO Auto-generated method stub
+        toggleKeyboard(contentEdit, false);
+    }
 
-		AjaxParams params = new AjaxParams();
-		params.put("dishId", dishId);
-		params.put("page", currentPage + "");
+    private Button currentBtn;
 
-		fh.get(Constant.url_getallcommentsbydish, params, new MyAjaxCallback(AJAX_MODE.GET));
-	}
+    private View createView(final Comment comment) {
 
-	private TextView currentTextView;
+        final View view = inflater.inflate(R.layout.comment_item, null);
 
-	private View createView(final Comment comment){
+        ImageView imageView = (ImageView) view.findViewById(R.id.user_pic);
+        TextView userNick = (TextView) view.findViewById(R.id.user_nick);
+        TextView content = (TextView) view.findViewById(R.id.comment_content);
+        TextView time = (TextView) view.findViewById(R.id.comment_time);
+        final Button agreeBtn = (Button) view.findViewById(R.id.agree_btn);
+        Button replyBtn = (Button) view.findViewById(R.id.reply_btn);
+        final CommonListView listView = (CommonListView) view.findViewById(R.id.reply_listview);
 
-		final View view = inflater.inflate(R.layout.comment_item, null);
+        agreeBtn.setText(comment.getAgreeNum() + "");
+        content.setText(comment.getCommentContent());
+        time.setText(comment.getCommentTime());
+        userNick.setText(comment.getUserNick());
 
-		ImageView imageView = (ImageView) view.findViewById(R.id.user_pic);
-		TextView userNick = (TextView) view.findViewById(R.id.user_nick);
-		TextView content = (TextView) view.findViewById(R.id.comment_content);
-		TextView time = (TextView) view.findViewById(R.id.comment_time);
-		final TextView agreeNum = (TextView) view.findViewById(R.id.agree_num);
-		Button agreeBtn = (Button) view.findViewById(R.id.agree_btn);
-		Button replyBtn = (Button) view.findViewById(R.id.reply_btn);
-		final CommonListView listView = (CommonListView) view.findViewById(R.id.reply_listview);
+        if ("tourist".equals(comment.getUserPic())) {
+            imageView.setImageResource(R.drawable.image3);
+        } else {
+            fb.configLoadingImage(R.drawable.avatar_default);
+            fb.configLoadfailImage(R.drawable.image1);
+            fb.display(imageView, Constant.DIR + comment.getUserPic());
+        }
 
-		agreeNum.setText(comment.getAgreeNum() + "");
-		content.setText(comment.getCommentContent());
-		time.setText(comment.getCommentTime());
-		userNick.setText(comment.getUserNick());
+        if (comment.getReplies().size() > 0) {
+            listView.setVisibility(View.VISIBLE);
+        }
 
-		fb.configLoadingImage(R.drawable.avatar_default);
-		fb.configLoadfailImage(R.drawable.avatar_default);
-		fb.display(imageView, Constant.DIR + comment.getUserPic());
+        final ReplyAdapter replyAdapter = new ReplyAdapter(context, comment.getReplies());
+        listView.setAdapter(replyAdapter);
 
-		if(comment.getReplies().size() > 0){
-			listView.setVisibility(View.VISIBLE);
-		}
+        agreeBtn.setOnClickListener(new OnClickListener() {
 
-		final ReplyAdapter replyAdapter = new ReplyAdapter(context, comment.getReplies());
-		listView.setAdapter(replyAdapter);
-
-		agreeBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                currentBtn = agreeBtn;
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				currentTextView = agreeNum;
-
-				AjaxParams params = new AjaxParams();
-				params.put("commentId", comment.getCommentId() + "");
+                AjaxParams params = new AjaxParams();
+                params.put("commentId", comment.getCommentId() + "");
 
-				fh.post(Constant.url_commentagreenumincrease, params, new MyAjaxCallback(AJAX_MODE.AGREE));
-			}
-		});
+                fh.post(Constant.url_commentagreenumincrease, params, new MyAjaxCallback(AJAX_MODE.AGREE));
+            }
+        });
 
-		replyBtn.setOnClickListener(new OnClickListener() {
+        replyBtn.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+
+                scrollview.scrollTo(0, view.getTop());//滑动至当前操作view所在位置
+
+                isComment = false;
+
+                toggleKeyboard(contentEdit, true);
+                contentEdit.setHint("回复评论");
+
+                submitBtn.setText("回复");
+
+                currentCommentId = comment.getCommentId();
+                currentListView = listView;
+                currentReplies = comment.getReplies();
+
+                getFouse(contentEdit);
+            }
+        });
+
+        return view;
+    }
+
+    //滑至底部Handle
+    private void scrollToBottomHandle() {
+        // TODO Auto-generated method stub
+        if (!isLoading) {//未正在加载更多
+
+            if (contentContainer.getChildCount() < totalCount) {//未加载完数据
+                if (loadingView == null) {
+                    loadingView = inflater.inflate(R.layout.loadingmore, null);
+                }
+
+                contentContainer.addView(loadingView);
+
+                scrollview.post(new Runnable() {//自动滑动至底部
+
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        scrollview.fullScroll(View.FOCUS_DOWN);
+                    }
+                });
+
+                currentPage++;
+
+                loadData();
+
+                isLoading = true;
+            } else {//加载完所有数据
+                if (isFirst) {
+                    ToastUtil.toastShort(context, "数据加载完毕！");
+                    isFirst = false;
+                }
+            }
+        }
+    }
+
+    private void getFouse(View view) {
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.requestFocusFromTouch();
+    }
+
+    private void setTitleText(int totalCount) {
+        title.setText("评论(共" + totalCount + "条)");
+    }
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-
-				scrollview.scrollTo(0, view.getTop());//滑动至当前操作view所在位置
+    class MyAjaxCallback extends AjaxCallBack<Object> {
 
-				isComment = false;
-
-				toggleKeyboard(contentEdit, true);
-				contentEdit.setHint("回复评论");
+        private AJAX_MODE mode;
 
-				submitBtn.setText("回复");
+        public MyAjaxCallback(AJAX_MODE mode) {
+            this.mode = mode;
+        }
 
-				currentCommentId = comment.getCommentId();
-				currentListView = listView;
-				currentReplies = comment.getReplies();
-
-				getFouse(contentEdit);
-			}
-		});
-
-		return view;
-	}
-
-	//滑至底部Handle
-	private void scrollToBottomHandle() {
-		// TODO Auto-generated method stub
-		if(!isLoading){//未正在加载更多
-
-			if(contentContainer.getChildCount() < totalCount){//未加载完数据
-				if(loadingView == null){
-					loadingView = inflater.inflate(R.layout.loading, null);
-				}
-
-				contentContainer.addView(loadingView);
-
-				scrollview.post(new Runnable() {//自动滑动至底部
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						scrollview.fullScroll(View.FOCUS_DOWN);
-					}
-				});
-
-				currentPage++;
-
-				loadData();
-
-				isLoading = true;
-			}else{//加载完所有数据
-				if(isFirst){
-					ToastUtil.toastShort(context, "数据加载完毕！");
-					isFirst = false;
-				}
-			}
-		}
-	}
-
-	private void getFouse(View view){
-		view.setFocusable(true);
-		view.setFocusableInTouchMode(true);
-		view.requestFocus();
-		view.requestFocusFromTouch();
-	}
-
-	private void setTitleText(int totalCount){
-		title.setText("评论(共"+totalCount+"条)");
-	}
-
-	//捕捉物理键操作事件
-	//	@Override
-	//	public boolean dispatchKeyEvent(KeyEvent event) {
-	//		// TODO Auto-generated method stub
-	//
-	//		if(event.getKeyCode() == KeyEvent.KEYCODE_BACK){
-	//			if(!isComment){
-	//				isComment = true;
-	//				contentEdit.setHint("说点什么吧？");
-	//			}
-	//		}
-	//
-	//		return super.dispatchKeyEvent(event);
-	//	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		return super.onKeyDown(keyCode, event);
-	}
-
-	class MyAjaxCallback extends AjaxCallBack<Object>{
-
-		private AJAX_MODE mode;
+        @Override
+        public void onFailure(Throwable t, int errorNo, String strMsg) {
+            // TODO Auto-generated method stub
+            super.onFailure(t, errorNo, strMsg);
 
-		public MyAjaxCallback(AJAX_MODE mode){
-			this.mode = mode;
-		}
+            if (mode == AJAX_MODE.GET) {
+                ToastUtil.toastShort(context, "获取评论列表失败=" + strMsg);
+                isLoading = false;
+                loadMissed();
 
-		@Override
-		public void onFailure(Throwable t, int errorNo, String strMsg) {
-			// TODO Auto-generated method stub
-			super.onFailure(t, errorNo, strMsg);
+                contentContainer.removeView(loadingView);
 
-			if(mode == AJAX_MODE.GET){
-				ToastUtil.toastShort(context, "获取评论列表失败="+strMsg);
-				isLoading = false;
-				loadMissed();
+            } else if (mode == AJAX_MODE.PUBLISH) {
+                ToastUtil.toastShort(context, "发布评论失败=" + strMsg);
+                loadMissed();
+            } else if (mode == AJAX_MODE.AGREE) {
+                ToastUtil.toastShort(context, "点赞失败=" + strMsg);
+            } else if (mode == AJAX_MODE.PUBLISHREPLY) {
+                ToastUtil.toastShort(context, "回复评论失败=" + strMsg);
+                loadMissed();
+            }
+        }
 
-				contentContainer.removeView(loadingView);
+        @Override
+        public void onSuccess(Object t) {
+            // TODO Auto-generated method stub
+            super.onSuccess(t);
 
-			}else if(mode == AJAX_MODE.PUBLISH){
-				ToastUtil.toastShort(context, "发布评论失败="+strMsg);
-				loadMissed();
-			}else if(mode == AJAX_MODE.AGREE){
-				ToastUtil.toastShort(context, "点赞失败="+strMsg);
-			}else if(mode == AJAX_MODE.PUBLISHREPLY){
-				ToastUtil.toastShort(context, "回复评论失败="+strMsg);
-				loadMissed();
-			}
-		}
+            JSONObject obj = null;
+            try {
+                obj = new JSONObject((String) t);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
-		@Override
-		public void onSuccess(Object t) {
-			// TODO Auto-generated method stub
-			super.onSuccess(t);
+            if (obj != null) {
+                if (mode == AJAX_MODE.GET) {
 
-			JSONObject obj = null;
-			try {
-				obj = new JSONObject((String)t);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+                    loadMissed();
+                    isLoading = false;
 
-			if(obj != null){
-				if(mode == AJAX_MODE.GET){
+                    contentContainer.removeView(loadingView);//删除LoadingView
 
-					loadMissed();
-					isLoading = false;
+                    int count = obj.optInt("count");
+                    totalCount = count;
+                    setTitleText(count);
 
-					contentContainer.removeView(loadingView);//删除LoadingView
+                    if (count < 1) {
+                        emptyTip.setVisibility(View.VISIBLE);
+                        return;
+                    }
 
-					int count = obj.optInt("count");
-					totalCount = count;
-					setTitleText(count);
+                    JSONArray arr = null;
+                    try {
+                        arr = obj.optJSONArray("result");
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 
-					if(count < 1){
-						emptyTip.setVisibility(View.VISIBLE);
-						return;
-					}
+                    if (arr != null) {
 
-					JSONArray arr = null;
-					try {
-						arr = obj.optJSONArray("result");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                        for (int i = 0; i < arr.length(); i++) {
+                            Comment comment = new Comment(arr.optJSONObject(i));
 
-					if(arr != null){
+                            contentContainer.addView(createView(comment));
+                            comments.add(comment);
+                        }
+                    }
+                } else {
+                    String result = obj.optString("result");
 
-						for(int i = 0; i < arr.length(); i++){
-							Comment comment = new Comment(arr.optJSONObject(i));
+                    if ("true".equals(result)) {
+                        if (mode == AJAX_MODE.PUBLISH) {
 
-							contentContainer.addView(createView(comment));
-							comments.add(comment);
-						}
-					}
-				}else {
-					String result = obj.optString("result");
+                            loadMissed();
 
-					if("true".equals(result)){
-						if(mode == AJAX_MODE.PUBLISH){
+                            if (emptyTip.getVisibility() == View.VISIBLE) {
+                                emptyTip.setVisibility(View.GONE);
+                            }
 
-							loadMissed();
+                            String time = obj.optString("time");
+                            int commentId = obj.optInt("commentId");
+                            ToastUtil.toastShort(context, "发布评论成功！");
 
-							if(emptyTip.getVisibility() == View.VISIBLE){
-								emptyTip.setVisibility(View.GONE);
-							}
+                            totalCount++;
 
-							String time = obj.optString("time");
-							int commentId = obj.optInt("commentId");
-							ToastUtil.toastShort(context, "发布评论成功！");
+                            setTitleText(totalCount);
 
-							totalCount++;
+                            String userPic = Utils.isLoaded ? Utils.userPic : "tourist";
+                            String userNick = Utils.isLoaded ? Utils.userNick : "匿名游客";
 
-							setTitleText(totalCount);
+                            Comment comment = new Comment(commentId, currentContent, time, 0,
+                                    userPic, userNick);
 
-							Comment comment = new Comment(commentId, currentContent, time, 0, 
-									Utils.userPic, Utils.userNick);
+                            contentContainer.addView(createView(comment), 0);
 
-							contentContainer.addView(createView(comment), 0);
+                            scrollview.scrollTo(0, 0);//scroll to top
 
-							scrollview.scrollTo(0, 0);//scroll to top
+                        } else if (mode == AJAX_MODE.PUBLISHREPLY) {
 
-						}else if(mode == AJAX_MODE.PUBLISHREPLY){
+                            loadMissed();
 
-							loadMissed();
+                            currentListView.setVisibility(View.VISIBLE);
 
-							currentListView.setVisibility(View.VISIBLE);
+                            String time = obj.optString("time");
 
-							String time = obj.optString("time");
+                            if (currentListView.getAdapter() != null) {
 
-							if(currentListView.getAdapter() != null){
+                                String userNick = Utils.isLoaded ? Utils.userNick : "匿名游客";
 
-								currentReplies.add(new Reply("arvin", currentContent, time));
+                                currentReplies.add(0, new Reply(userNick, currentContent, time));
 
-								((ReplyAdapter)currentListView.getAdapter()).notifyDataSetChanged();
-							}
+                                ((ReplyAdapter) currentListView.getAdapter()).notifyDataSetChanged();
+                            }
 
-						}else{
-							currentTextView.setText((Integer.parseInt(currentTextView.getText().toString())+1) + "");
-						}
-					}else{
-						ToastUtil.toastShort(context, "异常情况！");
-					}
-				}
-			}
-		}
-	}
+                        } else {
+                            currentBtn.setText((Integer.parseInt(currentBtn.getText().toString()) + 1) + "");
+                        }
+                    } else {
+                        ToastUtil.toastShort(context, "异常情况！");
+                    }
+                }
+            }
+        }
+    }
 
 }

@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -410,7 +411,7 @@ public class RecommendFragment extends Fragment {
         View view = null;
         if (style == STYLE.LIST) {//list布局
             view = LayoutInflater.from(act).inflate(R.layout.dish_item, null);
-            LinearLayout ll_main = (LinearLayout) view.findViewById(R.id.ll_main);
+            FrameLayout ll_main = (FrameLayout) view.findViewById(R.id.ll_main);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.mainpic);
             TextView name = (TextView) view.findViewById(R.id.name);
@@ -443,7 +444,7 @@ public class RecommendFragment extends Fragment {
             });
         } else {//grid布局
             view = LayoutInflater.from(act).inflate(R.layout.dish_grid_item, null);
-            RelativeLayout rl_main = (RelativeLayout) view.findViewById(R.id.rl_main);
+            FrameLayout rl_main = (FrameLayout) view.findViewById(R.id.rl_main);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.mainpic);
             TextView name = (TextView) view.findViewById(R.id.name);

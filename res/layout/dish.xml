@@ -77,16 +77,16 @@
                     android:id="@+id/ll_left"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingRight="5dp"></LinearLayout>
+                    android:orientation="vertical"/>
 
                 <LinearLayout
                     android:id="@+id/ll_right"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical"/>
             </LinearLayout>
         </LinearLayout>
     </com.pulltorefresh.lib.PullToRefreshScrollView>

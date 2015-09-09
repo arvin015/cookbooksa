@@ -22,237 +22,271 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class SearchResultActivity extends BaseActivity{
+public class SearchResultActivity extends BaseActivity {
 
-	private Context context;
-	private ListView listView;
-	private TextView title, emptyTip;
-	private ImageButton backBtn;
-	private String searchKey, classifyKey;
-	private int currentPage = 1;
+    private Context context;
+    private ListView listView;
+    private TextView title, emptyTip;
+    private ImageButton backBtn;
+    private String searchKey, classifyKey;
+    private int currentPage = 1;
 
-	private int resultCount = 0;
-	private List<Dish> dishs;
+    private int resultCount = 0;
+    private List<Dish> dishs;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.search_result);
+    private boolean isInit = true;//是否初始化
 
-		searchKey = getIntent().getStringExtra("searchKey");//获取搜索关键字
+    private int start_index, end_index;//图片开始和结束索引
 
-		classifyKey = getIntent().getStringExtra("classifyKey");//获取分类类型名
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.search_result);
 
-		init();
-	}
+        searchKey = getIntent().getStringExtra("searchKey");//获取搜索关键字
 
-	private void init() {
-		// TODO Auto-generated method stub
+        classifyKey = getIntent().getStringExtra("classifyKey");//获取分类类型名
 
-		context = this;
+        init();
+    }
 
-		dishs = new ArrayList<Dish>();
+    private void init() {
+        // TODO Auto-generated method stub
 
-		loading(getString(R.string.loading_msg));
+        context = this;
 
-		listView = (ListView) findViewById(R.id.searchlist);
-		title = (TextView) findViewById(R.id.title);
-		emptyTip = (TextView) findViewById(R.id.search_empty_tip);
-		backBtn = (ImageButton) findViewById(R.id.back);
-		backBtn.setVisibility(View.VISIBLE);
-		backBtn.setOnClickListener(new OnClickListener() {
+        dishs = new ArrayList<Dish>();
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				back();
-			}
-		});
+        loading(getString(R.string.loading_msg));
 
-		listView.setOnItemClickListener(new OnItemClickListener() {
+        listView = (ListView) findViewById(R.id.searchlist);
+        title = (TextView) findViewById(R.id.title);
+        emptyTip = (TextView) findViewById(R.id.search_empty_tip);
+        backBtn = (ImageButton) findViewById(R.id.back);
+        backBtn.setVisibility(View.VISIBLE);
+        backBtn.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				Bundle bundle = new Bundle();
-				bundle.putString("id", dishs.get(position).getId());
-				intentHandle(DishDetailActivity.class, bundle, false);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-			}
-		});
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                back();
+            }
+        });
 
-		loadData();
+        listView.setOnItemClickListener(new OnItemClickListener() {
 
-	}
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                Bundle bundle = new Bundle();
+                bundle.putString("id", dishs.get(position).getId());
+                intentHandle(DishDetailActivity.class, bundle, false);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+            }
+        });
 
-	private void loadData() {
-		// TODO Auto-generated method stub
-		AjaxParams params = new AjaxParams();
-		params.put("key", StringUtil.isEmpty(searchKey)?classifyKey:searchKey);
-		params.put("page", currentPage+"");
+        /**
+         * ListView加载图片优化，滑动停止加载图片
+         */
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
 
-		String urlStr = StringUtil.isEmpty(searchKey)?Constant.url_getdishsbyclassify:Constant.url_dishsearch;
+                isInit = false;
 
-		fh.get(urlStr, params, new AjaxCallBack<Object>() {
-			@Override
-			public void onFailure(Throwable t, int errorNo, String strMsg) {
-				// TODO Auto-generated method stub
-				super.onFailure(t, errorNo, strMsg);
+                if (i == SCROLL_STATE_IDLE) {//滑动停止
+                    for (int j = start_index; j < end_index; j++) {
+                        ImageView imgView = (ImageView) listView.findViewWithTag(j);
+                        if (imgView != null) {
+                            fb.display(imgView, Constant.DIR + dishs.get(j).getMainPic()
+                                    .substring(dishs.get(j).getMainPic().lastIndexOf("/") + 1));
+                        }
+                    }
+                }
+            }
 
-				loadMissed();
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                start_index = i;
+                end_index = i + i1;
+            }
+        });
 
-				if(StringUtil.isEmpty(searchKey)){
-					title.setText(Html.fromHtml("<font>"+classifyKey+"（共 <span style=\"font-size:24px;\">"+resultCount+"</span> 条数据）</font>"));
-				}else{
-					title.setText(Html.fromHtml("<font>搜索到 <span style=\"font-size:24px;\">"+resultCount+"</span> 条结果</font>"));
-				}
-				ToastUtil.toastShort(context, "加载数据失败="+strMsg);
-			}
+        loadData();
 
-			@Override
-			public void onSuccess(Object t) {
-				// TODO Auto-generated method stub
-				super.onSuccess(t);
+    }
 
-				loadMissed();
+    private void loadData() {
+        // TODO Auto-generated method stub
+        AjaxParams params = new AjaxParams();
+        params.put("key", StringUtil.isEmpty(searchKey) ? classifyKey : searchKey);
+        params.put("page", currentPage + "");
 
-				JSONObject obj = null;
-				try {
-					obj = new JSONObject((String)t);
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        String urlStr = StringUtil.isEmpty(searchKey) ? Constant.url_getdishsbyclassify : Constant.url_dishsearch;
 
-				if(obj != null){
-					resultCount = obj.optInt("count");
+        fh.get(urlStr, params, new AjaxCallBack<Object>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                // TODO Auto-generated method stub
+                super.onFailure(t, errorNo, strMsg);
 
-					JSONArray array = null;
-					try {
-						array = obj.optJSONArray("result");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+                loadMissed();
 
-					if(array != null){
-						for(int i = 0; i < array.length(); i++){
-							Dish dish = new Dish(array.optJSONObject(i));
-							if(dish != null){
-								dishs.add(dish);
-							}
-						}
-					}
-				}
+                if (StringUtil.isEmpty(searchKey)) {
+                    title.setText(Html.fromHtml("<font>" + classifyKey + "（共 <span style=\"font-size:24px;\">" + resultCount + "</span> 条数据）</font>"));
+                } else {
+                    title.setText(Html.fromHtml("<font>搜索到 <span style=\"font-size:24px;\">" + resultCount + "</span> 条结果</font>"));
+                }
+                ToastUtil.toastShort(context, "加载数据失败=" + strMsg);
+            }
 
-				if(dishs.size() < 1){
-					emptyTip.setVisibility(View.VISIBLE);
-				}else{
-					listView.setAdapter(new SearchAdapter(dishs));
-				}
+            @Override
+            public void onSuccess(Object t) {
+                // TODO Auto-generated method stub
+                super.onSuccess(t);
 
-				if(StringUtil.isEmpty(searchKey)){
-					title.setText(Html.fromHtml("<font>"+classifyKey+"（共 <span style=\"font-size:24px;\">"+resultCount+"</span> 条数据）</font>"));
-				}else{
-					title.setText(Html.fromHtml("<font>搜索到 <span style=\"font-size:24px;\">"+resultCount+"</span> 条结果</font>"));
-				}
-			}
-		});
-	}
+                loadMissed();
 
-	class SearchAdapter extends BaseAdapter{
+                JSONObject obj = null;
+                try {
+                    obj = new JSONObject((String) t);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
-		private List<Dish> dishs;
+                if (obj != null) {
+                    resultCount = obj.optInt("count");
 
-		public SearchAdapter(List<Dish> dishs){
-			this.dishs = dishs;
-		}
+                    JSONArray array = null;
+                    try {
+                        array = obj.optJSONArray("result");
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return dishs.size();
-		}
+                    if (array != null) {
+                        for (int i = 0; i < array.length(); i++) {
+                            Dish dish = new Dish(array.optJSONObject(i));
+                            if (dish != null) {
+                                dishs.add(dish);
+                            }
+                        }
+                    }
+                }
 
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return dishs.get(position);
-		}
+                if (dishs.size() < 1) {
+                    emptyTip.setVisibility(View.VISIBLE);
+                } else {
+                    listView.setAdapter(new SearchAdapter(dishs));
+                }
 
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
+                if (StringUtil.isEmpty(searchKey)) {
+                    title.setText(Html.fromHtml("<font>" + classifyKey + "（共 <span style=\"font-size:24px;\">" + resultCount + "</span> 条数据）</font>"));
+                } else {
+                    title.setText(Html.fromHtml("<font>搜索到 <span style=\"font-size:24px;\">" + resultCount + "</span> 条结果</font>"));
+                }
+            }
+        });
+    }
 
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
+    class SearchAdapter extends BaseAdapter {
 
-			Dish dish = dishs.get(position);
+        private List<Dish> dishs;
 
-			ViewHolder viewHolder;
+        public SearchAdapter(List<Dish> dishs) {
+            this.dishs = dishs;
+        }
 
-			if(convertView == null){
-				viewHolder = new ViewHolder();
-				convertView = LayoutInflater.from(context).inflate(R.layout.dish_item, null);
+        @Override
+        public int getCount() {
+            // TODO Auto-generated method stub
+            return dishs.size();
+        }
 
-				viewHolder.ll_line = (LinearLayout)convertView.findViewById(R.id.ll_cut);
-				viewHolder.ll_line.setVisibility(View.GONE);
-				viewHolder.ll_container = (LinearLayout)convertView.findViewById(R.id.ll_main);
-				viewHolder.ll_container.setBackgroundResource(R.drawable.griditem_bg);
-				viewHolder.imageView = (ImageView)convertView.findViewById(R.id.mainpic);
-				viewHolder.name = (TextView)convertView.findViewById(R.id.name);
-				viewHolder.during = (TextView)convertView.findViewById(R.id.during);
-				viewHolder.style = (TextView)convertView.findViewById(R.id.style);
-				viewHolder.desc = (TextView)convertView.findViewById(R.id.desc);
+        @Override
+        public Object getItem(int position) {
+            // TODO Auto-generated method stub
+            return dishs.get(position);
+        }
 
-				convertView.setTag(viewHolder);
-			}else{
-				viewHolder = (ViewHolder) convertView.getTag();
-			}
+        @Override
+        public long getItemId(int position) {
+            // TODO Auto-generated method stub
+            return position;
+        }
 
-			viewHolder.name.setText(Html.fromHtml(StringUtil.isEmpty(searchKey)?dish.getName()
-					:replaceString(searchKey, dish.getName())));
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            // TODO Auto-generated method stub
 
-			viewHolder.style.setText(dish.getStyle());
+            Dish dish = dishs.get(position);
 
-			String desc = dish.getDesc().length() > 30?dish.getDesc().substring(0, 30)+"...":dish.getDesc();
-			viewHolder.desc.setText(Html.fromHtml(StringUtil.isEmpty(searchKey)?desc:replaceString(searchKey, desc)));
+            ViewHolder viewHolder;
 
-			viewHolder.during.setText(dish.getDuring());
+            if (convertView == null) {
+                viewHolder = new ViewHolder();
+                convertView = LayoutInflater.from(context).inflate(R.layout.dish_item, null);
 
-			fb.display(viewHolder.imageView, Constant.DIR + dish.getMainPic()
-					.substring(dish.getMainPic().lastIndexOf("/") + 1));
+                viewHolder.imageView = (ImageView) convertView.findViewById(R.id.mainpic);
+                viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+                viewHolder.during = (TextView) convertView.findViewById(R.id.during);
+                viewHolder.style = (TextView) convertView.findViewById(R.id.style);
+                viewHolder.desc = (TextView) convertView.findViewById(R.id.desc);
 
-			return convertView;
-		}
+                convertView.setTag(viewHolder);
+            } else {
+                viewHolder = (ViewHolder) convertView.getTag();
+            }
 
-		class ViewHolder{
-			LinearLayout ll_container;
-			LinearLayout ll_line;
-			ImageView imageView;
-			TextView name;
-			TextView during;
-			TextView style;
-			TextView desc;
-		}
+            viewHolder.name.setText(Html.fromHtml(StringUtil.isEmpty(searchKey) ? dish.getName()
+                    : replaceString(searchKey, dish.getName())));
 
-	}
+            viewHolder.style.setText(dish.getStyle());
 
-	private String replaceString(String key, String str){
-		return str.replace(key, "<font color=\"#FF0000\">"+key+"</font>");
-	}
+            String desc = dish.getDesc().length() > 30 ? dish.getDesc().substring(0, 30) + "..." : dish.getDesc();
+            viewHolder.desc.setText(Html.fromHtml(StringUtil.isEmpty(searchKey) ? desc : replaceString(searchKey, desc)));
+
+            viewHolder.during.setText(dish.getDuring());
+
+            // 给图片控件设置上对应的位置编号
+            viewHolder.imageView.setTag(position);
+
+            viewHolder.imageView.setImageResource(R.drawable.chat_pic_loading);
+
+            if (isInit) {
+                fb.display(viewHolder.imageView, Constant.DIR + dish.getMainPic()
+                        .substring(dish.getMainPic().lastIndexOf("/") + 1));
+            }
+
+            return convertView;
+        }
+
+        class ViewHolder {
+            ImageView imageView;
+            TextView name;
+            TextView during;
+            TextView style;
+            TextView desc;
+        }
+
+    }
+
+    private String replaceString(String key, String str) {
+        return str.replace(key, "<font color=\"#FF0000\">" + key + "</font>");
+    }
 }
