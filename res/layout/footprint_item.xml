@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/time_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.8"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <View
             android:id="@+id/time_line"
@@ -37,7 +37,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2" >
+        android:layout_weight="2">
 
         <TextView
             android:id="@+id/foot_content"
@@ -53,5 +53,28 @@
             android:textColor="#000000"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5">
+
+        <ImageButton
+            android:id="@+id/circleBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_multiselect" />
+
+        <ToggleButton
+            android:id="@+id/checkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/checkbox_selector"
+            android:textOff=""
+            android:textOn=""
+            android:visibility="gone" />
+    </FrameLayout>
 
 </LinearLayout>

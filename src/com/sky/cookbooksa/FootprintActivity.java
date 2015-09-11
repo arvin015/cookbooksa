@@ -1,327 +1,396 @@
 package com.sky.cookbooksa;
 
-import java.util.ArrayList;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.ToggleButton;
+
+import com.sky.cookbooksa.entity.Footprint;
+import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.ToastUtil;
+import com.sky.cookbooksa.utils.Utils;
+import com.sky.cookbooksa.widget.CommonScrollView;
+import com.sky.cookbooksa.widget.CommonScrollView.OnBorderListener;
+import com.sky.cookbooksa.widget.FootprintView;
+
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.sky.cookbooksa.entity.Footprint;
-import com.sky.cookbooksa.utils.Constant;
-import com.sky.cookbooksa.utils.PopupWindowUtil;
-import com.sky.cookbooksa.utils.ToastUtil;
-import com.sky.cookbooksa.utils.Utils;
-import com.sky.cookbooksa.widget.CommonScrollView;
-import com.sky.cookbooksa.widget.CommonScrollView.OnBorderListener;
+public class FootprintActivity extends BaseActivity {
 
-import android.content.res.AssetManager;
-import android.graphics.Typeface;
-import android.os.Bundle;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+    private CommonScrollView scrollView;
+    private LinearLayout footContainer;
+    private TextView title, emptyTip;
+    private ImageButton backBtn;
 
-public class FootprintActivity extends BaseActivity{
+    private Button cancelBtn;
 
-	private CommonScrollView scrollView;
-	private LinearLayout footContainer;
-	private TextView title, emptyTip;
-	private ImageButton backBtn;
+    private ArrayList<Footprint> foots;
 
-	private ArrayList<Footprint> foots;
+    private int count;//总共记录数
 
-	private int count;//总共记录数
+    private int page = 1;
 
-	private int page = 1;
+    private Typeface tf;
 
-	private Typeface tf;
+    private View loadView;
 
-	private View childView;
+    private boolean isLoading = false;//是否正在加载
+    private boolean isFirst = true;
 
-	private View choicedView;
+    private List<FootprintView> footprintViewList;
 
-	private int tag = 1;//View tagId
+    private FootprintView currentFootprintView;//当前需删除View
 
-	private enum AJAX_MODE{
-		GET, DELETE
-	}
+    private enum AJAX_MODE {
+        GET, DELETE
+    }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.footprint);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.footprint);
 
-		init();
-	}
+        init();
+    }
 
-	private void init(){
+    private void init() {
 
-		loading("数据加载中...");
+        loading("数据加载中...");
 
-		title = (TextView) findViewById(R.id.title);
-		title.setVisibility(View.VISIBLE);
-		backBtn = (ImageButton) findViewById(R.id.back);
-		backBtn.setVisibility(View.VISIBLE);
-		emptyTip = (TextView) findViewById(R.id.empty_tip);
+        foots = new ArrayList<Footprint>();
 
-		scrollView = (CommonScrollView) findViewById(R.id.foot_scrollview);
-		footContainer = (LinearLayout) findViewById(R.id.foot_container);
+        footprintViewList = new ArrayList<FootprintView>();
 
-		title.setText("我的足迹");
-		backBtn.setOnClickListener(new OnClickListener() {
+        title = (TextView) findViewById(R.id.title);
+        title.setVisibility(View.VISIBLE);
+        backBtn = (ImageButton) findViewById(R.id.back);
+        backBtn.setVisibility(View.VISIBLE);
+        emptyTip = (TextView) findViewById(R.id.empty_tip);
+        cancelBtn = (Button) findViewById(R.id.cancelBtn);
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				back();
-			}
-		});
+        scrollView = (CommonScrollView) findViewById(R.id.foot_scrollview);
+        footContainer = (LinearLayout) findViewById(R.id.foot_container);
 
-		scrollView.setOnBorderListener(new OnBorderListener() {
+        title.setText("我的足迹");
 
-			@Override
-			public void scroll() {
-				// TODO Auto-generated method stub
+        AssetManager am = context.getAssets();
+        tf = Typeface.createFromAsset(am, "font/fzst.ttf");
 
-			}
+        backBtn.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onTop() {
-				// TODO Auto-generated method stub
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                back();
+            }
+        });
 
-			}
+        cancelBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDeleteBarVisibility(View.GONE);
 
-			@Override
-			public void onBottom() {
-				// TODO Auto-generated method stub
+                setCheckAndCircleBtnVisibility(View.VISIBLE, View.GONE);
+            }
+        });
 
-			}
-		});
+        scrollView.setOnBorderListener(new OnBorderListener() {
 
-		loadData();
-	}
+            @Override
+            public void scroll() {
+                // TODO Auto-generated method stub
 
-	private void loadData() {
-		// TODO Auto-generated method stub
-		AjaxParams params = new AjaxParams();
-		params.put("userId", Utils.userId);
-		params.put("page", page + "");
+            }
 
-		fh.post(Constant.url_getallfootbyuserid, params, new MyAjaxCallback(AJAX_MODE.GET));
-	}
+            @Override
+            public void onTop() {
+                // TODO Auto-generated method stub
 
-	private View createLineView(Footprint footprint){
+            }
 
-		View view = LayoutInflater.from(context).inflate(R.layout.line, null);
+            @Override
+            public void onBottom() {
+                // TODO Auto-generated method stub
 
-		view.setTag(tag);
+                if (isLoading) {
+                    return;
+                }
 
-		tag++;
+                //已经加载完
+                if (count <= foots.size()) {
 
-		return view;
-	}
+                    if (isFirst) {
+                        ToastUtil.toastShort(context, "数据全部加载完毕！");
+                        isFirst = false;
+                    }
 
-	private View createContentView(final Footprint footprint){
-		final View view = LayoutInflater.from(context).inflate(R.layout.footprint_item, null);
+                    return;
+                }
 
-		TextView content = (TextView) view.findViewById(R.id.foot_content);
-		TextView time = (TextView) view.findViewById(R.id.foot_time);
+                if (loadView == null) {
+                    loadView = LayoutInflater.from(context).inflate(R.layout.loadingmore, null);
+                }
 
-		if(tf == null){
-			AssetManager am = getAssets();
-			tf = Typeface.createFromAsset(am, "font/fzst.ttf");
-		}
-		content.setTypeface(tf);
+                ViewGroup viewGroup = (ViewGroup) loadView.getParent();
+                if (viewGroup != null) {
+                    viewGroup.removeView(loadView);
+                }
+                ((ViewGroup) scrollView.getChildAt(0)).addView(loadView);
+
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+                    }
+                });
 
-		content.setText(Html.fromHtml("你浏览了<font color=\"#FF8000\">【"+footprint.getDishName()+"】菜肴</font>"));
-		time.setText(footprint.getFootTime());
+                loadData();
 
-		view.setOnClickListener(new OnClickListener() {
+                isLoading = true;
+            }
+        });
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Bundle bundle = new Bundle();
-				bundle.putString("id", footprint.getDishId());
-				intentHandle(DishDetailActivity.class, bundle, false);
-				overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-			}
-		});
+        loadData();
+    }
 
-		view.setOnLongClickListener(new OnLongClickListener() {
+    private void loadData() {
 
-			@Override
-			public boolean onLongClick(View v) {
-				// TODO Auto-generated method stub
+        // TODO Auto-generated method stub
+        AjaxParams params = new AjaxParams();
+        params.put("userId", Utils.userId);
+        params.put("page", page + "");
 
-				choicedView = view;
+        fh.post(Constant.url_getallfootbyuserid, params, new MyAjaxCallback(AJAX_MODE.GET));
+    }
 
-				if(childView == null){
-					childView = LayoutInflater.from(context).inflate(R.layout.pup_delete, null);
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
 
-					childView.setOnClickListener(new OnClickListener() {
+        loadMissed();
+    }
 
-						@Override
-						public void onClick(View v) {
-							// TODO Auto-generated method stub
+    class MyAjaxCallback extends AjaxCallBack<Object> {
 
-							PopupWindowUtil.getInstance().dismiss();
+        private AJAX_MODE mode;
 
-							AjaxParams params = new AjaxParams();
-							params.put("footId", footprint.getFootId() + "");
+        public MyAjaxCallback(AJAX_MODE mode) {
+            this.mode = mode;
+        }
 
-							fh.post(Constant.url_deletefootbyfootid, params, 
-									new MyAjaxCallback(AJAX_MODE.DELETE));
-						}
-					});
-				}
+        @Override
+        public void onFailure(Throwable t, int errorNo, String strMsg) {
+            // TODO Auto-generated method stub
+            super.onFailure(t, errorNo, strMsg);
 
-				PopupWindowUtil.getInstance().setPopuWindow(childView, -1, null);
+            loadMissed();
 
-				PopupWindowUtil.getInstance().showAsDropDown(v, view.getMeasuredWidth() / 2 - 20, 
-						-view.getMeasuredHeight() - 85);
+            if (mode == AJAX_MODE.GET) {
 
-				return true;
-			}
-		});
+                if (loadView != null) {
+                    ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
+                }
+                isLoading = false;
 
-		view.setTag(tag);
+                ToastUtil.toastShort(context, "加载足迹失败=" + strMsg);
+            } else if (mode == AJAX_MODE.DELETE) {
+                ToastUtil.toastShort(context, "删除足迹失败=" + strMsg);
+            }
+        }
 
-		tag++;
+        @Override
+        public void onSuccess(Object t) {
+            // TODO Auto-generated method stub
+            super.onSuccess(t);
 
-		return view;
-	}
-
-	private int getCurentViewPosition(){//获取当前删除的View在Parent View中所在的位置
-
-		int result = -1;
-
-		for(int i = 0; i < footContainer.getChildCount(); i++){
-			View v = footContainer.getChildAt(i);
-			if(v.getTag() == choicedView.getTag()){
-				result = i;
-				break;
-			}
-		}
-
-		return result;
-	}
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-
-		loadMissed();
-	}
-
-	class MyAjaxCallback extends AjaxCallBack<Object>{
-
-		private AJAX_MODE mode;
-
-		public MyAjaxCallback(AJAX_MODE mode){
-			this.mode = mode;
-		}
-
-		@Override
-		public void onFailure(Throwable t, int errorNo, String strMsg) {
-			// TODO Auto-generated method stub
-			super.onFailure(t, errorNo, strMsg);
-
-			loadMissed();
-
-			if(mode == AJAX_MODE.GET){
-				ToastUtil.toastShort(context, "加载足迹失败="+strMsg);
-			}else if(mode == AJAX_MODE.DELETE){
-				ToastUtil.toastShort(context, "删除足迹失败="+strMsg);
-			}
-		}
-
-		@Override
-		public void onSuccess(Object t) {
-			// TODO Auto-generated method stub
-			super.onSuccess(t);
-
-			JSONObject json = null;
-			try {
-				json = new JSONObject((String)t);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			if(json != null){
-				if(mode == AJAX_MODE.GET){
-
-					loadMissed();
-
-					count = json.optInt("count");
-
-					title.setText("足迹(共"+count+"条)");
-
-					if(count < 1){
-						emptyTip.setVisibility(View.VISIBLE);
-					}
-
-					JSONArray arr = null;
-					try {
-						arr = json.optJSONArray("result");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					if(arr != null){
-						foots = new ArrayList<Footprint>();
-
-						for(int i = 0; i < arr.length(); i++){
-							foots.add(new Footprint(arr.optJSONObject(i)));
-						}
-
-						for(int j = 0; j < foots.size(); j++){
-
-							View lineView = createLineView(foots.get(j));
-							View contentView = createContentView(foots.get(j));
-
-							footContainer.addView(lineView);
-							footContainer.addView(contentView);
-						}
-					}
-				}else{
-					if(mode == AJAX_MODE.DELETE){
-						String state = json.optString("state");
-						if("true".equals(state)){
-							ToastUtil.toastShort(context, "删除成功");
-
-							count--;
-
-							title.setText("足迹(共"+count+"条)");
-
-							int index = getCurentViewPosition();
-
-							if(index != -1 && index != 0){//获取当前删除的足迹View上一个View并删除之
-								footContainer.removeView(footContainer.getChildAt(index - 1));
-							}
-
-							footContainer.removeView(choicedView);//删除当前足迹View
-
-						}else{
-							ToastUtil.toastShort(context, "删除失败");
-						}
-					}
-				}
-			}
-
-		}
-	}
+            JSONObject json = null;
+            try {
+                json = new JSONObject((String) t);
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+            if (json != null) {
+                if (mode == AJAX_MODE.GET) {
+
+                    loadMissed();
+                    if (loadView != null) {
+                        ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
+                    }
+                    isLoading = false;
+
+                    count = json.optInt("count");
+
+                    title.setText("足迹(共" + count + "条)");
+
+                    if (count < 1) {
+                        emptyTip.setVisibility(View.VISIBLE);
+                    }
+
+                    JSONArray arr = null;
+                    try {
+                        arr = json.optJSONArray("result");
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+                    if (arr != null) {
+
+                        ArrayList<Footprint> list = new ArrayList<Footprint>();
+
+                        for (int i = 0; i < arr.length(); i++) {
+                            list.add(new Footprint(arr.optJSONObject(i)));
+                        }
+
+                        for (int j = 0; j < list.size(); j++) {
+
+                            FootprintView footprintView = createFootprintView(list.get(j));
+
+                            footprintViewList.add(footprintView);
+
+                            footContainer.addView(footprintView);
+                        }
+
+                        foots.addAll(list);
+
+                        page++;
+                    }
+                } else {
+                    if (mode == AJAX_MODE.DELETE) {
+                        String state = json.optString("state");
+                        if ("true".equals(state)) {
+                            ToastUtil.toastShort(context, "删除成功");
+
+                            count--;
+
+                            title.setText("足迹(共" + count + "条)");
+
+                            if (currentFootprintView != null) {
+                                footContainer.removeView(currentFootprintView);
+                            }
+
+                        } else {
+                            ToastUtil.toastShort(context, "删除失败");
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    /**
+     * 显示隐藏删除bar
+     *
+     * @param visibility
+     */
+    public void setDeleteBarVisibility(int visibility) {
+        FrameLayout topContainer = (FrameLayout) findViewById(R.id.topContainer);
+        FrameLayout bottomContainer = (FrameLayout) findViewById(R.id.bottomContainer);
+
+        topContainer.setVisibility(visibility);
+        bottomContainer.setVisibility(visibility);
+    }
+
+    /**
+     * 设置circle和check显示隐藏
+     *
+     * @param v1
+     * @param v2
+     */
+    public void setCheckAndCircleBtnVisibility(int v1, int v2) {
+        if (footprintViewList != null && footprintViewList.size() > 0) {
+            for (FootprintView v : footprintViewList) {
+                ToggleButton tBtn = v.getCheckBtn();
+                if (tBtn != null) {
+                    tBtn.setVisibility(v1);
+                }
+                ImageButton circleBtn = v.getCircleBtn();
+                if (circleBtn != null) {
+                    circleBtn.setVisibility(v2);
+                }
+            }
+        }
+    }
+
+    /**
+     * 创建FootprintView
+     *
+     * @param footprint
+     * @return
+     */
+    private FootprintView createFootprintView(Footprint footprint) {
+        FootprintView footprintView = new FootprintView(context);
+
+        footprintView.createFootprintView(footprint, tf);
+
+        footprintView.setListener(new FootprintView.IFootprintViewListener() {
+            /**
+             * 点击进入事件
+             * @param footprint
+             */
+            @Override
+            public void onclick(Footprint footprint) {
+                Bundle bundle = new Bundle();
+                bundle.putString("id", footprint.getDishId());
+                intentHandle(DishDetailActivity.class, bundle, false);
+                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+            }
+
+            /**
+             * 点击进入删除模式事件
+             * @param view
+             */
+            @Override
+            public void onCircleClick(FootprintView view) {
+
+                setDeleteBarVisibility(View.VISIBLE);
+
+                setCheckAndCircleBtnVisibility(View.VISIBLE, View.GONE);
+            }
+
+            /**
+             * 点击删除事件
+             * @param view
+             * @param footprint
+             */
+            @Override
+            public void onDeleteClick(FootprintView view, Footprint footprint) {
+
+                currentFootprintView = view;
+
+                AjaxParams params = new AjaxParams();
+                params.put("footId", footprint.getFootId() + "");
+
+                fh.post(Constant.url_deletefootbyfootid, params,
+                        new MyAjaxCallback(AJAX_MODE.DELETE));
+            }
+        });
+
+        return footprintView;
+    }
 
 }
