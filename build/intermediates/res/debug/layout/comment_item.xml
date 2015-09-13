@@ -104,7 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/reply_bg"
             android:divider="#FDF9EC"
             android:dividerHeight="1dp"
             android:paddingBottom="3dp"
@@ -114,4 +113,4 @@
             android:visibility="gone" />
     </LinearLayout>
 
-</LinearLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/comment_item.xml -->
+</LinearLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/comment_item.xml -->

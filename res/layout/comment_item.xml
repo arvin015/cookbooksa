@@ -104,7 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/reply_bg"
             android:divider="#FDF9EC"
             android:dividerHeight="1dp"
             android:paddingBottom="3dp"

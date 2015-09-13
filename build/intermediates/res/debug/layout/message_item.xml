@@ -71,4 +71,4 @@
         android:background="@drawable/msg_num_bg"
         android:visibility="gone" />
 
-</FrameLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/message_item.xml -->
+</FrameLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/message_item.xml -->

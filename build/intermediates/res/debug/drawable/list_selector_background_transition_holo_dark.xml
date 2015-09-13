@@ -20,4 +20,4 @@
     <item android:drawable="@drawable/list_pressed_holo_dark"/>
     <item android:drawable="@drawable/list_longpressed_holo"/>
 
-</transition><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/list_selector_background_transition_holo_dark.xml -->
+</transition><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/list_selector_background_transition_holo_dark.xml -->

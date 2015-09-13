@@ -3,4 +3,4 @@
     <item android:drawable="@drawable/messages_clearbutton_background_highlighted" android:state_checked="true"/>
     <item android:drawable="@drawable/messages_clearbutton_background" android:state_checked="false"/>
 
-</selector><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/drawable/tab_cancel_selector.xml -->
+</selector><!-- From: file:/D:/android/projects/cookbooksa/res/drawable/tab_cancel_selector.xml -->

@@ -103,6 +103,20 @@ public class FootprintView extends LinearLayout {
             }
         });
 
+        checkBtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int result = 1;
+                if (checkBtn.isChecked()) {
+                    result = 1;
+                } else {
+                    result = -1;
+                }
+
+                listener.onCheckClick(FootprintView.this, result);
+            }
+        });
+
         view.setOnClickListener(new OnClickListener() {
 
             @Override
@@ -119,28 +133,28 @@ public class FootprintView extends LinearLayout {
             public boolean onLongClick(View v) {
                 // TODO Auto-generated method stub
 
-                if (childView == null) {
-                    childView = LayoutInflater.from(context).inflate(R.layout.pup_delete, null);
-                }
-
-                childView.setOnClickListener(new OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        // TODO Auto-generated method stub
-
-                        PopupWindowUtil.getInstance().dismiss();
-
-                        listener.onDeleteClick(FootprintView.this, footprint);
-                    }
-                });
-
-                PopupWindowUtil.getInstance().setPopupWindowSize(ActionBar.LayoutParams.WRAP_CONTENT,
-                        ActionBar.LayoutParams.WRAP_CONTENT);
-                PopupWindowUtil.getInstance().setPopuWindow(childView, -1, null);
-                PopupWindowUtil.getInstance().showAsDropDown(v, view.getMeasuredWidth() / 2 - DisplayUtil.dip2px(20),
-                        -view.getMeasuredHeight() - DisplayUtil.dip2px(40));
-
+                listener.onLongClick(FootprintView.this);
+//                if (childView == null) {
+//                    childView = LayoutInflater.from(context).inflate(R.layout.pup_delete, null);
+//                }
+//
+//                childView.setOnClickListener(new OnClickListener() {
+//
+//                    @Override
+//                    public void onClick(View v) {
+//                        // TODO Auto-generated method stub
+//
+//                        PopupWindowUtil.getInstance().dismiss();
+//
+//                        listener.onDeleteClick(FootprintView.this, footprint);
+//                    }
+//                });
+//
+//                PopupWindowUtil.getInstance().setPopupWindowSize(ActionBar.LayoutParams.WRAP_CONTENT,
+//                        ActionBar.LayoutParams.WRAP_CONTENT);
+//                PopupWindowUtil.getInstance().setPopuWindow(childView, -1, null);
+//                PopupWindowUtil.getInstance().showAsDropDown(v, view.getMeasuredWidth() / 2 - DisplayUtil.dip2px(20),
+//                        -view.getMeasuredHeight() - DisplayUtil.dip2px(40));
                 return true;
             }
         });
@@ -156,6 +170,10 @@ public class FootprintView extends LinearLayout {
         return checkBtn;
     }
 
+    public Footprint getFootprint() {
+        return footprint;
+    }
+
     public void setListener(IFootprintViewListener listener) {
         this.listener = listener;
     }
@@ -167,6 +185,8 @@ public class FootprintView extends LinearLayout {
 
         void onCircleClick(FootprintView view);
 
-        void onDeleteClick(FootprintView view, Footprint footprint);
+        void onCheckClick(FootprintView view, int flag);
+
+        void onLongClick(FootprintView view);
     }
 }

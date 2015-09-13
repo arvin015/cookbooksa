@@ -102,4 +102,4 @@
         android:src="@drawable/topimg"
         android:visibility="gone" />
 
-</FrameLayout><!-- From: file:/D:/MyAndroid/studioproject/cookbooksa/res/layout/dish.xml -->
+</FrameLayout><!-- From: file:/D:/android/projects/cookbooksa/res/layout/dish.xml -->
