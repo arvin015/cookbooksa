@@ -3,15 +3,12 @@ package com.sky.cookbooksa;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -22,7 +19,6 @@ import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.utils.Utils;
 import com.sky.cookbooksa.widget.CommonScrollView;
-import com.sky.cookbooksa.widget.CommonScrollView.OnBorderListener;
 import com.sky.cookbooksa.widget.FootprintView;
 
 import net.tsz.afinal.http.AjaxCallBack;
@@ -48,17 +44,17 @@ public class FootprintActivity extends BaseActivity {
 
     private int count;//总共记录数
 
-    private int page = 1;
+//    private int page = 1;
 
     private Typeface tf;
 
-    private View loadView;
+//    private View loadView;
 
     private DeleteHelper deleteHelper;
     private WaitDialogHelper waitDialogHelper;
 
-    private boolean isLoading = false;//是否正在加载
-    private boolean isFirst = true;
+//    private boolean isLoading = false;//是否正在加载
+//    private boolean isFirst = true;
 
     private List<FootprintView> footprintViewList;
 
@@ -115,7 +111,7 @@ public class FootprintActivity extends BaseActivity {
             }
         });
 
-        scrollView.setOnBorderListener(new OnBorderListener() {
+        scrollView.setOnBorderListener(new CommonScrollView.OnBorderListener() {
 
             @Override
             public void scroll() {
@@ -133,41 +129,41 @@ public class FootprintActivity extends BaseActivity {
             public void onBottom() {
                 // TODO Auto-generated method stub
 
-                if (isLoading) {
-                    return;
-                }
-
-                //已经加载完
-                if (count <= foots.size()) {
-
-                    if (isFirst) {
-                        ToastUtil.toastShort(context, "数据全部加载完毕！");
-                        isFirst = false;
-                    }
-
-                    return;
-                }
-
-                if (loadView == null) {
-                    loadView = LayoutInflater.from(context).inflate(R.layout.loadingmore, null);
-                }
-
-                ViewGroup viewGroup = (ViewGroup) loadView.getParent();
-                if (viewGroup != null) {
-                    viewGroup.removeView(loadView);
-                }
-                ((ViewGroup) scrollView.getChildAt(0)).addView(loadView);
-
-                new Handler().post(new Runnable() {
-                    @Override
-                    public void run() {
-                        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-                    }
-                });
-
-                loadData();
-
-                isLoading = true;
+//                if (isLoading) {
+//                    return;
+//                }
+//
+//                //已经加载完
+//                if (count <= foots.size()) {
+//
+//                    if (isFirst) {
+//                        ToastUtil.toastShort(context, "数据全部加载完毕！");
+//                        isFirst = false;
+//                    }
+//
+//                    return;
+//                }
+//
+//                if (loadView == null) {
+//                    loadView = LayoutInflater.from(context).inflate(R.layout.loadingmore, null);
+//                }
+//
+//                ViewGroup viewGroup = (ViewGroup) loadView.getParent();
+//                if (viewGroup != null) {
+//                    viewGroup.removeView(loadView);
+//                }
+//                ((ViewGroup) scrollView.getChildAt(0)).addView(loadView);
+//
+//                new Handler().post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+//                    }
+//                });
+//
+//                loadData();
+//
+//                isLoading = true;
             }
         });
 
@@ -192,7 +188,7 @@ public class FootprintActivity extends BaseActivity {
             public void onSelectAllClick(boolean isChecked) {
 
                 if (isChecked) {
-                    deleteHelper.setCountText(foots.size());//设置已选条数
+                    deleteHelper.setCountText(count);//设置已选条数
                 } else {
                     deleteHelper.setCountText(0);//设置已选条数
                 }
@@ -205,16 +201,6 @@ public class FootprintActivity extends BaseActivity {
              */
             @Override
             public void onDeleteClick() {
-                if (waitDialogHelper == null) {
-                    waitDialogHelper = new WaitDialogHelper(context, "删除中...");
-                    waitDialogHelper.setListener(new WaitDialogHelper.IWaitDialogHelperListener() {
-                        @Override
-                        public void outTime() {
-                            ToastUtil.toastShort(context, "未删除所有对象！");
-                        }
-                    });
-                }
-                waitDialogHelper.show();
 
                 doDelete();
             }
@@ -226,7 +212,7 @@ public class FootprintActivity extends BaseActivity {
         // TODO Auto-generated method stub
         AjaxParams params = new AjaxParams();
         params.put("userId", Utils.userId);
-        params.put("page", page + "");
+//        params.put("page", page + "");
 
         fh.post(Constant.url_getallfootbyuserid, params, new MyAjaxCallback(AJAX_MODE.GET));
     }
@@ -256,10 +242,10 @@ public class FootprintActivity extends BaseActivity {
 
                 loadMissed();
 
-                if (loadView != null) {
-                    ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
-                }
-                isLoading = false;
+//                if (loadView != null) {
+//                    ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
+//                }
+//                isLoading = false;
 
                 ToastUtil.toastShort(context, "加载足迹失败=" + strMsg);
 
@@ -289,10 +275,10 @@ public class FootprintActivity extends BaseActivity {
                 if (mode == AJAX_MODE.GET) {
 
                     loadMissed();
-                    if (loadView != null) {
-                        ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
-                    }
-                    isLoading = false;
+//                    if (loadView != null) {
+//                        ((ViewGroup) scrollView.getChildAt(0)).removeView(loadView);
+//                    }
+//                    isLoading = false;
 
                     count = json.optInt("count");
 
@@ -329,7 +315,7 @@ public class FootprintActivity extends BaseActivity {
 
                         foots.addAll(list);
 
-                        page++;
+//                        page++;
                     }
                 } else {
                     if (mode == AJAX_MODE.DELETE) {
@@ -341,6 +327,7 @@ public class FootprintActivity extends BaseActivity {
                             FootprintView view = delelteMap.get(footId);
                             if (view != null) {
                                 footContainer.removeView(view);
+                                footprintViewList.remove(view);
                             }
 
                             count--;
@@ -349,6 +336,12 @@ public class FootprintActivity extends BaseActivity {
                             if (totalDeleteNum == 0) {//全部删除
                                 waitDialogHelper.dismiss();
                                 title.setText("足迹(共" + count + "条)");
+
+                                //全部删除了
+                                if (count < 1) {
+                                    scrollView.setVisibility(View.GONE);
+                                    emptyTip.setVisibility(View.VISIBLE);
+                                }
 
                                 ToastUtil.toastShort(context, "删除成功");
 
@@ -366,10 +359,8 @@ public class FootprintActivity extends BaseActivity {
      * 删除处理
      */
     private void doDelete() {
-        if (footprintViewList == null || footprintViewList.size() == 0) {
-            ToastUtil.toastShort(context, "未选中删除对象！");
-            return;
-        }
+
+        deleteFailNum = 0;
 
         delelteMap = new HashMap<>();
 
@@ -377,11 +368,27 @@ public class FootprintActivity extends BaseActivity {
         for (FootprintView view : footprintViewList) {
             if (view.getCheckBtn().isChecked()) {
 
-                totalDeleteNum++;
-
                 delelteMap.put(view.getFootprint().getFootId() + "", view);
             }
         }
+
+        totalDeleteNum = delelteMap.size();
+
+        if (totalDeleteNum < 1) {
+            ToastUtil.toastShort(context, "未选中删除对象！");
+            return;
+        }
+
+        if (waitDialogHelper == null) {
+            waitDialogHelper = new WaitDialogHelper(context, "删除中...");
+            waitDialogHelper.setListener(new WaitDialogHelper.IWaitDialogHelperListener() {
+                @Override
+                public void outTime() {
+                    ToastUtil.toastShort(context, "未删除所有对象！");
+                }
+            });
+        }
+        waitDialogHelper.show();
 
         //删除
         for (String key : delelteMap.keySet()) {

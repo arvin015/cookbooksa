@@ -83,11 +83,11 @@
                     android:layout_marginBottom="4dp"
                     android:background="@drawable/agree_icon"
                     android:gravity="center"
+                    android:paddingLeft="4dp"
                     android:paddingTop="10dp"
                     android:text="10"
                     android:textColor="#FFFFFF"
-                    android:textSize="12sp"
-                    android:paddingLeft="4dp"/>
+                    android:textSize="12sp" />
 
                 <Button
                     android:id="@+id/reply_btn"
@@ -104,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
+            android:background="@drawable/reply_bg"
             android:divider="#FDF9EC"
             android:dividerHeight="1dp"
             android:paddingBottom="3dp"
