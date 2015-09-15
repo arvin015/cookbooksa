@@ -106,14 +106,7 @@ public class FootprintView extends LinearLayout {
         checkBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                int result = 1;
-                if (checkBtn.isChecked()) {
-                    result = 1;
-                } else {
-                    result = -1;
-                }
-
-                listener.onCheckClick(FootprintView.this, result);
+                listener.onCheckClick(FootprintView.this, checkBtn.isChecked());
             }
         });
 
@@ -185,7 +178,7 @@ public class FootprintView extends LinearLayout {
 
         void onCircleClick(FootprintView view);
 
-        void onCheckClick(FootprintView view, int flag);
+        void onCheckClick(FootprintView view, boolean isChecked);
 
         void onLongClick(FootprintView view);
     }

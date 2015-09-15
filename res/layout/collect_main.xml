@@ -1,67 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:orientation="vertical" >
-
-    <include layout="@layout/title" />
-
-    <RadioGroup
-        android:id="@+id/radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/common_white_bg"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/radio_dish"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="菜肴"
-            android:textColor="@color/main_yellow" />
-
-        <RadioButton
-            android:id="@+id/radio_person"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="菜友"
-            android:textColor="@color/main_yellow" />
-    </RadioGroup>
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <View
-            android:id="@+id/line_dish"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/main_yellow"
-            android:visibility="visible" />
+        <include layout="@layout/title" />
 
-        <View
-            android:id="@+id/line_person"
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/main_yellow"
-            android:visibility="invisible" />
+            android:background="@drawable/common_white_bg"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_dish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="菜肴"
+                android:textColor="@color/main_yellow" />
+
+            <RadioButton
+                android:id="@+id/radio_person"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="菜友"
+                android:textColor="@color/main_yellow" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/line_dish"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/main_yellow"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/line_person"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/main_yellow"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <com.sky.cookbooksa.widget.CustomViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <include layout="@layout/common_delete" />
 
-</LinearLayout>
+</FrameLayout>

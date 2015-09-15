@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.sky.cookbooksa.entity.Footprint;
 import com.sky.cookbooksa.uihelper.DeleteHelper;
 import com.sky.cookbooksa.uihelper.WaitDialogHelper;
 import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.utils.Utils;
 import com.sky.cookbooksa.widget.CommonScrollView;
@@ -62,7 +64,7 @@ public class FootprintActivity extends BaseActivity {
 
     private int deleteFailNum = 0;//删除失败数量
     private int totalDeleteNum = 0;//总共删除数量
-    private HashMap<String, FootprintView> delelteMap;//删除对象集合
+    private HashMap<String, FootprintView> deleteMap;//删除对象集合
 
     private enum AJAX_MODE {
         GET, DELETE
@@ -324,7 +326,7 @@ public class FootprintActivity extends BaseActivity {
 
                             String footId = json.optString("footId");
 
-                            FootprintView view = delelteMap.get(footId);
+                            FootprintView view = deleteMap.get(footId);
                             if (view != null) {
                                 footContainer.removeView(view);
                                 footprintViewList.remove(view);
@@ -362,17 +364,17 @@ public class FootprintActivity extends BaseActivity {
 
         deleteFailNum = 0;
 
-        delelteMap = new HashMap<>();
+        deleteMap = new HashMap<>();
 
         //收集删除集合
         for (FootprintView view : footprintViewList) {
             if (view.getCheckBtn().isChecked()) {
 
-                delelteMap.put(view.getFootprint().getFootId() + "", view);
+                deleteMap.put(view.getFootprint().getFootId() + "", view);
             }
         }
 
-        totalDeleteNum = delelteMap.size();
+        totalDeleteNum = deleteMap.size();
 
         if (totalDeleteNum < 1) {
             ToastUtil.toastShort(context, "未选中删除对象！");
@@ -391,9 +393,9 @@ public class FootprintActivity extends BaseActivity {
         waitDialogHelper.show();
 
         //删除
-        for (String key : delelteMap.keySet()) {
+        for (String key : deleteMap.keySet()) {
             AjaxParams params = new AjaxParams();
-            params.put("footId", delelteMap.get(key).getFootprint().getFootId() + "");
+            params.put("footId", deleteMap.get(key).getFootprint().getFootId() + "");
 
             fh.post(Constant.url_deletefootbyfootid, params,
                     new MyAjaxCallback(AJAX_MODE.DELETE));
@@ -452,6 +454,8 @@ public class FootprintActivity extends BaseActivity {
         deleteHelper.reset();//重置
 
         deleteHelper.countNum(1);
+
+        setLayoutParams(50);
     }
 
     /**
@@ -464,6 +468,21 @@ public class FootprintActivity extends BaseActivity {
         deleteHelper.setDeleteBarVisibility(View.GONE);
 
         setCheckAndCircleBtnVisibility(View.GONE, View.VISIBLE);
+
+        setLayoutParams(10);
+
+    }
+
+    /**
+     * 动态设置scrollview底部边距
+     *
+     * @param bottomMargin
+     */
+    private void setLayoutParams(int bottomMargin) {
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
+        params.bottomMargin = DisplayUtil.dip2px(bottomMargin);
+        scrollView.setLayoutParams(params);
     }
 
     /**
@@ -514,12 +533,26 @@ public class FootprintActivity extends BaseActivity {
             /**
              * Checkbox点击事件
              * @param view
-             * @param flag
+             * @param isChecked
              */
             @Override
-            public void onCheckClick(FootprintView view, int flag) {
-                deleteHelper.countNum(flag);
-                deleteHelper.setSelectAllBtnFalse();
+            public void onCheckClick(FootprintView view, boolean isChecked) {
+                int result = 1;
+                if (!isChecked) {
+                    result = -1;
+                }
+                deleteHelper.countNum(result);
+                if (isChecked) {
+
+                    if (deleteHelper.getCountNum() == count) {
+                        deleteHelper.setSelectAllBtn(true);
+                    }
+                } else {
+
+                    if (deleteHelper.getSelectAllBtn().isChecked()) {
+                        deleteHelper.setSelectAllBtn(false);
+                    }
+                }
             }
 
             /**

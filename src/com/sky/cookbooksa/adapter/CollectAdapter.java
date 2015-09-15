@@ -20,93 +20,152 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
-public class CollectAdapter extends BaseAdapter{
+public class CollectAdapter extends BaseAdapter {
 
-	private Context context;
-	private List<Collect> list;
+    private Context context;
+    private List<Collect> list;
 
-	private FinalBitmap fb;
+    private FinalBitmap fb;
 
-	private int screenWidth;
+    private int screenWidth;
 
-	private LayoutInflater inflater;
+    private LayoutInflater inflater;
 
-	private AJAX_MODE mode;
+    private AJAX_MODE mode;
 
-	public CollectAdapter(Context context, List<Collect> list,
-			FinalBitmap fb, AJAX_MODE mode){
-		this.context = context;
-		this.list = list;
-		this.fb = fb;
-		this.mode = mode;
+    private int status = 0;//模式，0:查看模式，1:删除模式
 
-		screenWidth = DisplayUtil.screenWidth;
+    public CollectAdapter(Context context, List<Collect> list,
+                          FinalBitmap fb, AJAX_MODE mode) {
+        this.context = context;
+        this.list = list;
+        this.fb = fb;
+        this.mode = mode;
 
-		inflater = LayoutInflater.from(this.context);
-	}
+        screenWidth = DisplayUtil.screenWidth;
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return list.size();
-	}
+        inflater = LayoutInflater.from(this.context);
+    }
 
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return list.get(position);
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return list.size();
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return list.get(position);
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-		ViewHolder viewHolder;
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
 
-		if(convertView == null){
-			viewHolder = new ViewHolder();
-			convertView = inflater.inflate(R.layout.collect_item, null);
+        ViewHolder viewHolder;
 
-			viewHolder.rlImg = (FrameLayout) convertView.findViewById(R.id.rl_img);
-			viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageview);
-			viewHolder.textView = (TextView) convertView.findViewById(R.id.textview);
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.collect_item, null);
 
-			convertView.setTag(viewHolder);
-		}else{
-			viewHolder = (ViewHolder) convertView.getTag();
-		}
+            viewHolder.rlImg = (FrameLayout) convertView.findViewById(R.id.rl_img);
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.imageview);
+            viewHolder.textView = (TextView) convertView.findViewById(R.id.textview);
+            viewHolder.checkBtn = (ToggleButton) convertView.findViewById(R.id.checkBtn);
 
-		LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-				(int)((screenWidth - DisplayUtil.dip2px(40)) / 3), (int)((screenWidth - DisplayUtil.dip2px(40)) / 3));
-		viewHolder.rlImg.setLayoutParams(params);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
-		String path = list.get(position).getMainPic();
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                (int) ((screenWidth - DisplayUtil.dip2px(40)) / 3), (int) ((screenWidth - DisplayUtil.dip2px(40)) / 3));
+        viewHolder.rlImg.setLayoutParams(params);
 
-		if(mode == AJAX_MODE.DISH){
-			viewHolder.textView.setText(list.get(position).getDishName());
+        String path = list.get(position).getMainPic();
 
-			path = path.substring(path.lastIndexOf("/") + 1);
-		}else{
-			viewHolder.textView.setText(list.get(position).getUserNick());
-		}
+        if (mode == AJAX_MODE.DISH) {
+            viewHolder.textView.setText(list.get(position).getDishName());
 
-		fb.display(viewHolder.imageView, Constant.DIR + path,
-				(int)((screenWidth - DisplayUtil.dip2px(40)) / 3), (int)((screenWidth - DisplayUtil.dip2px(40)) / 3));
+            path = path.substring(path.lastIndexOf("/") + 1);
+        } else {
+            viewHolder.textView.setText(list.get(position).getUserNick());
+        }
 
-		return convertView;
-	}
+        if (status == 1) {//删除模式，显示Checkbox
+            viewHolder.checkBtn.setVisibility(View.VISIBLE);
+        } else {//查看模式，隐藏Checkbox
+            viewHolder.checkBtn.setVisibility(View.GONE);
+        }
 
-	class ViewHolder{
-		FrameLayout rlImg;
-		ImageView imageView;
-		TextView textView;
-	}
+        viewHolder.checkBtn.setChecked(list.get(position).isChecked());//是否被选中
+
+        fb.display(viewHolder.imageView, Constant.DIR + path,
+                (int) ((screenWidth - DisplayUtil.dip2px(40)) / 3), (int) ((screenWidth - DisplayUtil.dip2px(40)) / 3));
+
+        return convertView;
+    }
+
+    /**
+     * 设置Item是否被选中
+     *
+     * @param index
+     */
+    public void setItemChecked(int index, boolean checked) {
+        list.get(index).setIsChecked(checked);
+    }
+
+    /**
+     * 获取Item是否选中状态
+     *
+     * @param index
+     */
+    public boolean getItemCheced(int index) {
+        return list.get(index).isChecked();
+    }
+
+    /**
+     * 设置模式
+     *
+     * @param status
+     */
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    /**
+     * 设置全选或全不选
+     *
+     * @param isChecked
+     */
+    public void setCheckBoxState(boolean isChecked) {
+        if (list != null) {
+            for (Collect collect : list) {
+                collect.setIsChecked(isChecked);
+            }
+        }
+
+        if (!isChecked) {//隐藏CheckBtn
+            status = 0;
+        }
+
+        notifyDataSetChanged();
+    }
+
+    class ViewHolder {
+        FrameLayout rlImg;
+        ImageView imageView;
+        TextView textView;
+        ToggleButton checkBtn;
+    }
 
 }

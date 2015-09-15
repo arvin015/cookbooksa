@@ -52,21 +52,24 @@ public class DeleteHelper {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onCancelClick();
+                if (listener != null)
+                    listener.onCancelClick();
             }
         });
 
         selectAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onSelectAllClick(selectAllBtn.isChecked());
+                if (listener != null)
+                    listener.onSelectAllClick(selectAllBtn.isChecked());
             }
         });
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onDeleteClick();
+                if (listener != null)
+                    listener.onDeleteClick();
             }
         });
     }
@@ -102,12 +105,23 @@ public class DeleteHelper {
     }
 
     /**
-     * 取消全选状态
+     * 获取选中条数
+     *
+     * @return
      */
-    public void setSelectAllBtnFalse() {
-        if (selectAllBtn.isChecked()) {
-            selectAllBtn.setChecked(false);
-        }
+    public int getCountNum() {
+        return countNum;
+    }
+
+    public ToggleButton getSelectAllBtn() {
+        return selectAllBtn;
+    }
+
+    /**
+     * 改变全选状态
+     */
+    public void setSelectAllBtn(boolean isChecked) {
+        selectAllBtn.setChecked(isChecked);
     }
 
     /**
