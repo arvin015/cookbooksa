@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.sky.cookbooksa.entity.Footprint;
-import com.sky.cookbooksa.uihelper.DeleteHelper;
+import com.sky.cookbooksa.uihelper.BatchDeleteHelper;
 import com.sky.cookbooksa.uihelper.WaitDialogHelper;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.DisplayUtil;
@@ -52,7 +52,7 @@ public class FootprintActivity extends BaseActivity {
 
 //    private View loadView;
 
-    private DeleteHelper deleteHelper;
+    private BatchDeleteHelper deleteHelper;
     private WaitDialogHelper waitDialogHelper;
 
 //    private boolean isLoading = false;//是否正在加载
@@ -171,8 +171,8 @@ public class FootprintActivity extends BaseActivity {
 
         loadData();
 
-        deleteHelper = new DeleteHelper(context, mainView);
-        deleteHelper.setListener(new DeleteHelper.IDeleteHelperListener() {
+        deleteHelper = new BatchDeleteHelper(context, mainView);
+        deleteHelper.setListener(new BatchDeleteHelper.IDeleteHelperListener() {
             /**
              * 取消删除模式操作
              */

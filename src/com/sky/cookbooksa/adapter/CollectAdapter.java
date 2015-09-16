@@ -1,15 +1,5 @@
 package com.sky.cookbooksa.adapter;
 
-import java.util.List;
-
-import net.tsz.afinal.FinalBitmap;
-
-import com.sky.cookbooksa.CollectActivity.AJAX_MODE;
-import com.sky.cookbooksa.R;
-import com.sky.cookbooksa.entity.Collect;
-import com.sky.cookbooksa.utils.Constant;
-import com.sky.cookbooksa.utils.DisplayUtil;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +7,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.sky.cookbooksa.R;
+import com.sky.cookbooksa.entity.Collect;
+import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.DisplayUtil;
+
+import net.tsz.afinal.FinalBitmap;
+
+import java.util.List;
 
 public class CollectAdapter extends BaseAdapter {
 
@@ -33,16 +30,16 @@ public class CollectAdapter extends BaseAdapter {
 
     private LayoutInflater inflater;
 
-    private AJAX_MODE mode;
+    private int content;//内容，0:收藏菜肴，1:收藏用户
 
     private int status = 0;//模式，0:查看模式，1:删除模式
 
     public CollectAdapter(Context context, List<Collect> list,
-                          FinalBitmap fb, AJAX_MODE mode) {
+                          FinalBitmap fb, int content) {
         this.context = context;
         this.list = list;
         this.fb = fb;
-        this.mode = mode;
+        this.content = content;
 
         screenWidth = DisplayUtil.screenWidth;
 
@@ -93,7 +90,7 @@ public class CollectAdapter extends BaseAdapter {
 
         String path = list.get(position).getMainPic();
 
-        if (mode == AJAX_MODE.DISH) {
+        if (content == 0) {
             viewHolder.textView.setText(list.get(position).getDishName());
 
             path = path.substring(path.lastIndexOf("/") + 1);
@@ -154,10 +151,17 @@ public class CollectAdapter extends BaseAdapter {
             }
         }
 
-        if (!isChecked) {//隐藏CheckBtn
-            status = 0;
-        }
+        notifyDataSetChanged();
+    }
 
+    /**
+     * 隐藏所有checkbox
+     */
+    public void hideAllCheckBox() {
+
+        setCheckBoxState(false);
+
+        status = 0;
         notifyDataSetChanged();
     }
 

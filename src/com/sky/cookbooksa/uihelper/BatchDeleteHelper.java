@@ -15,7 +15,7 @@ import com.sky.cookbooksa.R;
 /**
  * Created by Administrator on 2015/9/12.
  */
-public class DeleteHelper {
+public class BatchDeleteHelper {
 
     private Context context;
 
@@ -31,10 +31,10 @@ public class DeleteHelper {
 
     private int countNum = 0;
 
-    public DeleteHelper() {
+    public BatchDeleteHelper() {
     }
 
-    public DeleteHelper(Context context, View view) {
+    public BatchDeleteHelper(Context context, View view) {
         this.context = context;
         this.mainView = view;
 

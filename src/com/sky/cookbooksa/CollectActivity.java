@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.sky.cookbooksa.adapter.CollectAdapter;
 import com.sky.cookbooksa.entity.Collect;
-import com.sky.cookbooksa.uihelper.DeleteHelper;
+import com.sky.cookbooksa.uihelper.BatchDeleteHelper;
 import com.sky.cookbooksa.uihelper.WaitDialogHelper;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.DisplayUtil;
@@ -48,21 +48,24 @@ public class CollectActivity extends BaseActivity {
     private CustomViewPager pager;
     private View dishLine, personLine;
 
-    private List<Collect> dishList, personList, currentList;
+    private List<Collect> dishList, personList;
+    private List<Collect> currentList;//当前操作的收藏集合
 
-    private DeleteHelper deleteHelper;
+    private BatchDeleteHelper deleteHelper;
     private WaitDialogHelper waitDialogHelper;
 
-    private CollectAdapter currentAdapter;
+    private View currentChildView;//当前显示的ViewPager子View
+    private CollectAdapter currentAdapter;//当前显示的ViewPager子Adapter
 
     private int status = 0;//模式，0:查看模式，1:删除模式
+    private int content = 0;//内容，0:收藏菜肴，1:收藏用户
 
     private int deleteFailNum = 0;//删除失败数量
     private int totalDeleteNum = 0;//删除数量
     private HashMap<String, Collect> deleteMap;//删除集合
 
     public enum AJAX_MODE {
-        DISH, PERSON, DELETE
+        GET, DELETE
     }
 
     @Override
@@ -113,12 +116,16 @@ public class CollectActivity extends BaseActivity {
 
                     currentList = dishList;
 
+                    content = 0;
+
                 } else {
                     pager.setCurrentItem(1);
                     dishLine.setVisibility(View.INVISIBLE);
                     personLine.setVisibility(View.VISIBLE);
 
                     currentList = personList;
+
+                    content = 1;
                 }
             }
         });
@@ -134,11 +141,15 @@ public class CollectActivity extends BaseActivity {
 
                     currentList = dishList;
 
+                    content = 0;
+
                 } else {
                     dishLine.setVisibility(View.INVISIBLE);
                     personLine.setVisibility(View.VISIBLE);
 
                     currentList = personList;
+
+                    content = 1;
                 }
             }
 
@@ -157,8 +168,8 @@ public class CollectActivity extends BaseActivity {
 
         loading("加载中...");
 
-        deleteHelper = new DeleteHelper(context, mainView);
-        deleteHelper.setListener(new DeleteHelper.IDeleteHelperListener() {
+        deleteHelper = new BatchDeleteHelper(context, mainView);
+        deleteHelper.setListener(new BatchDeleteHelper.IDeleteHelperListener() {
             /**
              * 取消删除模式
              */
@@ -183,6 +194,9 @@ public class CollectActivity extends BaseActivity {
 
             }
 
+            /**
+             * 删除操作
+             */
             @Override
             public void onDeleteClick() {
                 doDelete();
@@ -214,12 +228,17 @@ public class CollectActivity extends BaseActivity {
             return;
         }
 
+        //删除处理等待框
         if (waitDialogHelper == null) {
             waitDialogHelper = new WaitDialogHelper(context, "删除中...");
             waitDialogHelper.setListener(new WaitDialogHelper.IWaitDialogHelperListener() {
                 @Override
                 public void outTime() {
+
+                    currentAdapter.notifyDataSetChanged();
+
                     ToastUtil.toastShort(context, "未删除所有对象！");
+
                 }
             });
         }
@@ -228,10 +247,18 @@ public class CollectActivity extends BaseActivity {
         //删除
         for (String key : deleteMap.keySet()) {
             AjaxParams params = new AjaxParams();
-            params.put("footId", deleteMap.get(key).getDishId() + "");
+            params.put("collectId", deleteMap.get(key).getId() + "");
 
-            fh.post(Constant.url_deletefootbyfootid, params,
-                    new MyAjaxCallback(AJAX_MODE.DELETE, currentAdapter));
+            if (content == 0) {//删除菜肴
+                fh.post(Constant.url_deletelovedishbycollectid, params,
+                        new MyAjaxCallback(AJAX_MODE.DELETE, currentAdapter, 0,
+                                (TextView) currentChildView.findViewById(R.id.empty_tip)));
+            } else {//删除用户
+                fh.post(Constant.url_deleteloveuserbycollectid, params,
+                        new MyAjaxCallback(AJAX_MODE.DELETE, currentAdapter, 1,
+                                (TextView) currentChildView.findViewById(R.id.empty_tip)));
+            }
+
         }
     }
 
@@ -244,13 +271,13 @@ public class CollectActivity extends BaseActivity {
 
         pager.setPagingEnabled(false);//删除模式禁止翻页
 
-        deleteHelper.setDeleteBarVisibility(View.VISIBLE);
+        deleteHelper.setDeleteBarVisibility(View.VISIBLE);//显示删除bar
 
         deleteHelper.reset();//重置
 
-        deleteHelper.countNum(1);
+        deleteHelper.countNum(1);//选中条数加一
 
-        setLayoutParams(50);
+        setLayoutParams(50);//设置ViewPager与底部的边距
     }
 
     /**
@@ -264,7 +291,7 @@ public class CollectActivity extends BaseActivity {
 
         deleteHelper.setDeleteBarVisibility(View.GONE);
 
-        currentAdapter.setCheckBoxState(false);
+        currentAdapter.hideAllCheckBox();//隐藏所有checkBox
 
         setLayoutParams(10);
 
@@ -306,15 +333,15 @@ public class CollectActivity extends BaseActivity {
         public Object instantiateItem(ViewGroup container, final int position) {
             // TODO Auto-generated method stub
 
-            View view = LayoutInflater.from(context).inflate(R.layout.collect, null);
+            final View view = LayoutInflater.from(context).inflate(R.layout.collect, null);
 
-            final GridView gridView = (GridView) view.findViewById(R.id.gridview);
+            GridView gridView = (GridView) view.findViewById(R.id.gridview);
+
             TextView emptyTip = (TextView) view.findViewById(R.id.empty_tip);
 
             gridView.setColumnWidth((DisplayUtil.getInstance(context).screenWidth - DisplayUtil.dip2px(40)) / 3);
 
             String url;
-            final AJAX_MODE mode;
 
             List<Collect> list;
             if (position == 0) {
@@ -322,21 +349,19 @@ public class CollectActivity extends BaseActivity {
                 list = dishList;
 
                 url = Constant.url_getalllovedishbyuserid;
-                mode = AJAX_MODE.DISH;
             } else {
                 personList = new ArrayList<>();
                 list = personList;
 
                 url = Constant.url_getalllovepersonbyuserid;
-                mode = AJAX_MODE.PERSON;
             }
 
-            final CollectAdapter adapter = new CollectAdapter(context, list, fb, mode);
+            final CollectAdapter adapter = new CollectAdapter(context, list, fb, position);
             gridView.setAdapter(adapter);
 
             AjaxParams params = new AjaxParams();
             params.put("userId", Utils.userId);
-            fh.post(url, params, new MyAjaxCallback(mode, adapter));
+            fh.post(url, params, new MyAjaxCallback(AJAX_MODE.GET, adapter, position, emptyTip));
 
             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -363,6 +388,7 @@ public class CollectActivity extends BaseActivity {
                         adapter.setItemChecked(i, !adapter.getItemCheced(i));
                         adapter.notifyDataSetChanged();
 
+                        //更改全选按钮状态
                         if (deleteHelper.getSelectAllBtn().isChecked()) {
                             deleteHelper.getSelectAllBtn().setChecked(false);
                         } else {
@@ -376,19 +402,21 @@ public class CollectActivity extends BaseActivity {
 
             gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
-                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                public boolean onItemLongClick(AdapterView<?> adapterView, View v, int i, long l) {
 
+                    //设定当前操作的Adapter和View
                     currentAdapter = adapter;
+                    currentChildView = view;
 
                     if (status == 0) {
                         goDeleteMode();
 
-                        adapter.setStatus(status);
+                        adapter.setStatus(status);//所有checkbox需显示
                         adapter.setItemChecked(i, true);
                         adapter.notifyDataSetChanged();
                     }
 
-                    return false;
+                    return true;
                 }
             });
 
@@ -402,12 +430,17 @@ public class CollectActivity extends BaseActivity {
 
         private List<Collect> collectList;
         private CollectAdapter adapter;
+        private TextView emptyTip;
+
+        private int content;
 
         private AJAX_MODE mode;
 
-        public MyAjaxCallback(AJAX_MODE mode, CollectAdapter adapter) {
+        public MyAjaxCallback(AJAX_MODE mode, CollectAdapter adapter, int content, TextView emptyTip) {
             this.mode = mode;
             this.adapter = adapter;
+            this.content = content;
+            this.emptyTip = emptyTip;
         }
 
         @Override
@@ -415,17 +448,26 @@ public class CollectActivity extends BaseActivity {
             // TODO Auto-generated method stub
             super.onFailure(t, errorNo, strMsg);
 
-            ToastUtil.toastShort(context, "加载数据失败=" + strMsg);
+            if (AJAX_MODE.DELETE == mode) {//删除
 
-            loadMissed();
+                deleteFailNum++;
+
+                if (deleteFailNum == totalDeleteNum) {
+                    waitDialogHelper.dismiss();
+                    ToastUtil.toastShort(context, "删除失败！");
+                }
+
+            } else {//获取
+                loadMissed();
+
+                ToastUtil.toastShort(context, "加载数据失败=" + strMsg);
+            }
         }
 
         @Override
         public void onSuccess(Object t) {
             // TODO Auto-generated method stub
             super.onSuccess(t);
-
-            loadMissed();
 
             JSONObject json = null;
 
@@ -437,49 +479,90 @@ public class CollectActivity extends BaseActivity {
             }
 
             if (json != null) {
+                if (AJAX_MODE.GET == mode) {//获取成功
 
-                int count = json.optInt("count");
+                    loadMissed();
+                    int count = json.optInt("count");
 
-                if (count == 0) {
-
-//                        if (mode == AJAX_MODE.DISH) {
-//                            emptyTip.setVisibility(View.VISIBLE);
-//                            emptyTip.setText("还没有收藏菜肴哦！");
-//                        } else {
-//                            emptyTip.setVisibility(View.VISIBLE);
-//                            emptyTip.setText("还没有关注的人哦！");
-//                        }
-                } else {
-                    JSONArray arr = null;
-                    try {
-                        arr = json.optJSONArray("result");
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-
-                    if (arr != null) {
-
-                        collectList = new ArrayList<>();
-
-                        for (int i = 0; i < arr.length(); i++) {
-                            collectList.add(new Collect(arr.optJSONObject(i)));
-                        }
-
-                        if (mode == AJAX_MODE.DISH) {
-                            dishList.addAll(collectList);
-
-                            currentList = dishList;
-
+                    if (count == 0) {
+                        emptyTip.setVisibility(View.VISIBLE);
+                        if (content == 0) {
+                            emptyTip.setText("还没有收藏菜肴哦！");
                         } else {
-                            personList.addAll(collectList);
+                            emptyTip.setText("还没有关注的人哦！");
+                        }
+                    } else {
+                        JSONArray arr = null;
+                        try {
+                            arr = json.optJSONArray("result");
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
                         }
 
-                        adapter.notifyDataSetChanged();
-                    }
+                        if (arr != null) {
 
+                            collectList = new ArrayList<>();
+
+                            for (int i = 0; i < arr.length(); i++) {
+                                collectList.add(new Collect(arr.optJSONObject(i)));
+                            }
+
+                            if (content == 0) {
+                                dishList.addAll(collectList);
+
+                                currentList = dishList;
+
+                            } else {
+                                personList.addAll(collectList);
+                            }
+
+                            adapter.notifyDataSetChanged();
+                        }
+
+                    }
+                } else if (AJAX_MODE.DELETE == mode) {//删除成功
+                    if (json.optBoolean("state")) {
+
+                        String collectId = json.optString("collectId");
+                        if (deleteMap.containsKey(collectId)) {
+                            Collect collect = deleteMap.get(collectId);
+                            if (collect != null) {
+                                currentList.remove(collect);
+                                if (content == 0) {
+                                    dishList.remove(collect);
+                                } else {
+                                    personList.remove(collect);
+                                }
+                            }
+                        }
+
+                        totalDeleteNum--;
+
+                        if (totalDeleteNum == 0) {//全部删除
+                            waitDialogHelper.dismiss();
+
+                            currentAdapter.notifyDataSetChanged();
+
+                            if (currentList.size() == 0) {//所有收藏都删除了
+                                if (emptyTip != null) {
+                                    emptyTip.setVisibility(View.VISIBLE);
+                                    if (content == 0) {
+                                        emptyTip.setText("还没有收藏菜肴哦！");
+                                    } else {
+                                        emptyTip.setText("还没有关注的人哦！");
+                                    }
+                                }
+                            }
+
+                            ToastUtil.toastShort(context, "删除成功");
+
+                            exitDeleteMode();
+                        }
+                    }
                 }
             }
+
         }
     }
 
