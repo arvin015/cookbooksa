@@ -51,7 +51,7 @@ public class WaterfallView extends LinearLayout {
 
         this.column = column;
 
-        viewWidth = DisplayUtil.screenWidth / column - 20;
+        viewWidth = DisplayUtil.screenWidth / column - DisplayUtil.dip2px(30) / column;
 
         setOrientation(HORIZONTAL);
 
@@ -64,13 +64,18 @@ public class WaterfallView extends LinearLayout {
 
     }
 
+    /**
+     * 创建LinearLayout
+     *
+     * @return
+     */
     private LinearLayout createColumnLayout() {
 
         LinearLayout layout = new LinearLayout(context);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(viewWidth,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
-        params.leftMargin = 10;
+        params.leftMargin = DisplayUtil.dip2px(10);
 
         layout.setLayoutParams(params);
 
@@ -124,5 +129,12 @@ public class WaterfallView extends LinearLayout {
                 layout.removeAllViews();
             }
         }
+    }
+
+    /**
+     * 重设当前列
+     */
+    public void resetCurrentColumn() {
+        currentCol = 0;
     }
 }

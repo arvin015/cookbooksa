@@ -62,7 +62,6 @@ public class RecommendFragment extends Fragment {
     private View footerView;//底部加载更多View
 
     private ImageView goTopImg;
-    private List<View> views, newviews;
     private List<Dish> dishs;
     private MainActivity act;
     private FinalHttp fh;
@@ -133,7 +132,6 @@ public class RecommendFragment extends Fragment {
         spfu = SharedPreferencesUtils.getInstance(act, null);//单例模式
 
         resetDishs();
-        resetViews();
 
         mScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
         search_key = (TextView) view.findViewById(R.id.search_key);
@@ -268,7 +266,6 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
                 resetDishs();
-                resetViews();
 
                 page = 1;
 
@@ -345,24 +342,8 @@ public class RecommendFragment extends Fragment {
                         return;
                     }
 
-                    resetNewViews();
-
-                    JSONArray jsonArray = obj.optJSONArray("result");
-                    if (jsonArray != null) {
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject object = jsonArray.getJSONObject(i);
-                            Dish dish = new Dish(object.toString());
-                            dishs.add(dish);
-
-                            View childView = setView(dish);
-
-                            waterfallView.addItemToLayout(childView);
-
-                            newviews.add(childView);
-                        }
-                    }
-
                     if (isTopRefresh) {//刷新，清空原有布局View
+                        waterfallView.resetCurrentColumn();
                         waterfallView.removeAllChild();
 
                         isFirst = true;
@@ -375,7 +356,19 @@ public class RecommendFragment extends Fragment {
                         }
                     }
 
-                    views.addAll(newviews);
+                    JSONArray jsonArray = obj.optJSONArray("result");
+                    if (jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            Dish dish = new Dish(object.toString());
+                            dishs.add(dish);
+
+                            View childView = setView(dish);
+
+                            waterfallView.addItemToLayout(childView);
+                        }
+                    }
+
                     page++;
 
                     setTopImgVisibility();
@@ -452,20 +445,6 @@ public class RecommendFragment extends Fragment {
             dishs = new ArrayList<Dish>();
         }
         dishs.clear();
-    }
-
-    private void resetViews() {
-        if (views == null) {
-            views = new ArrayList<View>();
-        }
-        views.clear();
-    }
-
-    private void resetNewViews() {
-        if (newviews == null) {
-            newviews = new ArrayList<View>();
-        }
-        newviews.clear();
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {
