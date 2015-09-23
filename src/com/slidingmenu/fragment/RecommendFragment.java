@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +36,7 @@ import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.ScrollViewExtend;
+import com.sky.cookbooksa.widget.WaterfallView;
 
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
@@ -70,7 +71,6 @@ public class RecommendFragment extends Fragment {
     private int show_item = 10;
     private int count = 100;
     private int currentCount = 0;
-    private LinearLayout ll_left, ll_right;
     private boolean isFirst = true;
     private TextView empty_tip, search_key;
 
@@ -82,13 +82,9 @@ public class RecommendFragment extends Fragment {
 
     private IRecommendFragmentCallback listener;
 
-    private STYLE style = STYLE.GRID;
-
     private boolean isLoading = false;
 
-    public enum STYLE {
-        LIST, GRID
-    }
+    private WaterfallView waterfallView;
 
     public RecommendFragment() {
     }
@@ -141,10 +137,11 @@ public class RecommendFragment extends Fragment {
 
         mScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
         search_key = (TextView) view.findViewById(R.id.search_key);
-        ll_left = (LinearLayout) view.findViewById(R.id.ll_left);
-        ll_right = (LinearLayout) view.findViewById(R.id.ll_right);
+        waterfallView = (WaterfallView) view.findViewById(R.id.waterfallView);
         empty_tip = (TextView) view.findViewById(R.id.empty_tip);
         goTopImg = (ImageView) view.findViewById(R.id.goTopImg);
+
+        waterfallView.init(2);
 
         goTopImg.setOnClickListener(new OnClickListener() {
             @Override
@@ -204,11 +201,7 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onScrollToBottom() {
 
-                if (style == STYLE.GRID) {
-                    currentCount = ll_left.getChildCount() + ll_right.getChildCount();
-                } else {
-                    currentCount = ll_right.getChildCount();
-                }
+                currentCount = waterfallView.getAllChildNum();
 
                 if (count == currentCount) {
 
@@ -310,7 +303,6 @@ public class RecommendFragment extends Fragment {
                 // TODO Auto-generated method stub
                 act.setCurrentPager(2);
                 act.setCurrentCheckedTitle(2);
-                act.setListStyleBtnVisibility(View.GONE);
 
                 listener.searchClick();
             }
@@ -356,16 +348,22 @@ public class RecommendFragment extends Fragment {
                     resetNewViews();
 
                     JSONArray jsonArray = obj.optJSONArray("result");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        Dish dish = new Dish(object.toString());
-                        dishs.add(dish);
-                        newviews.add(setView(dish));
+                    if (jsonArray != null) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            Dish dish = new Dish(object.toString());
+                            dishs.add(dish);
+
+                            View childView = setView(dish);
+
+                            waterfallView.addItemToLayout(childView);
+
+                            newviews.add(childView);
+                        }
                     }
 
                     if (isTopRefresh) {//刷新，清空原有布局View
-                        ll_left.removeAllViews();
-                        ll_right.removeAllViews();
+                        waterfallView.removeAllChild();
 
                         isFirst = true;
 
@@ -377,7 +375,6 @@ public class RecommendFragment extends Fragment {
                         }
                     }
 
-                    addView(newviews);
                     views.addAll(newviews);
                     page++;
 
@@ -392,81 +389,39 @@ public class RecommendFragment extends Fragment {
         });
     }
 
-    private void addView(List<View> views) {
-
-        for (int j = 0; j < views.size(); j++) {
-            if (style == STYLE.GRID) {
-                if (j % 2 == 0) {
-                    ll_left.addView(views.get(j));
-                } else {
-                    ll_right.addView(views.get(j));
-                }
-            } else {
-                ll_right.addView(views.get(j));
-            }
-        }
-    }
-
+    /**
+     * 创建菜肴View
+     *
+     * @param dish
+     * @return
+     */
     private View setView(final Dish dish) {
+
         View view = null;
-        if (style == STYLE.LIST) {//list布局
-            view = LayoutInflater.from(act).inflate(R.layout.dish_item, null);
-            FrameLayout ll_main = (FrameLayout) view.findViewById(R.id.ll_main);
 
-            ImageView imageView = (ImageView) view.findViewById(R.id.mainpic);
-            TextView name = (TextView) view.findViewById(R.id.name);
-            TextView during = (TextView) view.findViewById(R.id.during);
-            TextView style = (TextView) view.findViewById(R.id.style);
-            TextView desc = (TextView) view.findViewById(R.id.desc);
+        view = LayoutInflater.from(act).inflate(R.layout.dish_grid_item, null);
+        FrameLayout rl_main = (FrameLayout) view.findViewById(R.id.rl_main);
 
-            String nameStr = dish.getName();
-            String duringStr = dish.getDuring();
-            String descStr = dish.getDesc();
-            if (descStr.length() > 20) {
-                descStr = descStr.substring(0, 20) + "...";
+        ImageView imageView = (ImageView) view.findViewById(R.id.mainpic);
+        TextView name = (TextView) view.findViewById(R.id.name);
+        TextView style = (TextView) view.findViewById(R.id.style);
+        TextView during = (TextView) view.findViewById(R.id.during);
+
+        name.setText(dish.getName());
+        style.setText(dish.getStyle());
+        during.setText(dish.getDuring());
+        String mainpicStr = dish.getMainPic();
+        mainpicStr = mainpicStr.substring(mainpicStr.lastIndexOf("/") + 1);
+        fb.display(imageView, Constant.DIR + mainpicStr);
+
+        rl_main.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                goDetail(dish.getId());
             }
-            String styleStr = dish.getStyle();
-            String mainpicStr = dish.getMainPic();
-            mainpicStr = mainpicStr.substring(mainpicStr.lastIndexOf("/") + 1);
-            name.setText(nameStr);
-            desc.setText("简介:" + descStr);
-            style.setText(styleStr);
-            during.setText("历时:" + duringStr);
-            fb.display(imageView, Constant.DIR + mainpicStr);
-
-            ll_main.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    goDetail(dish.getId());
-                }
-            });
-        } else {//grid布局
-            view = LayoutInflater.from(act).inflate(R.layout.dish_grid_item, null);
-            FrameLayout rl_main = (FrameLayout) view.findViewById(R.id.rl_main);
-
-            ImageView imageView = (ImageView) view.findViewById(R.id.mainpic);
-            TextView name = (TextView) view.findViewById(R.id.name);
-            TextView style = (TextView) view.findViewById(R.id.style);
-            TextView during = (TextView) view.findViewById(R.id.during);
-
-            name.setText(dish.getName());
-            style.setText(dish.getStyle());
-            during.setText(dish.getDuring());
-            String mainpicStr = dish.getMainPic();
-            mainpicStr = mainpicStr.substring(mainpicStr.lastIndexOf("/") + 1);
-            fb.display(imageView, Constant.DIR + mainpicStr);
-
-            rl_main.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    goDetail(dish.getId());
-                }
-            });
-        }
+        });
         return view;
     }
 
@@ -477,28 +432,6 @@ public class RecommendFragment extends Fragment {
 
         act.startActivity(intent);
         act.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-    }
-
-    //改变显示布局
-    public void changeStyle(STYLE type) {
-        // TODO Auto-generated method stub
-
-        ll_left.removeAllViews();
-        ll_right.removeAllViews();
-
-        style = type;
-
-        resetViews();
-
-        for (int i = 0; i < dishs.size(); i++) {
-            if (type == STYLE.GRID) {//grid
-                ll_left.setVisibility(View.VISIBLE);
-            } else {//list
-                ll_left.setVisibility(View.GONE);
-            }
-            views.add(setView(dishs.get(i)));
-        }
-        addView(views);
     }
 
     private void setLastRefreshTime() {

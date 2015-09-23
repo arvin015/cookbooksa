@@ -100,17 +100,6 @@
             android:textSize="16sp"
             android:visibility="gone" />
 
-        <ToggleButton
-            android:id="@+id/list_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/tab_liststyle_selector"
-            android:checked="true"
-            android:clickable="true"
-            android:textOff=""
-            android:textOn=""
-            android:visibility="gone" />
     </LinearLayout>
 
 </FrameLayout>

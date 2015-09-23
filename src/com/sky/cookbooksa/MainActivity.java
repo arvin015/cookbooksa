@@ -38,7 +38,6 @@ import com.sky.cookbooksa.widget.ViewPagerScroller;
 import com.slidingmenu.fragment.ClassifyFragment;
 import com.slidingmenu.fragment.MenuFragment;
 import com.slidingmenu.fragment.RecommendFragment;
-import com.slidingmenu.fragment.RecommendFragment.STYLE;
 import com.slidingmenu.fragment.SearchFragment;
 import com.slidingmenu.fragment.UserInfoFragment;
 import com.slidingmenu.lib.SlidingMenu;
@@ -62,7 +61,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
     private RelativeLayout messageContainer;
     private ImageButton menu, setting, messageBtn;
     private ImageView newMsgFlag;
-    private ToggleButton listStyle;
     private PagerAdapter mAdapter;
     private float screenWidth;//屏幕宽度
     private SlidingMenu sm;
@@ -138,8 +136,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
         newMsgFlag = (ImageView) findViewById(R.id.newMsgFlag);
         msgNumText = (TextView) findViewById(R.id.msgNumText);
         title = (TextView) findViewById(R.id.title);
-        listStyle = (ToggleButton) findViewById(R.id.list_style);
-        listStyle.setVisibility(View.VISIBLE);
         title.setText(titleNames[0]);
 
         messageContainer = (RelativeLayout) findViewById(R.id.messageContainer);
@@ -150,20 +146,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 toggle();
-            }
-        });
-
-        listStyle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-            @Override
-            //ToggleButton切换
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // TODO Auto-generated method stub
-                if (isChecked) {//grid版式
-                    rfragment.changeStyle(STYLE.GRID);
-                } else {//list版式
-                    rfragment.changeStyle(STYLE.LIST);
-                }
             }
         });
 
@@ -318,12 +300,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
             titles.get(index).setChecked(true);//设置被选中，否则布局里面的背景不会切换
             title.setText(titleNames[index]);
 
-            if (index == 0) {
-                setListStyleBtnVisibility(View.VISIBLE);
-            } else {
-                setListStyleBtnVisibility(View.GONE);
-            }
-
             if (index == 3) {
                 setting.setVisibility(View.VISIBLE);
                 messageContainer.setVisibility(View.VISIBLE);
@@ -338,10 +314,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
             }
         }
 
-    }
-
-    public void setListStyleBtnVisibility(int visible) {
-        listStyle.setVisibility(visible);
     }
 
     public void setCurrentPager(int item) {
@@ -396,12 +368,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
         Log.i("slide", "onPageSelected+agr0=" + arg0);
         title.setText(titleNames[arg0]);
         titles.get(arg0).setChecked(true);//保持页面跟按钮的联动
-
-        if (arg0 == 1) {
-            listStyle.setVisibility(View.VISIBLE);
-        } else {
-            listStyle.setVisibility(View.GONE);
-        }
 
         if (arg0 == 0) {
             // 如果当前是第一页，那么设置触摸屏幕的模式为全屏模式
