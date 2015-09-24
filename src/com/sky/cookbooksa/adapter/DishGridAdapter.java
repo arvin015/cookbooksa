@@ -1,96 +1,83 @@
 package com.sky.cookbooksa.adapter;
 
-import java.util.List;
-
-import net.tsz.afinal.FinalBitmap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.Dish;
 import com.sky.cookbooksa.utils.Constant;
 
-import android.content.Context;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import net.tsz.afinal.FinalBitmap;
 
-public class DishGridAdapter extends BaseAdapter{
+import java.util.List;
 
-	private Context context;
-	private List<Dish> dishs;
-	private FinalBitmap fb;
-	private int screenWidth;
+public class DishGridAdapter extends BaseAdapter {
 
-	public DishGridAdapter(Context context, List<Dish> dishs){
-		this.context = context;
-		this.dishs = dishs;
-		fb = FinalBitmap.create(context);
-		fb.configLoadfailImage(R.drawable.photo_loading);
-		fb.configLoadingImage(R.drawable.photo_loading);
-		WindowManager wm = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics metrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(metrics);
-		screenWidth = metrics.widthPixels;
-	}
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return dishs.size();
-	}
+    private Context context;
+    private List<Dish> dishs;
+    private FinalBitmap fb;
 
-	@Override
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return dishs.get(position);
-	}
+    public DishGridAdapter(Context context, List<Dish> dishs) {
+        this.context = context;
+        this.dishs = dishs;
+        fb = FinalBitmap.create(context);
+        fb.configLoadfailImage(R.drawable.photo_loading);
+        fb.configLoadingImage(R.drawable.photo_loading);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return dishs.size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+    @Override
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return dishs.get(position);
+    }
 
-		ViewHolder viewHolder = null;
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-		if(convertView == null){
-			viewHolder = new ViewHolder();
-			convertView = LayoutInflater.from(context).inflate(R.layout.dish_grid_item, null);
-			viewHolder.rl_image = (RelativeLayout)convertView.findViewById(R.id.rl_image);
-			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(screenWidth/2-10,
-					LayoutParams.WRAP_CONTENT);
-			viewHolder.rl_image.setLayoutParams(params);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
 
-			viewHolder.imageView = (ImageView)convertView.findViewById(R.id.mainpic);
-			viewHolder.name = (TextView)convertView.findViewById(R.id.name);
-			viewHolder.during = (TextView)convertView.findViewById(R.id.during);
+        ViewHolder viewHolder = null;
 
-			convertView.setTag(viewHolder);
-		}else{
-			viewHolder = (ViewHolder) convertView.getTag();
-		}
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            convertView = LayoutInflater.from(context).inflate(R.layout.dish_grid_item, null);
 
-		viewHolder.name.setText(dishs.get(position).getName());
-		viewHolder.during.setText(dishs.get(position).getDuring());
-		fb.display(viewHolder.imageView, Constant.DIR + dishs.get(position).getMainPic());
+            viewHolder.imageView = (ImageView) convertView.findViewById(R.id.mainpic);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.during = (TextView) convertView.findViewById(R.id.during);
 
-		return convertView;
-	}
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+        }
 
-	class ViewHolder{
-		RelativeLayout rl_image;
-		ImageView imageView;
-		TextView name;
-		TextView during;
-	}
+        viewHolder.name.setText(dishs.get(position).getName());
+        viewHolder.during.setText(dishs.get(position).getDuring());
+        fb.display(viewHolder.imageView, Constant.DIR + dishs.get(position).getMainPic());
+
+        return convertView;
+    }
+
+    class ViewHolder {
+        ImageView imageView;
+        TextView name;
+        TextView during;
+    }
 
 }

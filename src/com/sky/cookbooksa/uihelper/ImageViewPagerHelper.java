@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -17,6 +19,7 @@ import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.ActivityInfo;
 import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 
 import net.tsz.afinal.FinalBitmap;
@@ -38,6 +41,7 @@ public class ImageViewPagerHelper {
     private ViewPager viewPager;
     private ImageView lastSelectedImage;
     private LinearLayout ll_circle;
+    private FrameLayout imageContainer;
 
     private ArrayList<ImageView> circles;
 
@@ -60,6 +64,11 @@ public class ImageViewPagerHelper {
         // TODO Auto-generated method stub
         viewPager = (ViewPager) view.findViewById(R.id.image_viewpager);
         ll_circle = (LinearLayout) view.findViewById(R.id.ll_circle_container);
+        imageContainer = (FrameLayout) view.findViewById(R.id.imageContainer);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                DisplayUtil.screenHeight / 4);
+        imageContainer.setLayoutParams(params);
 
         viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -158,8 +167,9 @@ public class ImageViewPagerHelper {
 
     private ImageView addCircleImage() {
         ImageView imageView = new ImageView(act);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(25, 25);
-        params.leftMargin = 10;
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(DisplayUtil.dip2px(15),
+                DisplayUtil.dip2px(15));
+        params.leftMargin = DisplayUtil.dip2px(5);
 
         imageView.setLayoutParams(params);
 
@@ -204,10 +214,14 @@ public class ImageViewPagerHelper {
 
             View view = LayoutInflater.from(act).inflate(R.layout.image_page_item, null);
 
-            RelativeLayout rl_main = (RelativeLayout) view.findViewById(R.id.rl_image);
             ImageView imageView = (ImageView) view.findViewById(R.id.image);
             ProgressBar loading = (ProgressBar) view.findViewById(R.id.loading);
             loading.setVisibility(View.GONE);
+
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    DisplayUtil.screenHeight / 4);
+            params.gravity = Gravity.CENTER;
+            imageView.setLayoutParams(params);
 
             fb.display(imageView, Constant.DIR + images.get(position).getActPic());
 

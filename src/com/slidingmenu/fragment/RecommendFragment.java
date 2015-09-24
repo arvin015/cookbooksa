@@ -2,10 +2,10 @@ package com.slidingmenu.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +34,6 @@ import com.sky.cookbooksa.uihelper.ImageViewPagerHelper;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
-import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.ScrollViewExtend;
 import com.sky.cookbooksa.widget.WaterfallView;
 
@@ -46,9 +45,6 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SuppressLint("ValidFragment")
 public class RecommendFragment extends Fragment {
@@ -62,7 +58,6 @@ public class RecommendFragment extends Fragment {
     private View footerView;//底部加载更多View
 
     private ImageView goTopImg;
-    private List<Dish> dishs;
     private MainActivity act;
     private FinalHttp fh;
     private FinalBitmap fb;
@@ -71,9 +66,15 @@ public class RecommendFragment extends Fragment {
     private int count = 100;
     private int currentCount = 0;
     private boolean isFirst = true;
-    private TextView empty_tip, search_key;
+    private TextView search_key;
 
     private ImageViewPagerHelper ivpHelper;
+
+    private LinearLayout loadingContainer;
+    private ImageView loadingImg;
+    private TextView tipText;
+
+    private AnimationDrawable animation;
 
     private String lastRefreshTime;
 
@@ -131,13 +132,13 @@ public class RecommendFragment extends Fragment {
 
         spfu = SharedPreferencesUtils.getInstance(act, null);//单例模式
 
-        resetDishs();
-
         mScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
         search_key = (TextView) view.findViewById(R.id.search_key);
         waterfallView = (WaterfallView) view.findViewById(R.id.waterfallView);
-        empty_tip = (TextView) view.findViewById(R.id.empty_tip);
         goTopImg = (ImageView) view.findViewById(R.id.goTopImg);
+        loadingContainer = (LinearLayout) view.findViewById(R.id.loadingConainer);
+        tipText = (TextView) view.findViewById(R.id.tipText);
+        loadingImg = (ImageView) view.findViewById(R.id.loadingImg);
 
         waterfallView.init(2);
 
@@ -155,12 +156,28 @@ public class RecommendFragment extends Fragment {
 
         initPullRefreshScrollView();
 
+        initLoadingAnim();
+
         ivpHelper = new ImageViewPagerHelper(act, view, fh, fb);
 
         loadData(false);
 
     }
 
+    /**
+     * 初始化加载动画
+     */
+    private void initLoadingAnim() {
+        animation = (AnimationDrawable) loadingImg.getBackground();
+        if (animation != null)
+            animation.start();
+
+        tipText.setText("加载中...");
+    }
+
+    /**
+     * 初始化刷新数据
+     */
     private void initPullRefreshScrollView() {
         // TODO Auto-generated method stub
         mScrollView.setMode(Mode.PULL_FROM_START);
@@ -265,7 +282,6 @@ public class RecommendFragment extends Fragment {
              */
             @Override
             public void onRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
-                resetDishs();
 
                 page = 1;
 
@@ -317,7 +333,13 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                ToastUtil.toastLong(act, "数据加载失败=" + strMsg);
+
+                //加载失败提示
+                if (animation != null && animation.isRunning()) {
+                    animation.stop();
+                    loadingImg.setBackgroundResource(R.drawable.empty_error);
+                    tipText.setText("加载失败");
+                }
 
                 if (isTopRefresh) {
                     mScrollView.onRefreshComplete();
@@ -334,13 +356,22 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onSuccess(Object result) {
                 super.onSuccess(result);
+
+                if (animation != null && animation.isRunning()) {
+                    animation.stop();
+                }
+
                 try {
                     JSONObject obj = new JSONObject(result.toString());
                     count = obj.optInt("count");
                     if (count < 1) {
-                        empty_tip.setVisibility(View.VISIBLE);
+                        loadingImg.setBackgroundResource(R.drawable.empty_no_data);
+                        tipText.setText("数据为空");
                         return;
                     }
+
+                    //隐藏加载动画
+                    loadingContainer.setVisibility(View.GONE);
 
                     if (isTopRefresh) {//刷新，清空原有布局View
                         waterfallView.resetCurrentColumn();
@@ -360,10 +391,8 @@ public class RecommendFragment extends Fragment {
                     if (jsonArray != null) {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
-                            Dish dish = new Dish(object.toString());
-                            dishs.add(dish);
 
-                            View childView = setView(dish);
+                            View childView = setView(new Dish(object.toString()));
 
                             waterfallView.addItemToLayout(childView);
                         }
@@ -440,13 +469,6 @@ public class RecommendFragment extends Fragment {
         spfu.saveSharedPreferences("lastRefreshTime", StringUtil.gettimenow());
     }
 
-    private void resetDishs() {
-        if (dishs == null) {
-            dishs = new ArrayList<Dish>();
-        }
-        dishs.clear();
-    }
-
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -473,7 +495,4 @@ public class RecommendFragment extends Fragment {
         super.onDestroy();
     }
 
-    interface ICallback {
-        public void changeStyle(int type);
-    }
 }
