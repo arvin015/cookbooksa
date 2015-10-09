@@ -38,6 +38,7 @@ import com.sky.cookbooksa.widget.ViewPagerScroller;
 import com.slidingmenu.fragment.ClassifyFragment;
 import com.slidingmenu.fragment.MenuFragment;
 import com.slidingmenu.fragment.RecommendFragment;
+import com.slidingmenu.fragment.RecommendFragment_old;
 import com.slidingmenu.fragment.SearchFragment;
 import com.slidingmenu.fragment.UserInfoFragment;
 import com.slidingmenu.lib.SlidingMenu;
@@ -68,7 +69,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 
     private FragmentTransaction ft;
 
-    private RecommendFragment rfragment;
+    private RecommendFragment_old rfragment;
 
     private long lastTime = 0;
 
@@ -181,7 +182,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 
         fragments = new ArrayList<Fragment>();//初始化数据
         //		fragments.add(new HomeFragment(this));
-        rfragment = new RecommendFragment(this);
+        rfragment = new RecommendFragment_old(this);
         fragments.add(rfragment);
         fragments.add(new ClassifyFragment(this));
         fragments.add(new SearchFragment(this));
