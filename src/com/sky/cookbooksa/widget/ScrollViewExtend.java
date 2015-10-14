@@ -56,8 +56,8 @@ public class ScrollViewExtend extends ScrollView {
                 break;
             case MotionEvent.ACTION_MOVE:
                 final float curX = ev.getX();
-                final float curY = ev.getY();
 
+                final float curY = ev.getY();
                 xDistance += Math.abs(curX - xLast);
                 yDistance += Math.abs(curY - yLast);
                 xLast = curX;

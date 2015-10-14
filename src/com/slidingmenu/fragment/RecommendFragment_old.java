@@ -7,7 +7,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,28 +16,20 @@ import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.pulltorefresh.lib.ILoadingLayout;
-import com.pulltorefresh.lib.MyOnBorderListener;
-import com.pulltorefresh.lib.PullToRefreshBase;
-import com.pulltorefresh.lib.PullToRefreshBase.Mode;
-import com.pulltorefresh.lib.PullToRefreshBase.OnPullEventListener;
-import com.pulltorefresh.lib.PullToRefreshBase.State;
-import com.pulltorefresh.lib.PullToRefreshScrollView;
 import com.sky.cookbooksa.DishDetailActivity;
 import com.sky.cookbooksa.IRecommendFragmentCallback;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.Dish;
-import com.sky.cookbooksa.uihelper.ImageViewPagerHelper;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
-import com.sky.cookbooksa.widget.ScrollViewExtend;
-import com.waterfull.lib.MultiColumnListView;
+import com.waterfull.lib.PLA_AbsListView;
+import com.waterfull.view.XListViewAd;
+import com.waterfull.view.XMultiListView;
 
 import net.tsz.afinal.FinalBitmap;
 import net.tsz.afinal.FinalHttp;
@@ -53,17 +44,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 @SuppressLint("ValidFragment")
-public class RecommendFragment_old extends Fragment {
+public class RecommendFragment_old extends Fragment implements XMultiListView.IXListViewListener {
 
     private View view;//缓存页面
 
-    private PullToRefreshScrollView mScrollView;
-    private ScrollViewExtend scrollView;
-
-    private ILoadingLayout loadLayoutTop;//顶部刷新View
-    private View footerView;//底部加载更多View
-
-    private ImageView goTopImg;
     private MainActivity act;
     private FinalHttp fh;
     private FinalBitmap fb;
@@ -72,9 +56,6 @@ public class RecommendFragment_old extends Fragment {
     private int count = 100;
     private int currentCount = 0;
     private boolean isFirst = true;
-    private TextView search_key;
-
-    private ImageViewPagerHelper ivpHelper;
 
     private LinearLayout loadingContainer;
     private ImageView loadingImg;
@@ -88,9 +69,9 @@ public class RecommendFragment_old extends Fragment {
 
     private IRecommendFragmentCallback listener;
 
-    private boolean isLoading = false;
+    private XMultiListView waterfallView;
 
-    private MultiColumnListView waterfallView;
+    private XListViewAd xListViewAd;
 
     private LinkedList<Dish> dishList;
 
@@ -119,10 +100,9 @@ public class RecommendFragment_old extends Fragment {
             return null;
 
         if (view == null) {
-            view = inflater.inflate(R.layout.dish, container, false);
+            view = inflater.inflate(R.layout.dish_old, container, false);
 
             init();
-            setListener();
         }
 
         ViewGroup parent = (ViewGroup) view.getParent();
@@ -145,31 +125,43 @@ public class RecommendFragment_old extends Fragment {
 
         spfu = SharedPreferencesUtils.getInstance(act, null);//单例模式
 
-        mScrollView = (PullToRefreshScrollView) view.findViewById(R.id.pull_refresh_scrollview);
-        search_key = (TextView) view.findViewById(R.id.search_key);
-        waterfallView = (MultiColumnListView) view.findViewById(R.id.columnListView);
-        goTopImg = (ImageView) view.findViewById(R.id.goTopImg);
+        waterfallView = (XMultiListView) view.findViewById(R.id.multiListView);
         loadingContainer = (LinearLayout) view.findViewById(R.id.loadingConainer);
         tipText = (TextView) view.findViewById(R.id.tipText);
         loadingImg = (ImageView) view.findViewById(R.id.loadingImg);
 
-        goTopImg.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (scrollView != null) {
-                    scrollView.setScrollY(0);
-                }
-
-                goTopImg.setVisibility(View.GONE);
-            }
-        });
-
-        initPullRefreshScrollView();
-
         initLoadingAnim();
 
-        ivpHelper = new ImageViewPagerHelper(act, view, fh, fb);
+        waterfallView.setPullRefreshEnable(true);
+        waterfallView.setPullLoadEnable(true);
+        waterfallView.setXListViewListener(this);
+
+        xListViewAd = new XListViewAd(act);
+        waterfallView.addMoreHeaderView(xListViewAd);
+
+        waterfallView.setOnScrollListener(new XMultiListView.OnXScrollListener() {
+            @Override
+            public void onXScrolling(View view) {
+            }
+
+            @Override
+            public void onScrollStateChanged(PLA_AbsListView view, int scrollState) {
+
+                //滑动停止
+                if (scrollState == SCROLL_STATE_IDLE) {
+                }
+            }
+
+            @Override
+            public void onScroll(PLA_AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                if (firstVisibleItem + visibleItemCount == totalItemCount) {
+                    if (!waterfallView.ismPullLoading()) {
+                        waterfallView.startLoadMore();
+                    }
+                }
+            }
+        });
 
         dishAdapter = new DishAdapter(act);
         waterfallView.setAdapter(dishAdapter);
@@ -186,151 +178,6 @@ public class RecommendFragment_old extends Fragment {
             animation.start();
 
         tipText.setText("加载中...");
-    }
-
-    /**
-     * 初始化刷新数据
-     */
-    private void initPullRefreshScrollView() {
-        // TODO Auto-generated method stub
-        mScrollView.setMode(Mode.PULL_FROM_START);
-
-        scrollView = mScrollView.getRefreshableView();
-
-        loadLayoutTop = mScrollView.getLoadingLayoutProxy(true, false);
-        loadLayoutTop.setPullLabel("下拉刷新...");
-        loadLayoutTop.setRefreshingLabel("正在刷新...");
-        loadLayoutTop.setReleaseLabel("松开刷新...");
-        loadLayoutTop.setLoadingDrawable(act.getResources().getDrawable(R.drawable.default_ptr_rotate));
-
-        mScrollView.setScrollingWhileRefreshingEnabled(true);//刷新时是否可滑动
-        mScrollView.setPullToRefreshOverScrollEnabled(false);//设置滑动是否引起刷新
-
-        //设置滑动停止事件
-        mScrollView.setOnScrollListener(new ScrollViewExtend.IScrollViewListener() {
-            @Override
-            public void scrollStop() {
-
-                if (!mScrollView.isRefreshing()) {
-                    setTopImgVisibility();
-                }
-            }
-        });
-
-        //设置滑动到达边界事件
-        mScrollView.setOnBorderListener(new MyOnBorderListener() {
-
-            @Override
-            public void onScroll() {
-
-                goTopImg.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onScrollToBottom() {
-
-                if (count == currentCount) {
-
-                    if (isFirst) {
-                        Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
-                        isFirst = false;
-                    }
-
-                } else {
-
-                    if (!isLoading) {
-
-                        if (footerView == null) {
-                            footerView = LayoutInflater.from(act).inflate(R.layout.loadingmore, null);
-                        }
-
-                        if (scrollView.getChildAt(0) != null) {
-                            ((ViewGroup) (scrollView.getChildAt(0))).addView(footerView);
-                        }
-
-                        new Handler().post(new Runnable() {
-                            @Override
-                            public void run() {
-                                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
-                            }
-                        });
-
-                        loadData(false);
-
-                        goTopImg.setVisibility(View.GONE);
-
-                        isLoading = true;
-
-                    }
-                }
-
-            }
-        });
-
-        //设置拉动事件
-        mScrollView.setOnPullEventListener(new OnPullEventListener<ScrollViewExtend>() {
-
-            @Override
-            public void onPullEvent(PullToRefreshBase<ScrollViewExtend> refreshView,
-                                    State state, Mode direction) {
-                // TODO Auto-generated method stub
-
-                //位于顶部下拉设置上次更新时间
-                if (state == State.PULL_TO_REFRESH &&
-                        direction == Mode.PULL_FROM_START) {
-                    setLastRefreshTime();
-                }
-
-            }
-        });
-
-        //设置刷新事件
-        mScrollView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ScrollViewExtend>() {
-
-            /**
-             * 该刷新了回调方法
-             * @param refreshView
-             */
-            @Override
-            public void onRefresh(PullToRefreshBase<ScrollViewExtend> refreshView) {
-
-                page = 1;
-
-                loadData(true);
-                ivpHelper.refresh();
-            }
-        });
-
-    }
-
-    /**
-     * 设置向上图片显示隐藏
-     */
-    private void setTopImgVisibility() {
-        if (scrollView != null) {
-
-            if (scrollView.getScrollY() >= scrollView.getHeight() * 2) {
-
-                goTopImg.setVisibility(View.VISIBLE);
-            } else {
-                goTopImg.setVisibility(View.GONE);
-            }
-        }
-
-    }
-
-    private void setListener() {
-        search_key.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                act.setCurrentPager(2);
-                act.setCurrentCheckedTitle(2);
-
-                listener.searchClick();
-            }
-        });
     }
 
     private void loadData(final boolean isTopRefresh) {
@@ -353,15 +200,11 @@ public class RecommendFragment_old extends Fragment {
                 }
 
                 if (isTopRefresh) {
-                    mScrollView.onRefreshComplete();
+                    waterfallView.stopRefresh();
                 } else {
-                    isLoading = false;
-                    if (scrollView.getChildAt(0) != null) {
-                        ((ViewGroup) (scrollView.getChildAt(0))).removeView(footerView);
-                    }
+                    waterfallView.stopLoadMore();
                 }
 
-                setTopImgVisibility();
             }
 
             @Override
@@ -387,16 +230,25 @@ public class RecommendFragment_old extends Fragment {
                     if (isTopRefresh) {//刷新，清空原有布局View
 
                         dishList.clear();
-                        waterfallView.removeAllViews();
 
                         isFirst = true;
 
-                        mScrollView.onRefreshComplete();
+                        waterfallView.setPullLoadEnable(true);
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                act.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        waterfallView.stopRefresh();
+                                    }
+                                });
+                            }
+                        }, 2000);
+
                     } else {//加载更多
-                        isLoading = false;
-                        if (scrollView.getChildAt(0) != null) {
-                            ((ViewGroup) (scrollView.getChildAt(0))).removeView(footerView);
-                        }
+                        waterfallView.stopLoadMore();
                     }
 
                     ArrayList<Dish> list = new ArrayList<>();
@@ -410,14 +262,10 @@ public class RecommendFragment_old extends Fragment {
                         }
                     }
 
-                    Log.d("print", "list.size() = " + list.size());
-
                     dishList.addAll(list);
                     dishAdapter.notifyDataSetChanged();
 
                     page++;
-
-                    setTopImgVisibility();
 
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
@@ -426,6 +274,50 @@ public class RecommendFragment_old extends Fragment {
             }
 
         });
+    }
+
+    /**
+     * 刷新操作
+     */
+    @Override
+    public void onRefresh() {
+        page = 1;
+
+        loadData(true);
+
+//        xListViewAd.refresh();//刷新广告
+    }
+
+    /**
+     * 加载更多操作
+     */
+    @Override
+    public void onLoadMore() {
+
+        currentCount = waterfallView.getmTotalItemCount() - 3;
+
+        if (count == currentCount) {
+
+            if (isFirst) {
+                Toast.makeText(act, "数据加载完毕", Toast.LENGTH_SHORT).show();
+                isFirst = false;
+
+                waterfallView.setPullLoadEnable(false);
+            }
+
+        } else {
+
+            loadData(false);
+
+        }
+    }
+
+    /**
+     * 设置上次刷新时间
+     */
+    @Override
+    public void onSetRefreshTime() {
+        setLastRefreshTime();
     }
 
     class DishAdapter extends BaseAdapter {
@@ -517,9 +409,9 @@ public class RecommendFragment_old extends Fragment {
         lastRefreshTime = spfu.loadStringSharedPreference("lastRefreshTime");
 
         if (lastRefreshTime == null) {
-            loadLayoutTop.setLastUpdatedLabel("第一次刷新");
+            waterfallView.setRefreshTime("第一次刷新");
         } else {
-            loadLayoutTop.setLastUpdatedLabel(StringUtil.friendly_time(lastRefreshTime) + "刷新");
+            waterfallView.setRefreshTime(StringUtil.friendly_time(lastRefreshTime));
         }
 
         spfu.saveSharedPreferences("lastRefreshTime", StringUtil.gettimenow());

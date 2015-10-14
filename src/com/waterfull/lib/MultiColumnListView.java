@@ -1,4 +1,4 @@
-/**
+package com.waterfull.lib; /**
  * ****************************************************************************
  * Copyright 2012 huewu.yang <hueuw.yang@gmail.com>
  * <p/>
@@ -16,12 +16,12 @@
  * *****************************************************************************
  */
 
-package com.waterfull.lib;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.View;
 
@@ -70,10 +70,10 @@ public class MultiColumnListView extends PLA_ListView {
             mColumnNumber = (DEFAULT_COLUMN_NUMBER); // default column number is
             // 2.
         } else {
-            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.MultiColumnListView);
+            TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.PinterestLikeAdapterView);
 
-            int landColNumber = a.getInteger(R.styleable.MultiColumnListView_plaLandscapeColumnNumber, 3);
-            int defColNumber = a.getInteger(R.styleable.MultiColumnListView_plaColumnNumber, 2);
+            int landColNumber = a.getInteger(R.styleable.PinterestLikeAdapterView_plaLandscapeColumnNumber, 3);
+            int defColNumber = a.getInteger(R.styleable.PinterestLikeAdapterView_plaColumnNumber, 2);
 
             if (mFrameRect.width() > mFrameRect.height() && landColNumber != -1) {
                 mColumnNumber = (landColNumber);
@@ -83,8 +83,8 @@ public class MultiColumnListView extends PLA_ListView {
                 mColumnNumber = (DEFAULT_COLUMN_NUMBER);
             }
 
-            mColumnPaddingLeft = a.getDimensionPixelSize(R.styleable.MultiColumnListView_plaColumnPaddingLeft, 0);
-            mColumnPaddingRight = a.getDimensionPixelSize(R.styleable.MultiColumnListView_plaColumnPaddingRight, 0);
+            mColumnPaddingLeft = a.getDimensionPixelSize(R.styleable.PinterestLikeAdapterView_plaColumnPaddingLeft, 0);
+            mColumnPaddingRight = a.getDimensionPixelSize(R.styleable.PinterestLikeAdapterView_plaColumnPaddingRight, 0);
             a.recycle();
         }
 
@@ -113,12 +113,7 @@ public class MultiColumnListView extends PLA_ListView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
-        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
-                MeasureSpec.AT_MOST);
-
-        super.onMeasure(widthMeasureSpec, expandSpec);
-
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         columnWidth = (getMeasuredWidth() - mListPadding.left - mListPadding.right - mColumnPaddingLeft - mColumnPaddingRight)
                 / getColumnNumber();
 
@@ -315,6 +310,8 @@ public class MultiColumnListView extends PLA_ListView {
             result = result.getBottom() > c.getBottom() ? c : result;
         }
 
+        if (DEBUG)
+            Log.d("Column", "get Shortest Bottom Column: " + result.getIndex());
         return result;
     }
 

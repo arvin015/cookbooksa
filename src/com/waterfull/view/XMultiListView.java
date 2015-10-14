@@ -23,11 +23,11 @@ import com.sky.cookbooksa.R;
 import com.waterfull.lib.MultiColumnListView;
 import com.waterfull.lib.PLA_AbsListView;
 
-public class XListView extends MultiColumnListView implements PLA_AbsListView.OnScrollListener {
+public class XMultiListView extends MultiColumnListView implements PLA_AbsListView.OnScrollListener {
 
     private float mLastY = -1; // save event y
     private Scroller mScroller; // used for scroll back
-    private PLA_AbsListView.OnScrollListener mScrollListener; // user's scroll listener
+    private OnScrollListener mScrollListener; // user's scroll listener
 
     // the interface to trigger refresh and load more.
     private IXListViewListener mListViewListener;
@@ -63,29 +63,35 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
     private final static float OFFSET_RADIO = 1.8f; // support iOS like pull
     // feature.
 
+    private boolean isFirstSetRefreshTime = true; // first refresh time
+
     /**
      * @param context
      */
-    public XListView(Context context) {
+    public XMultiListView(Context context) {
         super(context);
         initWithContext(context);
     }
 
-    public XListView(Context context, AttributeSet attrs) {
+    public XMultiListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initWithContext(context);
     }
 
-    public XListView(Context context, AttributeSet attrs, int defStyle) {
+    public XMultiListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initWithContext(context);
     }
 
+    /**
+     * init
+     *
+     * @param context
+     */
     private void initWithContext(Context context) {
         mScroller = new Scroller(context, new DecelerateInterpolator());
         // XListView need the scroll event, and it will dispatch the event to
         // user's listener (as a proxy).
-        super.setOnScrollListener(this);
 
         // init header view
         mHeaderView = new XListViewHeader(context);
@@ -104,6 +110,8 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
+
+        super.setOnScrollListener(this);
     }
 
     @Override
@@ -114,6 +122,15 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
             addFooterView(mFooterView);
         }
         super.setAdapter(adapter);
+    }
+
+    /**
+     * add other header view
+     *
+     * @param view
+     */
+    public void addMoreHeaderView(View view) {
+        addHeaderView(view);
     }
 
     /**
@@ -160,6 +177,9 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
     public void stopRefresh() {
         if (mPullRefreshing == true) {
             mPullRefreshing = false;
+
+            isFirstSetRefreshTime = true;
+
             resetHeaderHeight();
         }
     }
@@ -183,6 +203,9 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         mHeaderTimeView.setText(time);
     }
 
+    /**
+     * invoke on scrolling
+     */
     private void invokeOnScrolling() {
         if (mScrollListener instanceof OnXScrollListener) {
             OnXScrollListener l = (OnXScrollListener) mScrollListener;
@@ -190,6 +213,11 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         }
     }
 
+    /**
+     * update header view's height
+     *
+     * @param delta
+     */
     private void updateHeaderHeight(float delta) {
         mHeaderView.setVisiableHeight((int) delta + mHeaderView.getVisiableHeight());
         if (mEnablePullRefresh && !mPullRefreshing) { // 未处于刷新状态，更新箭头
@@ -203,7 +231,7 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
     }
 
     /**
-     * reset header view's height.
+     * reset header view's height by scroller
      */
     private void resetHeaderHeight() {
         int height = mHeaderView.getVisiableHeight();
@@ -224,6 +252,11 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         invalidate();
     }
 
+    /**
+     * update footer view's height
+     *
+     * @param delta
+     */
     private void updateFooterHeight(float delta) {
         int height = mFooterView.getBottomMargin() + (int) delta;
         if (mEnablePullLoad && !mPullLoading) {
@@ -239,6 +272,9 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         // setSelection(mTotalItemCount - 1); // scroll to bottom
     }
 
+    /**
+     * reset footer view's height by scroller
+     */
     private void resetFooterHeight() {
         int bottomMargin = mFooterView.getBottomMargin();
         if (bottomMargin > 0) {
@@ -248,12 +284,24 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         }
     }
 
-    private void startLoadMore() {
+    /**
+     * start load more data
+     */
+    public void startLoadMore() {
         mPullLoading = true;
         mFooterView.setState(XListViewFooter.STATE_LOADING);
         if (mListViewListener != null) {
             mListViewListener.onLoadMore();
         }
+    }
+
+    /**
+     * get total item count
+     *
+     * @return
+     */
+    public int getmTotalItemCount() {
+        return mTotalItemCount;
     }
 
     @Override
@@ -273,6 +321,14 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
                     // the first item is showing, header has shown or pull down.
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
                     invokeOnScrolling();
+
+                    if (isFirstSetRefreshTime) {
+
+                        mListViewListener.onSetRefreshTime();
+
+                        isFirstSetRefreshTime = false;
+                    }
+
                 } else if (getLastVisiblePosition() == mTotalItemCount - 1 && (mFooterView.getBottomMargin() > 0 || deltaY < 0)) {
                     // last item, already pulled up or want to pull up.
                     updateFooterHeight(-deltaY / OFFSET_RADIO);
@@ -282,7 +338,8 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
                 mLastY = -1; // reset
                 if (getFirstVisiblePosition() == 0) {
                     // invoke refresh
-                    if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
+                    if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight
+                            && !mPullRefreshing) {
                         mPullRefreshing = true;
                         mHeaderView.setState(XListViewHeader.STATE_REFRESHING);
                         if (mListViewListener != null) {
@@ -292,7 +349,8 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
                     resetHeaderHeight();
                 } else if (getLastVisiblePosition() == mTotalItemCount - 1) {
                     // invoke load more.
-                    if (mEnablePullLoad && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
+                    if (mEnablePullLoad && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA &&
+                            !mPullLoading) {
                         startLoadMore();
                     }
                     resetFooterHeight();
@@ -304,7 +362,7 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
 
     @Override
     public void computeScroll() {
-        if (mScroller.computeScrollOffset()) {
+        if (mScroller.computeScrollOffset()) {//scroller animation end
             if (mScrollBack == SCROLLBACK_HEADER) {
                 mHeaderView.setVisiableHeight(mScroller.getCurrY());
             } else {
@@ -316,25 +374,20 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         super.computeScroll();
     }
 
-//	@Override
-//	public void setOnScrollListener(OnScrollListener l) {
-//		mScrollListener = l;
-//	}
-//
-//	@Override
-//	public void onScrollStateChanged(AbsListView view, int scrollState) {
-//		if (mScrollListener != null) {
-//			mScrollListener.onScrollStateChanged(view, scrollState);
-//		}
-//	}
-//
-//	@Override
-//	public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+    public boolean ismPullRefreshing() {
+        return mPullRefreshing;
+    }
 
-//	}
+    public boolean ismPullLoading() {
+        return mPullLoading;
+    }
 
     public void setXListViewListener(IXListViewListener l) {
         mListViewListener = l;
+    }
+
+    public void setOnScrollListener(OnScrollListener mScrollListener) {
+        this.mScrollListener = mScrollListener;
     }
 
     /**
@@ -346,12 +399,14 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
     }
 
     /**
-     * implements this interface to get refresh/load more event.
+     * implements this interface to get refresh/load more event/set last refresh time.
      */
     public interface IXListViewListener {
         public void onRefresh();
 
         public void onLoadMore();
+
+        public void onSetRefreshTime();
     }
 
     @Override
@@ -368,5 +423,6 @@ public class XListView extends MultiColumnListView implements PLA_AbsListView.On
         if (mScrollListener != null) {
             mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
         }
+
     }
 }

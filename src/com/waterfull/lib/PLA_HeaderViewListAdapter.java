@@ -30,7 +30,7 @@ import java.util.ArrayList;
  * ListAdapter used when a ListView has header views. This ListAdapter
  * wraps another one and also keeps track of the header views and their
  * associated data objects.
- * <p>This is intended as a base class; you will probably not need to
+ *<p>This is intended as a base class; you will probably not need to
  * use this class directly in your own code.
  */
 public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable {
@@ -45,15 +45,15 @@ public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable
     // Used as a placeholder in case the provided info views are indeed null.
     // Currently only used by some CTS tests, which may be removed.
     static final ArrayList<PLA_ListView.FixedViewInfo> EMPTY_INFO_LIST =
-            new ArrayList<PLA_ListView.FixedViewInfo>();
+        new ArrayList<PLA_ListView.FixedViewInfo>();
 
     boolean mAreAllFixedViewsSelectable;
 
     private final boolean mIsFilterable;
 
     public PLA_HeaderViewListAdapter(ArrayList<PLA_ListView.FixedViewInfo> headerViewInfos,
-                                     ArrayList<PLA_ListView.FixedViewInfo> footerViewInfos,
-                                     ListAdapter adapter) {
+                                 ArrayList<PLA_ListView.FixedViewInfo> footerViewInfos,
+                                 ListAdapter adapter) {
         mAdapter = adapter;
         mIsFilterable = adapter instanceof Filterable;
 
@@ -71,7 +71,7 @@ public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable
 
         mAreAllFixedViewsSelectable =
                 areAllListInfosSelectable(mHeaderViewInfos)
-                        && areAllListInfosSelectable(mFooterViewInfos);
+                && areAllListInfosSelectable(mFooterViewInfos);
     }
 
     public int getHeadersCount() {
@@ -105,7 +105,7 @@ public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable
 
                 mAreAllFixedViewsSelectable =
                         areAllListInfosSelectable(mHeaderViewInfos)
-                                && areAllListInfosSelectable(mFooterViewInfos);
+                        && areAllListInfosSelectable(mFooterViewInfos);
 
                 return true;
             }
@@ -122,7 +122,7 @@ public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable
 
                 mAreAllFixedViewsSelectable =
                         areAllListInfosSelectable(mHeaderViewInfos)
-                                && areAllListInfosSelectable(mFooterViewInfos);
+                        && areAllListInfosSelectable(mFooterViewInfos);
 
                 return true;
             }
@@ -267,7 +267,7 @@ public class PLA_HeaderViewListAdapter implements WrapperListAdapter, Filterable
         }
         return null;
     }
-
+    
     public ListAdapter getWrappedAdapter() {
         return mAdapter;
     }

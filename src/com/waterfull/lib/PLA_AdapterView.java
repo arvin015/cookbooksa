@@ -16,13 +16,13 @@
 
 package com.waterfull.lib;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.SparseArray;
+import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.SoundEffectConstants;
 import android.view.View;
@@ -33,10 +33,10 @@ import android.widget.Adapter;
 
 /**
  * An AdapterView is a view whose children are determined by an {@link Adapter}.
- * <p/>
- * <p/>
- * See {@link ListView}, {@link GridView}, {@link Spinner} and
- * {@link Gallery} for commonly used subclasses of AdapterView.
+ * 
+ * <p>
+ * See {@link ListView}, {@link GridView}, {@link Spinner} and {@link Gallery}
+ * for commonly used subclasses of AdapterView.
  */
 public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
@@ -59,11 +59,10 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     int mFirstPosition = 0;
 
     /**
-     * The offset in pixels from the top of the AdapterView to the top
-     * of the view to select during the next layout.
+     * The offset in pixels from the top of the AdapterView to the top of the
+     * view to select during the next layout.
      */
     int mSpecificTop;
-    int[] mSpecificTops;
 
     /**
      * Position from which to start looking for mSyncRowId
@@ -138,17 +137,6 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     boolean mDataChanged;
 
     /**
-     * The position within the adapter's data set of the currently selected item.
-     */
-    @ViewDebug.ExportedProperty(category = "list")
-    int mSelectedPosition = INVALID_POSITION;
-
-    /**
-     * The item id of the currently selected item.
-     */
-    long mSelectedRowId = INVALID_ROW_ID;
-
-    /**
      * View to show if there are no items to show.
      */
     private View mEmptyView;
@@ -165,8 +153,8 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     int mOldItemCount;
 
     /**
-     * Represents an invalid position. All valid positions are in the range 0 to 1 less than the
-     * number of items in the current adapter.
+     * Represents an invalid position. All valid positions are in the range 0 to
+     * 1 less than the number of items in the current adapter.
      */
     public static final int INVALID_POSITION = -1;
 
@@ -185,11 +173,22 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
      */
     long mOldSelectedRowId = INVALID_ROW_ID;
 
-    private SelectionNotifier mSelectionNotifier;
+    /**
+     * Indicates what focusable state is requested when calling setFocusable().
+     * In addition to this, this view has other criteria for actually
+     * determining the focusable state (such as whether its empty or the text
+     * filter is shown).
+     * 
+     * @see #setFocusable(boolean)
+     * @see #checkFocus()
+     */
+    private boolean mDesiredFocusableState;
+    private boolean mDesiredFocusableInTouchModeState;
 
     /**
-     * When set to true, calls to requestLayout() will not propagate up the parent hierarchy.
-     * This is used to layout the children during a layout pass.
+     * When set to true, calls to requestLayout() will not propagate up the
+     * parent hierarchy. This is used to layout the children during a layout
+     * pass.
      */
     boolean mBlockLayoutRequests = false;
 
@@ -205,7 +204,6 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
         super(context, attrs, defStyle);
     }
 
-
     /**
      * Interface definition for a callback to be invoked when an item in this
      * AdapterView has been clicked.
@@ -215,15 +213,19 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
         /**
          * Callback method to be invoked when an item in this AdapterView has
          * been clicked.
-         * <p/>
-         * Implementers can call getItemAtPosition(position) if they need
-         * to access the data associated with the selected item.
-         *
-         * @param parent   The AdapterView where the click happened.
-         * @param view     The view within the AdapterView that was clicked (this
-         *                 will be a view provided by the adapter)
-         * @param position The position of the view in the adapter.
-         * @param id       The row id of the item that was clicked.
+         * <p>
+         * Implementers can call getItemAtPosition(position) if they need to
+         * access the data associated with the selected item.
+         * 
+         * @param parent
+         *            The AdapterView where the click happened.
+         * @param view
+         *            The view within the AdapterView that was clicked (this
+         *            will be a view provided by the adapter)
+         * @param position
+         *            The position of the view in the adapter.
+         * @param id
+         *            The row id of the item that was clicked.
          */
         void onItemClick(PLA_AdapterView<?> parent, View view, int position, long id);
     }
@@ -231,8 +233,9 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     /**
      * Register a callback to be invoked when an item in this AdapterView has
      * been clicked.
-     *
-     * @param listener The callback that will be invoked.
+     * 
+     * @param listener
+     *            The callback that will be invoked.
      */
     public void setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
@@ -240,7 +243,7 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * @return The callback to be invoked with an item in this AdapterView has
-     * been clicked, or null id no callback has been set.
+     *         been clicked, or null id no callback has been set.
      */
     public final OnItemClickListener getOnItemClickListener() {
         return mOnItemClickListener;
@@ -248,12 +251,15 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * Call the OnItemClickListener, if it is defined.
-     *
-     * @param view     The view within the AdapterView that was clicked.
-     * @param position The position of the view in the adapter.
-     * @param id       The row id of the item that was clicked.
+     * 
+     * @param view
+     *            The view within the AdapterView that was clicked.
+     * @param position
+     *            The position of the view in the adapter.
+     * @param id
+     *            The row id of the item that was clicked.
      * @return True if there was an assigned OnItemClickListener that was
-     * called, false otherwise is returned.
+     *         called, false otherwise is returned.
      */
     public boolean performItemClick(View view, int position, long id) {
         if (mOnItemClickListener != null) {
@@ -273,25 +279,30 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
         /**
          * Callback method to be invoked when an item in this view has been
          * clicked and held.
-         * <p/>
-         * Implementers can call getItemAtPosition(position) if they need to access
-         * the data associated with the selected item.
-         *
-         * @param parent   The AbsListView where the click happened
-         * @param view     The view within the AbsListView that was clicked
-         * @param position The position of the view in the list
-         * @param id       The row id of the item that was clicked
+         * 
+         * Implementers can call getItemAtPosition(position) if they need to
+         * access the data associated with the selected item.
+         * 
+         * @param parent
+         *            The AbsListView where the click happened
+         * @param view
+         *            The view within the AbsListView that was clicked
+         * @param position
+         *            The position of the view in the list
+         * @param id
+         *            The row id of the item that was clicked
+         * 
          * @return true if the callback consumed the long click, false otherwise
          */
         boolean onItemLongClick(PLA_AdapterView<?> parent, View view, int position, long id);
     }
 
-
     /**
      * Register a callback to be invoked when an item in this AdapterView has
      * been clicked and held
-     *
-     * @param listener The callback that will run
+     * 
+     * @param listener
+     *            The callback that will run
      */
     public void setOnItemLongClickListener(OnItemLongClickListener listener) {
         if (!isLongClickable()) {
@@ -302,47 +313,52 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * @return The callback to be invoked with an item in this AdapterView has
-     * been clicked and held, or null id no callback as been set.
+     *         been clicked and held, or null id no callback as been set.
      */
     public final OnItemLongClickListener getOnItemLongClickListener() {
         return mOnItemLongClickListener;
     }
 
     /**
-     * Interface definition for a callback to be invoked when
-     * an item in this view has been selected.
+     * Interface definition for a callback to be invoked when an item in this
+     * view has been selected.
      */
     public interface OnItemSelectedListener {
         /**
          * Callback method to be invoked when an item in this view has been
          * selected.
-         * <p/>
-         * Impelmenters can call getItemAtPosition(position) if they need to access the
-         * data associated with the selected item.
-         *
-         * @param parent   The AdapterView where the selection happened
-         * @param view     The view within the AdapterView that was clicked
-         * @param position The position of the view in the adapter
-         * @param id       The row id of the item that is selected
+         * 
+         * Impelmenters can call getItemAtPosition(position) if they need to
+         * access the data associated with the selected item.
+         * 
+         * @param parent
+         *            The AdapterView where the selection happened
+         * @param view
+         *            The view within the AdapterView that was clicked
+         * @param position
+         *            The position of the view in the adapter
+         * @param id
+         *            The row id of the item that is selected
          */
         void onItemSelected(PLA_AdapterView<?> parent, View view, int position, long id);
 
         /**
          * Callback method to be invoked when the selection disappears from this
-         * view. The selection can disappear for instance when touch is activated
-         * or when the adapter becomes empty.
-         *
-         * @param parent The AdapterView that now contains no selected item.
+         * view. The selection can disappear for instance when touch is
+         * activated or when the adapter becomes empty.
+         * 
+         * @param parent
+         *            The AdapterView that now contains no selected item.
          */
         void onNothingSelected(PLA_AdapterView<?> parent);
     }
 
-
     /**
      * Register a callback to be invoked when an item in this AdapterView has
      * been selected.
-     *
-     * @param listener The callback that will run
+     * 
+     * @param listener
+     *            The callback that will run
      */
     public void setOnItemSelectedListener(OnItemSelectedListener listener) {
         mOnItemSelectedListener = listener;
@@ -354,8 +370,9 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * Extra menu information provided to the
-     * {@link OnCreateContextMenuListener#onCreateContextMenu(android.view.ContextMenu, View, ContextMenuInfo) }
+     * {@link OnCreateContextMenuListener#onCreateContextMenu(ContextMenu, View, ContextMenuInfo) }
      * callback when a context menu is brought up for this AdapterView.
+     * 
      */
     public static class AdapterContextMenuInfo implements ContextMenuInfo {
 
@@ -385,24 +402,29 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * Returns the adapter currently associated with this widget.
-     *
+     * 
      * @return The adapter used to provide this view's content.
      */
     public abstract T getAdapter();
 
     /**
-     * Sets the adapter that provides the data and the views to represent the data
-     * in this widget.
-     *
-     * @param adapter The adapter to use to create this view's content.
+     * Sets the adapter that provides the data and the views to represent the
+     * data in this widget.
+     * 
+     * @param adapter
+     *            The adapter to use to create this view's content.
      */
     public abstract void setAdapter(T adapter);
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param child Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param child
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void addView(View child) {
@@ -410,11 +432,16 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param child Ignored.
-     * @param index Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param child
+     *            Ignored.
+     * @param index
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void addView(View child, int index) {
@@ -422,37 +449,50 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param child  Ignored.
-     * @param params Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param child
+     *            Ignored.
+     * @param params
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void addView(View child, LayoutParams params) {
-        throw new UnsupportedOperationException("addView(View, LayoutParams) "
-                + "is not supported in AdapterView");
+        throw new UnsupportedOperationException("addView(View, LayoutParams) " + "is not supported in AdapterView");
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param child  Ignored.
-     * @param index  Ignored.
-     * @param params Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param child
+     *            Ignored.
+     * @param index
+     *            Ignored.
+     * @param params
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void addView(View child, int index, LayoutParams params) {
-        throw new UnsupportedOperationException("addView(View, int, LayoutParams) "
-                + "is not supported in AdapterView");
+        throw new UnsupportedOperationException("addView(View, int, LayoutParams) " + "is not supported in AdapterView");
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param child Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param child
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void removeView(View child) {
@@ -460,10 +500,14 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @param index Ignored.
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @param index
+     *            Ignored.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void removeViewAt(int index) {
@@ -471,9 +515,11 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * This method is not supported and throws an UnsupportedOperationException when called.
-     *
-     * @throws UnsupportedOperationException Every time this method is invoked.
+     * This method is not supported and throws an UnsupportedOperationException
+     * when called.
+     * 
+     * @throws UnsupportedOperationException
+     *             Every time this method is invoked.
      */
     @Override
     public void removeAllViews() {
@@ -486,9 +532,11 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * Return the position of the currently selected item within the adapter's data set
-     *
-     * @return int Position (starting at 0), or {@link #INVALID_POSITION} if there is nothing selected.
+     * Return the position of the currently selected item within the adapter's
+     * data set
+     * 
+     * @return int Position (starting at 0), or {@link #INVALID_POSITION} if
+     *         there is nothing selected.
      */
     @ViewDebug.CapturedViewProperty
     public int getSelectedItemPosition() {
@@ -496,8 +544,8 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * @return The id corresponding to the currently selected item, or {@link #INVALID_ROW_ID}
-     * if nothing is selected.
+     * @return The id corresponding to the currently selected item, or
+     *         {@link #INVALID_ROW_ID} if nothing is selected.
      */
     @ViewDebug.CapturedViewProperty
     public long getSelectedItemId() {
@@ -505,14 +553,14 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * @return The view corresponding to the currently selected item, or null
-     * if nothing is selected
+     * @return The view corresponding to the currently selected item, or null if
+     *         nothing is selected
      */
     public abstract View getSelectedView();
 
     /**
-     * @return The data corresponding to the currently selected item, or
-     * null if there is nothing selected.
+     * @return The data corresponding to the currently selected item, or null if
+     *         there is nothing selected.
      */
     public Object getSelectedItem() {
         T adapter = getAdapter();
@@ -526,8 +574,8 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * @return The number of items owned by the Adapter associated with this
-     * AdapterView. (This is the number of data items, which may be
-     * larger than the number of visible view.)
+     *         AdapterView. (This is the number of data items, which may be
+     *         larger than the number of visible view.)
      */
     @ViewDebug.CapturedViewProperty
     public int getCount() {
@@ -535,13 +583,15 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * Get the position within the adapter's data set for the view, where view is a an adapter item
-     * or a descendant of an adapter item.
-     *
-     * @param view an adapter item, or a descendant of an adapter item. This must be visible in this
-     *             AdapterView at the time of the call.
-     * @return the position within the adapter's data set of the view, or {@link #INVALID_POSITION}
-     * if the view does not correspond to a list item (or it is not currently visible).
+     * Get the position within the adapter's data set for the view, where view
+     * is a an adapter item or a descendant of an adapter item.
+     * 
+     * @param view
+     *            an adapter item, or a descendant of an adapter item. This must
+     *            be visible in this AdapterView at the time of the call.
+     * @return the position within the adapter's data set of the view, or
+     *         {@link #INVALID_POSITION} if the view does not correspond to a
+     *         list item (or it is not currently visible).
      */
     public int getPositionForView(View view) {
         View listItem = view;
@@ -570,7 +620,7 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     /**
      * Returns the position within the adapter's data set for the first item
      * displayed on screen.
-     *
+     * 
      * @return The position within the adapter's data set
      */
     public int getFirstVisiblePosition() {
@@ -580,7 +630,7 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     /**
      * Returns the position within the adapter's data set for the last item
      * displayed on screen.
-     *
+     * 
      * @return The position within the adapter's data set
      */
     public int getLastVisiblePosition() {
@@ -588,10 +638,11 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * Sets the currently selected item. To support accessibility subclasses that
-     * override this method must invoke the overriden super method first.
-     *
-     * @param position Index (starting at 0) of the data item to be selected.
+     * Sets the currently selected item. To support accessibility subclasses
+     * that override this method must invoke the overriden super method first.
+     * 
+     * @param position
+     *            Index (starting at 0) of the data item to be selected.
      */
     public abstract void setSelection(int position);
 
@@ -607,10 +658,10 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * When the current adapter is empty, the AdapterView can display a special view
-     * call the empty view. The empty view is used to provide feedback to the user
-     * that no data is available in this AdapterView.
-     *
+     * When the current adapter is empty, the AdapterView can display a special
+     * view call the empty view. The empty view is used to provide feedback to
+     * the user that no data is available in this AdapterView.
+     * 
      * @return The view to show if the adapter is empty.
      */
     public View getEmptyView() {
@@ -618,21 +669,62 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     }
 
     /**
-     * Indicates whether this view is in filter mode. Filter mode can for instance
-     * be enabled by a user when typing on the keyboard.
-     *
+     * Indicates whether this view is in filter mode. Filter mode can for
+     * instance be enabled by a user when typing on the keyboard.
+     * 
      * @return True if the view is in filter mode, false otherwise.
      */
     boolean isInFilterMode() {
         return false;
     }
 
+    @Override
+    public void setFocusable(boolean focusable) {
+        final T adapter = getAdapter();
+        final boolean empty = adapter == null || adapter.getCount() == 0;
+
+        mDesiredFocusableState = focusable;
+        if (!focusable) {
+            mDesiredFocusableInTouchModeState = false;
+        }
+
+        super.setFocusable(focusable && (!empty || isInFilterMode()));
+    }
+
+    @Override
+    public void setFocusableInTouchMode(boolean focusable) {
+        final T adapter = getAdapter();
+        final boolean empty = adapter == null || adapter.getCount() == 0;
+
+        mDesiredFocusableInTouchModeState = focusable;
+        if (focusable) {
+            mDesiredFocusableState = true;
+        }
+
+        super.setFocusableInTouchMode(focusable && (!empty || isInFilterMode()));
+    }
+
+    void checkFocus() {
+        final T adapter = getAdapter();
+        final boolean empty = adapter == null || adapter.getCount() == 0;
+        final boolean focusable = !empty || isInFilterMode();
+        // The order in which we set focusable in touch mode/focusable may
+        // matter
+        // for the client, see View.setFocusableInTouchMode() comments for more
+        // details
+        super.setFocusableInTouchMode(focusable && mDesiredFocusableInTouchModeState);
+        super.setFocusable(focusable && mDesiredFocusableState);
+        if (mEmptyView != null) {
+            updateEmptyStatus((adapter == null) || adapter.isEmpty());
+        }
+    }
+
     /**
-     * Update the status of the list based on the empty parameter.  If empty is true and
-     * we have an empty view, display it.  In all the other cases, make sure that the listview
-     * is VISIBLE and that the empty view is GONE (if it's not null).
+     * Update the status of the list based on the empty parameter. If empty is
+     * true and we have an empty view, display it. In all the other cases, make
+     * sure that the listview is VISIBLE and that the empty view is GONE (if
+     * it's not null).
      */
-    @SuppressLint("WrongCall")
     private void updateEmptyStatus(boolean empty) {
         if (isInFilterMode()) {
             empty = false;
@@ -643,7 +735,8 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
                 mEmptyView.setVisibility(View.VISIBLE);
                 setVisibility(View.GONE);
             } else {
-                // If the caller just removed our empty view, make sure the list view is visible
+                // If the caller just removed our empty view, make sure the list
+                // view is visible
                 setVisibility(View.VISIBLE);
             }
 
@@ -654,15 +747,17 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
                 this.onLayout(false, getLeft(), getTop(), getRight(), getBottom());
             }
         } else {
-            if (mEmptyView != null) mEmptyView.setVisibility(View.GONE);
+            if (mEmptyView != null)
+                mEmptyView.setVisibility(View.GONE);
             setVisibility(View.VISIBLE);
         }
     }
 
     /**
      * Gets the data associated with the specified position in the list.
-     *
-     * @param position Which data to get
+     * 
+     * @param position
+     *            Which data to get
      * @return The data associated with the specified position in the list
      */
     public Object getItemAtPosition(int position) {
@@ -703,30 +798,27 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
         @Override
         public void onChanged() {
-
             mDataChanged = true;
             mOldItemCount = mItemCount;
             mItemCount = getAdapter().getCount();
 
-            // Detect the case where a cursor that was previously invalidated has
-            // been repopulated with new data.
-            if (PLA_AdapterView.this.getAdapter().hasStableIds() && mInstanceState != null
-                    && mOldItemCount == 0 && mItemCount > 0) {
+            if (PLA_AdapterView.this.getAdapter().hasStableIds() && mInstanceState != null && mOldItemCount == 0 && mItemCount > 0) {
                 PLA_AdapterView.this.onRestoreInstanceState(mInstanceState);
                 mInstanceState = null;
             } else {
                 rememberSyncState();
             }
+            checkFocus();
             requestLayout();
         }
 
         @Override
         public void onInvalidated() {
-
             mDataChanged = true;
 
             if (PLA_AdapterView.this.getAdapter().hasStableIds()) {
-                // Remember the current state for the case where our hosting activity is being
+                // Remember the current state for the case where our hosting
+                // activity is being
                 // stopped and later restarted
                 mInstanceState = PLA_AdapterView.this.onSaveInstanceState();
             }
@@ -734,10 +826,9 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
             // Data is invalid so we should reset our state
             mOldItemCount = mItemCount;
             mItemCount = 0;
-            mSelectedPosition = INVALID_POSITION;
-            mSelectedRowId = INVALID_ROW_ID;
-
             mNeedSync = false;
+
+            checkFocus();
             requestLayout();
         }
 
@@ -745,73 +836,6 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
             mInstanceState = null;
         }
     }
-
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-        removeCallbacks(mSelectionNotifier);
-    }
-
-    private class SelectionNotifier implements Runnable {
-        public void run() {
-            if (mDataChanged) {
-                // Data has changed between when this SelectionNotifier
-                // was posted and now. We need to wait until the AdapterView
-                // has been synched to the new data.
-                if (getAdapter() != null) {
-                    post(this);
-                }
-            } else {
-                fireOnSelected();
-                performAccessibilityActionsOnSelected();
-            }
-        }
-    }
-
-
-    void selectionChanged() {
-        if (mOnItemSelectedListener != null) {
-            if (mInLayout || mBlockLayoutRequests) {
-                // If we are in a layout traversal, defer notification
-                // by posting. This ensures that the view tree is
-                // in a consistent state and is able to accomodate
-                // new layout or invalidate requests.
-                if (mSelectionNotifier == null) {
-                    mSelectionNotifier = new SelectionNotifier();
-                }
-                post(mSelectionNotifier);
-            } else {
-                fireOnSelected();
-                performAccessibilityActionsOnSelected();
-            }
-        }
-    }
-
-    private void fireOnSelected() {
-        if (mOnItemSelectedListener == null) {
-            return;
-        }
-        final int selection = getSelectedItemPosition();
-        if (selection >= 0) {
-            View v = getSelectedView();
-            mOnItemSelectedListener.onItemSelected(this, v, selection,
-                    getAdapter().getItemId(selection));
-        } else {
-            mOnItemSelectedListener.onNothingSelected(this);
-        }
-    }
-
-    private void performAccessibilityActionsOnSelected() {
-        //        if (!AccessibilityManager.getInstance(mContext).isEnabled()) {
-        //            return;
-        //        }
-        final int position = getSelectedItemPosition();
-        if (position >= 0) {
-            // we fire selection events here not in View
-            sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_SELECTED);
-        }
-    }
-
 
     @Override
     public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent event) {
@@ -858,21 +882,14 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
         }
     }
 
-    void checkSelectionChanged() {
-        if ((mSelectedPosition != mOldSelectedPosition) || (mSelectedRowId != mOldSelectedRowId)) {
-            selectionChanged();
-            mOldSelectedPosition = mSelectedPosition;
-            mOldSelectedRowId = mSelectedRowId;
-        }
-    }
-
     /**
-     * Searches the adapter for a position matching mSyncRowId. The search starts at mSyncPosition
-     * and then alternates between moving up and moving down until 1) we find the right position, or
-     * 2) we run out of time, or 3) we have looked at every position
-     *
-     * @return Position of the row that matches mSyncRowId, or {@link #INVALID_POSITION} if it can't
-     * be found
+     * Searches the adapter for a position matching mSyncRowId. The search
+     * starts at mSyncPosition and then alternates between moving up and moving
+     * down until 1) we find the right position, or 2) we run out of time, or 3)
+     * we have looked at every position
+     * 
+     * @return Position of the row that matches mSyncRowId, or
+     *         {@link #INVALID_POSITION} if it can't be found
      */
     int findSyncPosition() {
         int count = mItemCount;
@@ -955,11 +972,14 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
 
     /**
      * Find a position that can be selected (i.e., is not a separator).
-     *
-     * @param position The starting position to look at.
-     * @param lookDown Whether to look down for other positions.
-     * @return The next selectable position starting at position and then searching either up or
-     * down. Returns {@link #INVALID_POSITION} if nothing can be found.
+     * 
+     * @param position
+     *            The starting position to look at.
+     * @param lookDown
+     *            Whether to look down for other positions.
+     * @return The next selectable position starting at position and then
+     *         searching either up or down. Returns {@link #INVALID_POSITION} if
+     *         nothing can be found.
      */
     int lookForSelectablePosition(int position, boolean lookDown) {
         return position;
@@ -968,6 +988,7 @@ public abstract class PLA_AdapterView<T extends Adapter> extends ViewGroup {
     /**
      * Remember enough information to restore the screen state when the data has
      * changed.
+     * 
      */
     void rememberSyncState() {
         if (getChildCount() > 0) {
