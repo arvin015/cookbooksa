@@ -48,12 +48,12 @@ import java.util.ArrayList;
 /**
  * A view that shows items in a vertically scrolling list. The items come from
  * the {@link ListAdapter} associated with this view.
- * 
+ * <p/>
  * <p>
  * See the <a href="{@docRoot}
  * resources/tutorials/views/hello-listview.html">List View tutorial</a>.
  * </p>
- * 
+ *
  * @attr ref android.R.styleable#ListView_entries
  * @attr ref android.R.styleable#ListView_divider
  * @attr ref android.R.styleable#ListView_dividerHeight
@@ -86,14 +86,18 @@ public class PLA_ListView extends PLA_AbsListView {
      * the top or a footer at the bottom.
      */
     public class FixedViewInfo {
-        /** The view to add to the list */
+        /**
+         * The view to add to the list
+         */
         public View view;
         /**
          * The data backing the view. This is returned from
          * {@link ListAdapter#getItem(int)}.
          */
         public Object data;
-        /** <code>true</code> if the fixed view should be selectable in the list */
+        /**
+         * <code>true</code> if the fixed view should be selectable in the list
+         */
         public boolean isSelectable;
     }
 
@@ -148,7 +152,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * @return The maximum amount a list view will scroll in response to an
-     *         arrow event.
+     * arrow event.
      */
     public int getMaxScrollAmount() {
         // return (int) (MAX_SCROLL_FACTOR * (mBottom - mTop));
@@ -201,17 +205,14 @@ public class PLA_ListView extends PLA_AbsListView {
      * Add a fixed view to appear at the top of the list. If addHeaderView is
      * called more than once, the views will appear in the order they were
      * added. Views added using this call can take focus if they want.
-     * <p>
+     * <p/>
      * NOTE: Call this before calling setAdapter. This is so ListView can wrap
      * the supplied cursor with one that will also account for header and footer
      * views.
-     * 
-     * @param v
-     *            The view to add.
-     * @param data
-     *            Data to associate with this view
-     * @param isSelectable
-     *            whether the item is selectable
+     *
+     * @param v            The view to add.
+     * @param data         Data to associate with this view
+     * @param isSelectable whether the item is selectable
      */
     public void addHeaderView(View v, Object data, boolean isSelectable) {
 
@@ -230,13 +231,12 @@ public class PLA_ListView extends PLA_AbsListView {
      * Add a fixed view to appear at the top of the list. If addHeaderView is
      * called more than once, the views will appear in the order they were
      * added. Views added using this call can take focus if they want.
-     * <p>
+     * <p/>
      * NOTE: Call this before calling setAdapter. This is so ListView can wrap
      * the supplied cursor with one that will also account for header and footer
      * views.
-     * 
-     * @param v
-     *            The view to add.
+     *
+     * @param v The view to add.
      */
     public void addHeaderView(View v) {
         addHeaderView(v, null, true);
@@ -249,7 +249,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * check this view is fixed view(ex>Header & Footer) or not.
-     * 
+     *
      * @param v
      * @return true if this is fixed view.
      */
@@ -284,11 +284,10 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Removes a previously-added header view.
-     * 
-     * @param v
-     *            The view to remove
+     *
+     * @param v The view to remove
      * @return true if the view was removed, false if the view was not a header
-     *         view
+     * view
      */
     public boolean removeHeaderView(View v) {
         if (mHeaderViewInfos.size() > 0) {
@@ -318,17 +317,14 @@ public class PLA_ListView extends PLA_AbsListView {
      * Add a fixed view to appear at the bottom of the list. If addFooterView is
      * called more than once, the views will appear in the order they were
      * added. Views added using this call can take focus if they want.
-     * <p>
+     * <p/>
      * NOTE: Call this before calling setAdapter. This is so ListView can wrap
      * the supplied cursor with one that will also account for header and footer
      * views.
-     * 
-     * @param v
-     *            The view to add.
-     * @param data
-     *            Data to associate with this view
-     * @param isSelectable
-     *            true if the footer view can be selected
+     *
+     * @param v            The view to add.
+     * @param data         Data to associate with this view
+     * @param isSelectable true if the footer view can be selected
      */
     public void addFooterView(View v, Object data, boolean isSelectable) {
         FixedViewInfo info = new FixedViewInfo();
@@ -348,14 +344,12 @@ public class PLA_ListView extends PLA_AbsListView {
      * Add a fixed view to appear at the bottom of the list. If addFooterView is
      * called more than once, the views will appear in the order they were
      * added. Views added using this call can take focus if they want.
-     * <p>
+     * <p/>
      * NOTE: Call this before calling setAdapter. This is so ListView can wrap
      * the supplied cursor with one that will also account for header and footer
      * views.
-     * 
-     * 
-     * @param v
-     *            The view to add.
+     *
+     * @param v The view to add.
      */
     public void addFooterView(View v) {
         addFooterView(v, null, true);
@@ -368,11 +362,10 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Removes a previously-added footer view.
-     * 
-     * @param v
-     *            The view to remove
+     *
+     * @param v The view to remove
      * @return true if the view was removed, false if the view was not a footer
-     *         view
+     * view
      */
     public boolean removeFooterView(View v) {
         if (mFooterViewInfos.size() > 0) {
@@ -392,9 +385,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * adapter might not be the same adapter passed to
      * {@link #setAdapter(ListAdapter)} but might be a
      * {@link WrapperListAdapter}.
-     * 
+     *
      * @return The adapter currently used to display data in this ListView.
-     * 
      * @see #setAdapter(ListAdapter)
      */
     @Override
@@ -404,17 +396,15 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Sets the data behind this ListView.
-     * 
+     * <p/>
      * The adapter passed to this method may be wrapped by a
      * {@link WrapperListAdapter}, depending on the ListView features currently
      * in use. For instance, adding headers and/or footers will cause the
      * adapter to be wrapped.
-     * 
-     * @param adapter
-     *            The ListAdapter which is responsible for maintaining the data
-     *            backing this list and for producing a view to represent an
-     *            item in that data set.
-     * 
+     *
+     * @param adapter The ListAdapter which is responsible for maintaining the data
+     *                backing this list and for producing a view to represent an
+     *                item in that data set.
      * @see #getAdapter()
      */
     @Override
@@ -452,6 +442,16 @@ public class PLA_ListView extends PLA_AbsListView {
         }
 
         requestLayout();
+    }
+
+    /**
+     * arvin edit
+     * get fisrt visible position with XMultiListView
+     *
+     * @return
+     */
+    public int getFirstVisiblePositionWithXMView() {
+        return mFirstPosition;
     }
 
     @Override
@@ -600,7 +600,7 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * override this method to manipulate the position of each item in list
      * view. return item left position.
-     * 
+     *
      * @param pos
      * @return pos's item left position.
      */
@@ -611,7 +611,7 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * override this method to manipulate the position of each item in list
      * view. return item's top position. (item will be added in down direction)
-     * 
+     *
      * @param pos
      * @return value of pos's item top.
      */
@@ -624,7 +624,7 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * override this method to manipulate the position of each item in list
      * view. return item's bottom position. (item will be added in up direction)
-     * 
+     *
      * @param pos
      * @return value of pos's item bottom.
      */
@@ -650,16 +650,12 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Fills the list from pos down to the end of the list view.
-     * 
-     * @param pos
-     *            The first position to put in the list
-     * 
-     * @param nextTop
-     *            The location where the top of the item associated with pos
-     *            should be drawn
-     * 
+     *
+     * @param pos     The first position to put in the list
+     * @param nextTop The location where the top of the item associated with pos
+     *                should be drawn
      * @return The view that is currently selected, if it happens to be in the
-     *         range that we draw.
+     * range that we draw.
      */
     private View fillDown(int pos, int top) {
         int end = (getBottom() - getTop()) - mListPadding.bottom;
@@ -677,14 +673,10 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Fills the list from pos up to the top of the list view.
-     * 
-     * @param pos
-     *            The first position to put in the list
-     * 
-     * @param nextBottom
-     *            The location where the bottom of the item associated with pos
-     *            should be drawn
-     * 
+     *
+     * @param pos        The first position to put in the list
+     * @param nextBottom The location where the bottom of the item associated with pos
+     *                   should be drawn
      * @return The view that is currently selected
      */
     private View fillUp(int pos, int bottom) {
@@ -706,10 +698,8 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Fills the list from top to bottom, starting with mFirstPosition
-     * 
-     * @param nextTop
-     *            The location where the top of the first item should be drawn
-     * 
+     *
+     * @param nextTop The location where the top of the first item should be drawn
      * @return The view that is currently selected
      */
     private View fillFromTop(int nextTop) {
@@ -793,7 +783,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * @return True to recycle the views used to measure this ListView in
-     *         UNSPECIFIED/AT_MOST modes, false otherwise.
+     * UNSPECIFIED/AT_MOST modes, false otherwise.
      * @hide
      */
     @ViewDebug.ExportedProperty(category = "list")
@@ -806,32 +796,27 @@ public class PLA_ListView extends PLA_AbsListView {
      * returns the height with this ListView's padding and divider heights
      * included. If maxHeight is provided, the measuring will stop when the
      * current height reaches maxHeight.
-     * 
-     * @param widthMeasureSpec
-     *            The width measure spec to be given to a child's
-     *            {@link View#measure(int, int)}.
-     * @param startPosition
-     *            The position of the first child to be shown.
-     * @param endPosition
-     *            The (inclusive) position of the last child to be shown.
-     *            Specify {@link #NO_POSITION} if the last child should be the
-     *            last available child from the adapter.
-     * @param maxHeight
-     *            The maximum height that will be returned (if all the children
-     *            don't fit in this value, this value will be returned).
-     * @param disallowPartialChildPosition
-     *            In general, whether the returned height should only contain
-     *            entire children. This is more powerful--it is the first
-     *            inclusive position at which partial children will not be
-     *            allowed. Example: it looks nice to have at least 3 completely
-     *            visible children, and in portrait this will most likely fit;
-     *            but in landscape there could be times when even 2 children can
-     *            not be completely shown, so a value of 2 (remember, inclusive)
-     *            would be good (assuming startPosition is 0).
+     *
+     * @param widthMeasureSpec             The width measure spec to be given to a child's
+     *                                     {@link View#measure(int, int)}.
+     * @param startPosition                The position of the first child to be shown.
+     * @param endPosition                  The (inclusive) position of the last child to be shown.
+     *                                     Specify {@link #NO_POSITION} if the last child should be the
+     *                                     last available child from the adapter.
+     * @param maxHeight                    The maximum height that will be returned (if all the children
+     *                                     don't fit in this value, this value will be returned).
+     * @param disallowPartialChildPosition In general, whether the returned height should only contain
+     *                                     entire children. This is more powerful--it is the first
+     *                                     inclusive position at which partial children will not be
+     *                                     allowed. Example: it looks nice to have at least 3 completely
+     *                                     visible children, and in portrait this will most likely fit;
+     *                                     but in landscape there could be times when even 2 children can
+     *                                     not be completely shown, so a value of 2 (remember, inclusive)
+     *                                     would be good (assuming startPosition is 0).
      * @return The height of this ListView with the given children.
      */
     final int measureHeightOfChildren(int widthMeasureSpec, int startPosition, int endPosition, final int maxHeight,
-            int disallowPartialChildPosition) {
+                                      int disallowPartialChildPosition) {
 
         final ListAdapter adapter = mAdapter;
         if (adapter == null) {
@@ -869,14 +854,14 @@ public class PLA_ListView extends PLA_AbsListView {
                 // returnedHeight > maxHeight,
                 // then the i'th position did not fit completely.
                 return (disallowPartialChildPosition >= 0) // Disallowing is
-                                                           // enabled (> -1)
+                        // enabled (> -1)
                         && (i > disallowPartialChildPosition) // We've past the
-                                                              // min pos
+                        // min pos
                         && (prevHeightWithoutPartialChild > 0) // We have a prev
-                                                               // height
+                        // height
                         && (returnedHeight != maxHeight) // i'th child did not
-                                                         // fit completely
-                ? prevHeightWithoutPartialChild : maxHeight;
+                        // fit completely
+                        ? prevHeightWithoutPartialChild : maxHeight;
             }
 
             if ((disallowPartialChildPosition >= 0) && (i >= disallowPartialChildPosition)) {
@@ -915,15 +900,12 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Put a specific item at a specific location on the screen and then build
      * up and down from there.
-     * 
-     * @param position
-     *            The reference view to use as the starting point
-     * @param top
-     *            Pixel offset from the top of this view to the top of the
-     *            reference view.
-     * 
+     *
+     * @param position The reference view to use as the starting point
+     * @param top      Pixel offset from the top of this view to the top of the
+     *                 reference view.
      * @return The selected view, or null if the selected view is outside the
-     *         visible area.
+     * visible area.
      */
     private View fillSpecific(int position, int top) {
 
@@ -964,9 +946,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * Check if we have dragged the bottom of the list too high (we have pushed
      * the top element off the top of the screen when we did not need to).
      * Correct by sliding everything back down.
-     * 
-     * @param childCount
-     *            Number of children
+     *
+     * @param childCount Number of children
      */
     private void correctTooHigh(int childCount) {
         // First see if the last item is visible. If it is not, it is OK for the
@@ -1023,9 +1004,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * Check if we have dragged the bottom of the list too low (we have pushed
      * the bottom element off the bottom of the screen when we did not need to).
      * Correct by sliding everything back up.
-     * 
-     * @param childCount
-     *            Number of children
+     *
+     * @param childCount Number of children
      */
     private void correctTooLow(int childCount) {
         // First see if the first item is visible. If it is not, it is OK for
@@ -1107,14 +1087,14 @@ public class PLA_ListView extends PLA_AbsListView {
 
             // Remember stuff we will need down below
             switch (mLayoutMode) {
-            case LAYOUT_FORCE_TOP:
-            case LAYOUT_FORCE_BOTTOM:
-            case LAYOUT_SPECIFIC:
-            case LAYOUT_SYNC:
-                break;
-            default:
-                // Remember the previous first child
-                oldFirst = getChildAt(0);
+                case LAYOUT_FORCE_TOP:
+                case LAYOUT_FORCE_BOTTOM:
+                case LAYOUT_SPECIFIC:
+                case LAYOUT_SYNC:
+                    break;
+                default:
+                    // Remember the previous first child
+                    oldFirst = getChildAt(0);
             }
 
             boolean dataChanged = mDataChanged;
@@ -1178,46 +1158,46 @@ public class PLA_ListView extends PLA_AbsListView {
             }
 
             switch (mLayoutMode) {
-            case LAYOUT_SYNC:
-                onLayoutSync(mSyncPosition);
-                // Clear out old views
-                detachAllViewsFromParent();
-                fillSpecific(mSyncPosition, mSpecificTop);
-                onLayoutSyncFinished(mSyncPosition);
-                break;
-            case LAYOUT_FORCE_BOTTOM:
-                detachAllViewsFromParent();
-                fillUp(mItemCount - 1, childrenBottom);
-                adjustViewsUpOrDown();
-                break;
-            case LAYOUT_FORCE_TOP:
-                detachAllViewsFromParent();
-                mFirstPosition = 0;
-                fillFromTop(childrenTop);
-                adjustViewsUpOrDown();
-                break;
-            default:
-                if (childCount == 0) {
+                case LAYOUT_SYNC:
+                    onLayoutSync(mSyncPosition);
+                    // Clear out old views
                     detachAllViewsFromParent();
-                    if (!mStackFromBottom) {
-                        fillFromTop(childrenTop);
-                    } else {
-                        fillUp(mItemCount - 1, childrenBottom);
-                    }
-                } else {
-                    if (mFirstPosition < mItemCount) {
-                        onLayoutSync(mFirstPosition);
+                    fillSpecific(mSyncPosition, mSpecificTop);
+                    onLayoutSyncFinished(mSyncPosition);
+                    break;
+                case LAYOUT_FORCE_BOTTOM:
+                    detachAllViewsFromParent();
+                    fillUp(mItemCount - 1, childrenBottom);
+                    adjustViewsUpOrDown();
+                    break;
+                case LAYOUT_FORCE_TOP:
+                    detachAllViewsFromParent();
+                    mFirstPosition = 0;
+                    fillFromTop(childrenTop);
+                    adjustViewsUpOrDown();
+                    break;
+                default:
+                    if (childCount == 0) {
                         detachAllViewsFromParent();
-                        fillSpecific(mFirstPosition, oldFirst == null ? childrenTop : oldFirst.getTop());
-                        onLayoutSyncFinished(mFirstPosition);
+                        if (!mStackFromBottom) {
+                            fillFromTop(childrenTop);
+                        } else {
+                            fillUp(mItemCount - 1, childrenBottom);
+                        }
                     } else {
-                        onLayoutSync(0);
-                        detachAllViewsFromParent();
-                        fillSpecific(0, childrenTop);
-                        onLayoutSyncFinished(0);
+                        if (mFirstPosition < mItemCount) {
+                            onLayoutSync(mFirstPosition);
+                            detachAllViewsFromParent();
+                            fillSpecific(mFirstPosition, oldFirst == null ? childrenTop : oldFirst.getTop());
+                            onLayoutSyncFinished(mFirstPosition);
+                        } else {
+                            onLayoutSync(0);
+                            detachAllViewsFromParent();
+                            fillSpecific(0, childrenTop);
+                            onLayoutSyncFinished(0);
+                        }
                     }
-                }
-                break;
+                    break;
             }
 
             // Flush any cached views that did not get reused above
@@ -1257,8 +1237,7 @@ public class PLA_ListView extends PLA_AbsListView {
     }
 
     /**
-     * @param child
-     *            a direct child of this list.
+     * @param child a direct child of this list.
      * @return Whether child is a header or footer view.
      */
     private boolean isDirectChildHeaderOrFooter(View child) {
@@ -1284,18 +1263,13 @@ public class PLA_ListView extends PLA_AbsListView {
      * Obtain the view and add it to our list of children. The view can be made
      * fresh, converted from an unused view, or used as is if it was in the
      * recycle bin.
-     * 
-     * @param position
-     *            Logical position in the list
-     * @param childrenBottomOrTop
-     *            Top or bottom edge of the view to add
-     * @param flow
-     *            If flow is true, align top edge to y. If false, align bottom
-     *            edge to y.
-     * @param childrenLeft
-     *            Left edge where children should be positioned
-     * @param selected
-     *            Is this position selected?
+     *
+     * @param position            Logical position in the list
+     * @param childrenBottomOrTop Top or bottom edge of the view to add
+     * @param flow                If flow is true, align top edge to y. If false, align bottom
+     *                            edge to y.
+     * @param childrenLeft        Left edge where children should be positioned
+     * @param selected            Is this position selected?
      * @return View that was added
      */
     @SuppressWarnings("deprecation")
@@ -1336,11 +1310,9 @@ public class PLA_ListView extends PLA_AbsListView {
     }
 
     /**
-     * @param position
-     *            position of newly adde ditem.
-     * @param flow
-     *            If flow is true, align top edge to y. If false, align bottom
-     *            edge to y.
+     * @param position position of newly adde ditem.
+     * @param flow     If flow is true, align top edge to y. If false, align bottom
+     *                 edge to y.
      */
     protected void onItemAddedToList(int position, boolean flow) {
     }
@@ -1348,23 +1320,16 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Add a view as a child and make sure it is measured (if necessary) and
      * positioned properly.
-     * 
-     * @param child
-     *            The view to add
-     * @param position
-     *            The position of this child
-     * @param y
-     *            The y position relative to which this view will be positioned
-     * @param flowDown
-     *            If true, align top edge to y. If false, align bottom edge to
-     *            y.
-     * @param childrenLeft
-     *            Left edge where children should be positioned
-     * @param selected
-     *            Is this position selected?
-     * @param recycled
-     *            Has this view been pulled from the recycle bin? If so it does
-     *            not need to be remeasured.
+     *
+     * @param child        The view to add
+     * @param position     The position of this child
+     * @param y            The y position relative to which this view will be positioned
+     * @param flowDown     If true, align top edge to y. If false, align bottom edge to
+     *                     y.
+     * @param childrenLeft Left edge where children should be positioned
+     * @param selected     Is this position selected?
+     * @param recycled     Has this view been pulled from the recycle bin? If so it does
+     *                     not need to be remeasured.
      */
     private void setupChild(View child, int position, int y, boolean flowDown, int childrenLeft, boolean selected, boolean recycled) {
 
@@ -1447,7 +1412,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * this method is called every time a new child is mesaure.
-     * 
+     *
      * @param child
      * @param widthMeasureSpec
      * @param heightMeasureSpec
@@ -1458,7 +1423,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * this method is called to adjust child view's up & down.
-     * 
+     *
      * @param down
      */
     protected void onAdjustChildViews(boolean down) {
@@ -1478,9 +1443,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * selected but it will still be positioned appropriately. If the specified
      * selection position is less than 0, then the item at position 0 will be
      * selected.
-     * 
-     * @param position
-     *            Index (starting at 0) of the data item to be selected.
+     *
+     * @param position Index (starting at 0) of the data item to be selected.
      */
     @Override
     public void setSelection(int position) {
@@ -1488,14 +1452,12 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * Find a position that can be selected (i.e., is not a separator).
-     * 
-     * @param position
-     *            The starting position to look at.
-     * @param lookDown
-     *            Whether to look down for other positions.
+     *
+     * @param position The starting position to look at.
+     * @param lookDown Whether to look down for other positions.
      * @return The next selectable position starting at position and then
-     *         searching either up or down. Returns {@link #INVALID_POSITION} if
-     *         nothing can be found.
+     * searching either up or down. Returns {@link #INVALID_POSITION} if
+     * nothing can be found.
      */
     @Override
     int lookForSelectablePosition(int position, boolean lookDown) {
@@ -1568,10 +1530,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * Go to the last or first item if possible (not worrying about panning
      * across or navigating within the internal focus of the currently selected
      * item.)
-     * 
-     * @param direction
-     *            either {@link View#FOCUS_UP} or {@link View#FOCUS_DOWN}
-     * 
+     *
+     * @param direction either {@link View#FOCUS_UP} or {@link View#FOCUS_DOWN}
      * @return whether selection was moved
      */
     public boolean fullScroll(int direction) {
@@ -1603,9 +1563,8 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Scroll the children by amount, adding a view at the end and removing
      * views that fall off as necessary.
-     * 
-     * @param amount
-     *            The amount (positive or negative) to scroll.
+     *
+     * @param amount The amount (positive or negative) to scroll.
      */
     private void scrollListItemsBy(int amount) {
         // offsetChildrenTopAndBottom(amount);
@@ -1713,9 +1672,8 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Indicates that the views created by the ListAdapter can contain focusable
      * items.
-     * 
-     * @param itemsCanFocus
-     *            true if items can get focus, false otherwise
+     *
+     * @param itemsCanFocus true if items can get focus, false otherwise
      */
     public void setItemsCanFocus(boolean itemsCanFocus) {
         mItemsCanFocus = itemsCanFocus;
@@ -1726,7 +1684,7 @@ public class PLA_ListView extends PLA_AbsListView {
 
     /**
      * @return Whether the views created by the ListAdapter can contain
-     *         focusable items.
+     * focusable items.
      */
     public boolean getItemsCanFocus() {
         return mItemsCanFocus;
@@ -1904,9 +1862,8 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Sets the drawable that will be drawn above all other list content. This
      * area can become visible when the user overscrolls the list.
-     * 
-     * @param header
-     *            The drawable to use
+     *
+     * @param header The drawable to use
      */
     public void setOverscrollHeader(Drawable header) {
         mOverScrollHeader = header;
@@ -1930,9 +1887,8 @@ public class PLA_ListView extends PLA_AbsListView {
      * Sets the drawable that will be drawn below all other list content. This
      * area can become visible when the user overscrolls the list, or when the
      * list's content does not fully fill the container area.
-     * 
-     * @param footer
-     *            The drawable to use
+     *
+     * @param footer The drawable to use
      */
     public void setOverscrollFooter(Drawable footer) {
         mOverScrollFooter = footer;
@@ -2041,11 +1997,9 @@ public class PLA_ListView extends PLA_AbsListView {
      * Sets the checked state of the specified position. The is only valid if
      * the choice mode has been set to {@link #CHOICE_MODE_SINGLE} or
      * {@link #CHOICE_MODE_MULTIPLE}.
-     * 
-     * @param position
-     *            The item whose checked state is to be checked
-     * @param value
-     *            The new checked state for the item
+     *
+     * @param position The item whose checked state is to be checked
+     * @param value    The new checked state for the item
      */
     public void setItemChecked(int position, boolean value) {
     }
@@ -2054,12 +2008,10 @@ public class PLA_ListView extends PLA_AbsListView {
      * Returns the checked state of the specified position. The result is only
      * valid if the choice mode has been set to {@link #CHOICE_MODE_SINGLE} or
      * {@link #CHOICE_MODE_MULTIPLE}.
-     * 
-     * @param position
-     *            The item whose checked state to return
+     *
+     * @param position The item whose checked state to return
      * @return The item's checked state or <code>false</code> if choice mode is
-     *         invalid
-     * 
+     * invalid
      * @see #setChoiceMode(int)
      */
     public boolean isItemChecked(int position) {
@@ -2069,10 +2021,9 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Returns the currently checked item. The result is only valid if the
      * choice mode has been set to {@link #CHOICE_MODE_SINGLE}.
-     * 
+     *
      * @return The position of the currently checked item or
-     *         {@link #INVALID_POSITION} if nothing is selected
-     * 
+     * {@link #INVALID_POSITION} if nothing is selected
      * @see #setChoiceMode(int)
      */
     public int getCheckedItemPosition() {
@@ -2082,11 +2033,11 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Returns the set of checked items in the list. The result is only valid if
      * the choice mode has not been set to {@link #CHOICE_MODE_NONE}.
-     * 
+     *
      * @return A SparseBooleanArray which will return true for each call to
-     *         get(int position) where position is a position in the list, or
-     *         <code>null</code> if the choice mode is set to
-     *         {@link #CHOICE_MODE_NONE}.
+     * get(int position) where position is a position in the list, or
+     * <code>null</code> if the choice mode is set to
+     * {@link #CHOICE_MODE_NONE}.
      */
     public SparseBooleanArray getCheckedItemPositions() {
         return null;
@@ -2095,10 +2046,9 @@ public class PLA_ListView extends PLA_AbsListView {
     /**
      * Returns the set of checked items ids. The result is only valid if the
      * choice mode has not been set to {@link #CHOICE_MODE_NONE}.
-     * 
+     *
      * @return A new array which contains the id of each checked item in the
-     *         list.
-     * 
+     * list.
      * @deprecated Use {@link #getCheckedItemIds()} instead.
      */
     @Deprecated
@@ -2115,9 +2065,9 @@ public class PLA_ListView extends PLA_AbsListView {
      * Returns the set of checked items ids. The result is only valid if the
      * choice mode has not been set to {@link #CHOICE_MODE_NONE} and the adapter
      * has stable IDs. ({@link ListAdapter#hasStableIds()} == {@code true})
-     * 
+     *
      * @return A new array which contains the id of each checked item in the
-     *         list.
+     * list.
      */
     public long[] getCheckedItemIds() {
         return new long[0];

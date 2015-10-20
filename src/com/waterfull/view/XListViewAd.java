@@ -43,7 +43,6 @@ public class XListViewAd extends LinearLayout {
     private FinalHttp fh;
     private FinalBitmap fb;
     private DecoratorViewPager viewPager;
-    private ImageAdapter mAdapter;
     private ImageView lastSelectedImage;
     private LinearLayout ll_circle;
     private FrameLayout imageContainer;
@@ -91,9 +90,6 @@ public class XListViewAd extends LinearLayout {
                 DisplayUtil.screenHeight / 4);
         imageContainer.setLayoutParams(params);
 
-        mAdapter = new ImageAdapter();
-        viewPager.setAdapter(mAdapter);
-
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -125,6 +121,7 @@ public class XListViewAd extends LinearLayout {
 
     private void loadData() {
         // TODO Auto-generated method stub
+
         fh.get(Constant.url_activityList, new AjaxCallBack<Object>() {
 
             @Override
@@ -148,6 +145,12 @@ public class XListViewAd extends LinearLayout {
                 }
 
                 if (obj != null) {
+
+                    ll_circle.removeAllViews();
+
+                    resetCircles();
+                    resetImages();
+
                     JSONArray array = null;
                     try {
                         array = obj.optJSONArray("result");
@@ -175,20 +178,17 @@ public class XListViewAd extends LinearLayout {
                     ll_circle.addView(imageView);
                 }
 
-                Log.d("print", "images.size()=" + images.size());
-
-                mAdapter.notifyDataSetChanged();
+                viewPager.setAdapter(null);
+                viewPager.setAdapter(new ImageAdapter());
             }
 
         });
     }
 
     public void refresh() {
-        ll_circle.removeAllViews();
-        resetImages();
-        resetCircles();
 
         loadData();
+
     }
 
     private ImageView addCircleImage() {

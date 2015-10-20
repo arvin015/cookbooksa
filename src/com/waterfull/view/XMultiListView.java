@@ -10,6 +10,7 @@ package com.waterfull.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -234,7 +235,10 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
      * reset header view's height by scroller
      */
     private void resetHeaderHeight() {
-        int height = mHeaderView.getVisiableHeight();
+        int height = mHeaderView.getVisiableHeight() + 1;
+
+        Log.d("print", "height=" + height);
+
         if (height == 0) // not visible.
             return;
         // refreshing and header isn't shown fully. do nothing.
@@ -246,6 +250,7 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
         if (mPullRefreshing && height > mHeaderViewHeight) {
             finalHeight = mHeaderViewHeight;
         }
+
         mScrollBack = SCROLLBACK_HEADER;
         mScroller.startScroll(0, height, 0, finalHeight - height, SCROLL_DURATION);
         // trigger computeScroll
@@ -304,8 +309,13 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
         return mTotalItemCount;
     }
 
+    private boolean canRefresh = false;//
+    private boolean isFirst = true;
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
+
+        //to prevent the down event is not executed
         if (mLastY == -1) {
             mLastY = ev.getRawY();
         }
@@ -313,12 +323,34 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mLastY = ev.getRawY();
+
+                // viewpager can not trigger the down event, I do not know why???
+//                if (getFirstVisiblePositionWithXMView() == 0) {
+//                    canRefresh = true;
+//                } else {
+//                    canRefresh = false;
+//                }
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 final float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
-                if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+
+                if (isFirst) {
+                    isFirst = false;
+
+                    if (getFirstVisiblePositionWithXMView() == 0) {
+                        canRefresh = true;
+                    } else {
+                        canRefresh = false;
+                    }
+                }
+
+//                if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+                if (canRefresh &&
+                        (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {//arvin edit
                     // the first item is showing, header has shown or pull down.
+
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
                     invokeOnScrolling();
 
@@ -335,7 +367,11 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
                 }
                 break;
             default:
-                mLastY = -1; // reset
+
+                mLastY = -1;
+                canRefresh = false;
+                isFirst = true;
+
                 if (getFirstVisiblePosition() == 0) {
                     // invoke refresh
                     if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight
@@ -372,6 +408,18 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
             invokeOnScrolling();
         }
         super.computeScroll();
+    }
+
+    public XListViewHeader getmHeaderView() {
+        return mHeaderView;
+    }
+
+    public XListViewFooter getmFooterView() {
+        return mFooterView;
+    }
+
+    public void setmHeaderView(XListViewHeader mHeaderView) {
+        this.mHeaderView = mHeaderView;
     }
 
     public boolean ismPullRefreshing() {

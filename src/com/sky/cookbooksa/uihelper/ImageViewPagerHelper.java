@@ -124,6 +124,11 @@ public class ImageViewPagerHelper {
                 }
 
                 if (obj != null) {
+
+                    ll_circle.removeAllViews();
+                    resetImages();
+                    resetCircles();
+
                     JSONArray array = null;
                     try {
                         array = obj.optJSONArray("result");
@@ -141,8 +146,6 @@ public class ImageViewPagerHelper {
                     }
                 }
 
-                viewPager.setAdapter(new ImageAdapter());
-
                 for (int i = 0; i < images.size(); i++) {
                     ImageView imageView = addCircleImage();
                     if (i == 0) {
@@ -152,16 +155,15 @@ public class ImageViewPagerHelper {
 
                     ll_circle.addView(imageView);
                 }
+
+                viewPager.setAdapter(null);
+                viewPager.setAdapter(new ImageAdapter());
             }
 
         });
     }
 
     public void refresh() {
-        ll_circle.removeAllViews();
-        resetImages();
-        resetCircles();
-
         loadData();
     }
 

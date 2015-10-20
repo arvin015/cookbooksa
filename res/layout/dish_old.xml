@@ -9,7 +9,9 @@
     <com.waterfull.view.XMultiListView
         android:id="@+id/multiListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:cacheColorHint="#00000000" />
 
     <include layout="@layout/empty_loading" />
 

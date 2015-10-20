@@ -3,6 +3,7 @@ package com.slidingmenu.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,7 +11,6 @@ import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
@@ -27,7 +27,9 @@ import com.sky.cookbooksa.entity.Dish;
 import com.sky.cookbooksa.utils.Constant;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
+import com.sky.cookbooksa.widget.ScaleImageView;
 import com.waterfull.lib.PLA_AbsListView;
+import com.waterfull.lib.PLA_AdapterView;
 import com.waterfull.view.XListViewAd;
 import com.waterfull.view.XMultiListView;
 
@@ -139,6 +141,17 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
         xListViewAd = new XListViewAd(act);
         waterfallView.addMoreHeaderView(xListViewAd);
 
+        waterfallView.getmFooterView().hide();//进来时先隐藏加载更多Loading
+
+        waterfallView.setOnItemClickListener(new PLA_AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(PLA_AdapterView<?> parent, View view, int position, long id) {
+//                if (position > waterfallView.getHeaderViewsCount() - 1) {//除去header's view
+//                    goDetail(dishList.get(position - waterfallView.getHeaderViewsCount()).getId());
+//                }
+            }
+        });
+
         waterfallView.setOnScrollListener(new XMultiListView.OnXScrollListener() {
             @Override
             public void onXScrolling(View view) {
@@ -245,10 +258,23 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
                                     }
                                 });
                             }
-                        }, 2000);
+                        }, 1000);
 
                     } else {//加载更多
-                        waterfallView.stopLoadMore();
+
+                        waterfallView.getmFooterView().show();//显示加载更多Loading
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                act.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        waterfallView.stopLoadMore();
+                                    }
+                                });
+                            }
+                        }, 1000);
                     }
 
                     ArrayList<Dish> list = new ArrayList<>();
@@ -285,7 +311,7 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
 
         loadData(true);
 
-//        xListViewAd.refresh();//刷新广告
+        xListViewAd.refresh();//刷新广告
     }
 
     /**
@@ -294,7 +320,8 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
     @Override
     public void onLoadMore() {
 
-        currentCount = waterfallView.getmTotalItemCount() - 3;
+        currentCount = waterfallView.getmTotalItemCount() -
+                waterfallView.getHeaderViewsCount() - waterfallView.getFooterViewsCount();
 
         if (count == currentCount) {
 
@@ -356,12 +383,12 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
                 view = inflater.inflate(R.layout.dish_grid_item, null);
 
                 viewHolder.rl_main = (FrameLayout) view.findViewById(R.id.rl_main);
-                viewHolder.imageView = (ImageView) view.findViewById(R.id.mainpic);
+                viewHolder.mainImg = (ScaleImageView) view.findViewById(R.id.mainImg);
                 viewHolder.name = (TextView) view.findViewById(R.id.name);
                 viewHolder.style = (TextView) view.findViewById(R.id.style);
                 viewHolder.during = (TextView) view.findViewById(R.id.during);
 
-                viewHolder.rl_main.setOnClickListener(new OnClickListener() {
+                viewHolder.rl_main.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View v) {
@@ -379,16 +406,32 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
             viewHolder.name.setText(dish.getName());
             viewHolder.style.setText(dish.getStyle());
             viewHolder.during.setText(dish.getDuring());
+
             String mainpicStr = dish.getMainPic();
             mainpicStr = mainpicStr.substring(mainpicStr.lastIndexOf("/") + 1);
-            fb.display(viewHolder.imageView, Constant.DIR + mainpicStr);
+
+            //从缓存中获取图片，固定ImageView大小，解决图片大小频繁变化的问题
+            Bitmap bitmap = null;
+            try {
+                bitmap = fb.getBitmapFromCache(Constant.DIR + mainpicStr);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (bitmap != null) {
+
+                viewHolder.mainImg.setImageWidth(bitmap.getWidth());
+                viewHolder.mainImg.setImageHeight(bitmap.getHeight());
+
+            }
+
+            fb.display(viewHolder.mainImg, Constant.DIR + mainpicStr);
 
             return view;
         }
 
         class ViewHolder {
             FrameLayout rl_main;
-            ImageView imageView;
+            ScaleImageView mainImg;
             TextView name;
             TextView style;
             TextView during;
