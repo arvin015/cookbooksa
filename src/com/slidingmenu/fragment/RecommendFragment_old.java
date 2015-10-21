@@ -422,9 +422,11 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
                 viewHolder.mainImg.setImageWidth(bitmap.getWidth());
                 viewHolder.mainImg.setImageHeight(bitmap.getHeight());
 
-            }
+                viewHolder.mainImg.setImageBitmap(bitmap);
 
-            fb.display(viewHolder.mainImg, Constant.DIR + mainpicStr);
+            } else {
+                fb.display(viewHolder.mainImg, Constant.DIR + mainpicStr);
+            }
 
             return view;
         }

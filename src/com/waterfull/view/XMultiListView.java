@@ -10,7 +10,6 @@ package com.waterfull.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
@@ -236,8 +235,6 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
      */
     private void resetHeaderHeight() {
         int height = mHeaderView.getVisiableHeight() + 1;
-
-        Log.d("print", "height=" + height);
 
         if (height == 0) // not visible.
             return;

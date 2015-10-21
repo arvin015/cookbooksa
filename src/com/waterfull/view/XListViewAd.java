@@ -2,12 +2,14 @@ package com.waterfull.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -33,6 +35,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by arvin.li on 2015/10/14.
@@ -50,6 +54,30 @@ public class XListViewAd extends LinearLayout {
     private ArrayList<ImageView> circles;
 
     private ArrayList<ActivityInfo> images;
+
+    private Timer mTimer;
+
+    private float startX = -1, startY = -1;
+
+    private boolean canRoll = true;//图片是否可自动滚动
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (msg.what == 10000) {
+                int currentItem = viewPager.getCurrentItem();
+                currentItem++;
+
+                if (currentItem >= images.size()) {
+                    currentItem = 0;
+                }
+
+                viewPager.setCurrentItem(currentItem);
+            }
+        }
+    };
 
     public XListViewAd(Context context) {
         this(context, null);
@@ -78,7 +106,7 @@ public class XListViewAd extends LinearLayout {
 
     private void initView() {
 
-        View view = LayoutInflater.from(act).inflate(R.layout.xlistview_ad, null);
+        final View view = LayoutInflater.from(act).inflate(R.layout.xlistview_ad, null);
 
         addView(view);
 
@@ -89,6 +117,52 @@ public class XListViewAd extends LinearLayout {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 DisplayUtil.screenHeight / 4);
         imageContainer.setLayoutParams(params);
+
+        viewPager.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                float x = event.getX();
+                float y = event.getY();
+
+                int action = event.getAction();
+
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        canRoll = false;
+
+                        startX = x;
+                        startY = y;
+
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+
+                        canRoll = false;
+
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+
+                        canRoll = true;
+
+                        float dis = (float) Math.sqrt((x - startX) * (x - startX) + (y - startY) * (y - startY));
+
+                        if (dis < 5) {
+                            Intent intent = new Intent(act, LuckDrawActivity.class);
+                            intent.putExtra("id", (viewPager.getCurrentItem() + 1) + "");
+                            act.startActivity(intent);
+
+                            act.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                        }
+
+                        break;
+                }
+
+                return false;
+            }
+        });
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -105,7 +179,7 @@ public class XListViewAd extends LinearLayout {
             @Override
             public void onPageScrolled(int arg0, float arg1, int arg2) {
                 // TODO Auto-generated method stub
-
+                startTimer();
             }
 
             @Override
@@ -180,6 +254,9 @@ public class XListViewAd extends LinearLayout {
 
                 viewPager.setAdapter(null);
                 viewPager.setAdapter(new ImageAdapter());
+
+                startTimer();//开始自动滚动图片
+
             }
 
         });
@@ -204,6 +281,37 @@ public class XListViewAd extends LinearLayout {
         circles.add(imageView);
 
         return imageView;
+    }
+
+    public boolean isCanRoll() {
+        return canRoll;
+    }
+
+    public void setCanRoll(boolean canRoll) {
+        this.canRoll = canRoll;
+    }
+
+    private void startTimer() {
+
+        cancelTimer();
+
+        mTimer = new Timer();
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+
+                if (canRoll) {
+                    handler.sendEmptyMessage(10000);
+                }
+            }
+        }, 3000, 3000);
+    }
+
+    private void cancelTimer() {
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 
     private void resetCircles() {
@@ -250,19 +358,6 @@ public class XListViewAd extends LinearLayout {
             imageView.setLayoutParams(params);
 
             fb.display(imageView, Constant.DIR + images.get(position).getActPic());
-
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(act, LuckDrawActivity.class);
-                    intent.putExtra("id", (position + 1) + "");
-                    act.startActivity(intent);
-
-                    act.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-
-                }
-            });
 
             ((ViewPager) container).addView(view);
 

@@ -39,6 +39,8 @@ public class XListView extends ListView {
     private int headerHeight;
     // 是否能够刷新
     private boolean enableRefresh = true;
+    // 当前是否可刷新
+    private boolean enableNowRefresh = false;
     // 是否正在刷新
     private boolean isRefreashing = false;
     // footer
@@ -137,13 +139,18 @@ public class XListView extends ListView {
             case MotionEvent.ACTION_DOWN:
                 // 记录按下的坐标
                 lastY = ev.getRawY();
+
+                if (getFirstVisiblePosition() == 0) {
+                    enableNowRefresh = true;
+                }
+
                 break;
             case MotionEvent.ACTION_MOVE:
                 // 计算移动距离
                 float deltaY = ev.getRawY() - lastY;
                 lastY = ev.getRawY();
                 // 是第一项并且标题已经显示或者是在下拉
-                if (getFirstVisiblePosition() == 0
+                if (enableNowRefresh
                         && (headerView.getVisiableHeight() > 0 || deltaY > 0)) {
                     updateHeaderHeight(deltaY / OFFSET_RADIO);
 
@@ -164,6 +171,8 @@ public class XListView extends ListView {
                 break;
 
             case MotionEvent.ACTION_UP:
+
+                enableNowRefresh = false;
 
                 if (getFirstVisiblePosition() == 0) {
                     if (enableRefresh
