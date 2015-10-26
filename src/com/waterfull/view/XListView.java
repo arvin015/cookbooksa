@@ -301,6 +301,8 @@ public class XListView extends ListView {
             }
         }
 
+        setSelection(0);//解决上拉回推，高度无法改变的问题
+
     }
 
     /**

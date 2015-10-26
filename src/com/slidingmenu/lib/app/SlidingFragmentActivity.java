@@ -1,11 +1,17 @@
 package com.slidingmenu.lib.app;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.sky.cookbooksa.R;
+import com.sky.cookbooksa.utils.SystemBarTintManager;
 import com.slidingmenu.lib.SlidingMenu;
 
 public class SlidingFragmentActivity extends FragmentActivity implements SlidingActivityBase {
@@ -18,8 +24,44 @@ public class SlidingFragmentActivity extends FragmentActivity implements Sliding
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		setSystemBarTintColor();
+
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
+	}
+
+	/**
+	 * 设置状态栏颜色
+	 */
+	private void setSystemBarTintColor() {
+
+		setTranslucentStatus(true);
+
+		//sdk 4.4以上可设置状态栏
+		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
+			SystemBarTintManager tintManager = new SystemBarTintManager(this);
+			tintManager.setStatusBarTintEnabled(true);
+			tintManager.setStatusBarTintColor(getResources().getColor(R.color.main_yellow));
+		}
+	}
+
+	/**
+	 * 设置状态栏样式
+	 *
+	 * @param on
+	 */
+	@TargetApi(19)
+	private void setTranslucentStatus(boolean on) {
+		Window win = getWindow();
+		WindowManager.LayoutParams winParams = win.getAttributes();
+		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+		if (on) {
+			winParams.flags |= bits;
+		} else {
+			winParams.flags &= ~bits;
+		}
+		win.setAttributes(winParams);
 	}
 
 	/* (non-Javadoc)

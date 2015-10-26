@@ -219,7 +219,10 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
      * @param delta
      */
     private void updateHeaderHeight(float delta) {
-        mHeaderView.setVisiableHeight((int) delta + mHeaderView.getVisiableHeight());
+
+        mHeaderView.setVisiableHeight((int) (delta
+                + mHeaderView.getVisiableHeight()));
+
         if (mEnablePullRefresh && !mPullRefreshing) { // 未处于刷新状态，更新箭头
             if (mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
                 mHeaderView.setState(XListViewHeader.STATE_READY);
@@ -227,6 +230,7 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
                 mHeaderView.setState(XListViewHeader.STATE_NORMAL);
             }
         }
+
         setSelection(0); // scroll to top each time
     }
 
@@ -329,8 +333,8 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
 //                }
 
                 break;
-            case MotionEvent.ACTION_MOVE:
-                final float deltaY = ev.getRawY() - mLastY;
+            default:
+                float deltaY = ev.getRawY() - mLastY;
                 mLastY = ev.getRawY();
 
                 if (isFirst) {
@@ -344,6 +348,7 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
                 }
 
 //                if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
+
                 if (canRefresh &&
                         (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {//arvin edit
                     // the first item is showing, header has shown or pull down.
@@ -362,8 +367,10 @@ public class XMultiListView extends MultiColumnListView implements PLA_AbsListVi
                     // last item, already pulled up or want to pull up.
                     updateFooterHeight(-deltaY / OFFSET_RADIO);
                 }
+
                 break;
-            default:
+
+            case MotionEvent.ACTION_UP:
 
                 mLastY = -1;
                 canRefresh = false;

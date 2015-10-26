@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 
 import com.sky.cookbooksa.LuckDrawActivity;
 import com.sky.cookbooksa.MainActivity;
@@ -214,7 +213,7 @@ public class ImageViewPagerHelper {
         public Object instantiateItem(ViewGroup container, final int position) {
             // TODO Auto-generated method stub
 
-            View view = LayoutInflater.from(act).inflate(R.layout.image_page_item, null);
+            View view = LayoutInflater.from(act).inflate(R.layout.image_page_item2, null);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.image);
             ProgressBar loading = (ProgressBar) view.findViewById(R.id.loading);

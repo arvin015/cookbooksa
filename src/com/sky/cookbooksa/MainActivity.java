@@ -16,14 +16,11 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.sky.cookbooksa.adapter.MyViewPagerAdapter;
 import com.sky.cookbooksa.utils.Constant;
@@ -37,7 +34,6 @@ import com.sky.cookbooksa.widget.CustomViewPager;
 import com.sky.cookbooksa.widget.ViewPagerScroller;
 import com.slidingmenu.fragment.ClassifyFragment;
 import com.slidingmenu.fragment.MenuFragment;
-import com.slidingmenu.fragment.RecommendFragment;
 import com.slidingmenu.fragment.RecommendFragment_old;
 import com.slidingmenu.fragment.SearchFragment;
 import com.slidingmenu.fragment.UserInfoFragment;
@@ -54,7 +50,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends SlidingFragmentActivity implements OnPageChangeListener,
-        IUserLoadedCallback, IRecommendFragmentCallback {
+        IUserLoadedCallback {
 
     protected Context context;
 
@@ -110,7 +106,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
             loadMsg();
         }
 
-        Log.d("print", "onCreate");
     }
 
     /**
@@ -275,9 +270,8 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
     }
 
     /**
-     * 推荐Fragment搜索框点击回调方法
+     * 推荐Fragment搜索框点击方法
      */
-    @Override
     public void searchClick() {
         if (fragments.get(2) != null) {
             ((SearchFragment) fragments.get(2)).setFocus();

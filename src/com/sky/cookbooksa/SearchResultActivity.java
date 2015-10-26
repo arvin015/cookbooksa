@@ -1,21 +1,7 @@
 package com.sky.cookbooksa;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import com.sky.cookbooksa.entity.Dish;
-import com.sky.cookbooksa.utils.Constant;
-import com.sky.cookbooksa.utils.StringUtil;
-import com.sky.cookbooksa.utils.ToastUtil;
-
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -26,12 +12,25 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.sky.cookbooksa.entity.Dish;
+import com.sky.cookbooksa.utils.Constant;
+import com.sky.cookbooksa.utils.StringUtil;
+import com.sky.cookbooksa.utils.ToastUtil;
+
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchResultActivity extends BaseActivity {
 
@@ -111,8 +110,16 @@ public class SearchResultActivity extends BaseActivity {
                     for (int j = start_index; j < end_index; j++) {
                         ImageView imgView = (ImageView) listView.findViewWithTag(j);
                         if (imgView != null) {
-                            fb.display(imgView, Constant.DIR + dishs.get(j).getMainPic()
-                                    .substring(dishs.get(j).getMainPic().lastIndexOf("/") + 1));
+
+                            String imgPath = Constant.DIR + dishs.get(j).getMainPic()
+                                    .substring(dishs.get(j).getMainPic().lastIndexOf("/") + 1);
+                            Bitmap bitmap = fb.getBitmapFromCache(imgPath);
+
+                            if (bitmap != null) {
+                                imgView.setImageBitmap(bitmap);
+                            } else {
+                                fb.display(imgView, imgPath);
+                            }
                         }
                     }
                 }
@@ -266,11 +273,18 @@ public class SearchResultActivity extends BaseActivity {
             // 给图片控件设置上对应的位置编号
             viewHolder.imageView.setTag(position);
 
-            viewHolder.imageView.setImageResource(R.drawable.chat_pic_loading);
+            String imgPath = Constant.DIR + dish.getMainPic()
+                    .substring(dish.getMainPic().lastIndexOf("/") + 1);
+            Bitmap bitmap = fb.getBitmapFromCache(imgPath);
+
+            if (bitmap != null) {
+                viewHolder.imageView.setImageBitmap(bitmap);
+            } else {
+                viewHolder.imageView.setImageResource(R.drawable.chat_pic_loading);
+            }
 
             if (isInit) {
-                fb.display(viewHolder.imageView, Constant.DIR + dish.getMainPic()
-                        .substring(dish.getMainPic().lastIndexOf("/") + 1));
+                fb.display(viewHolder.imageView, imgPath);
             }
 
             return convertView;

@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sky.cookbooksa.DishDetailActivity;
-import com.sky.cookbooksa.IRecommendFragmentCallback;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.Dish;
@@ -69,8 +68,6 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
 
     private SharedPreferencesUtils spfu;
 
-    private IRecommendFragmentCallback listener;
-
     private XMultiListView waterfallView;
 
     private XListViewAd xListViewAd;
@@ -84,8 +81,6 @@ public class RecommendFragment_old extends Fragment implements XMultiListView.IX
 
     public RecommendFragment_old(MainActivity act) {
         this.act = act;
-
-        this.listener = act;
     }
 
     @Override

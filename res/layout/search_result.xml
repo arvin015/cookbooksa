@@ -32,7 +32,7 @@
             android:layout_height="match_parent"
             android:divider="#20E0E0E0"
             android:dividerHeight="0dp"
-            android:fastScrollEnabled="true" />
+            android:fastScrollEnabled="false" />
     </LinearLayout>
 
 </LinearLayout>

@@ -26,7 +26,6 @@ import com.pulltorefresh.lib.PullToRefreshBase.OnPullEventListener;
 import com.pulltorefresh.lib.PullToRefreshBase.State;
 import com.pulltorefresh.lib.PullToRefreshScrollView;
 import com.sky.cookbooksa.DishDetailActivity;
-import com.sky.cookbooksa.IRecommendFragmentCallback;
 import com.sky.cookbooksa.MainActivity;
 import com.sky.cookbooksa.R;
 import com.sky.cookbooksa.entity.Dish;
@@ -80,8 +79,6 @@ public class RecommendFragment extends Fragment {
 
     private SharedPreferencesUtils spfu;
 
-    private IRecommendFragmentCallback listener;
-
     private boolean isLoading = false;
 
     private WaterfallView waterfallView;
@@ -91,8 +88,6 @@ public class RecommendFragment extends Fragment {
 
     public RecommendFragment(MainActivity act) {
         this.act = act;
-
-        this.listener = act;
     }
 
     @Override
@@ -316,8 +311,6 @@ public class RecommendFragment extends Fragment {
                 // TODO Auto-generated method stub
                 act.setCurrentPager(2);
                 act.setCurrentCheckedTitle(2);
-
-                listener.searchClick();
             }
         });
     }

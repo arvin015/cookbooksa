@@ -9,13 +9,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.sky.cookbooksa.LuckDrawActivity;
 import com.sky.cookbooksa.MainActivity;
@@ -50,14 +50,13 @@ public class XListViewAd extends LinearLayout {
     private ImageView lastSelectedImage;
     private LinearLayout ll_circle;
     private FrameLayout imageContainer;
+    private TextView search_key;
 
     private ArrayList<ImageView> circles;
 
     private ArrayList<ActivityInfo> images;
 
     private Timer mTimer;
-
-    private float startX = -1, startY = -1;
 
     private boolean canRoll = true;//图片是否可自动滚动
 
@@ -113,54 +112,21 @@ public class XListViewAd extends LinearLayout {
         viewPager = (DecoratorViewPager) view.findViewById(R.id.image_viewpager);
         ll_circle = (LinearLayout) view.findViewById(R.id.ll_circle_container);
         imageContainer = (FrameLayout) view.findViewById(R.id.imageContainer);
+        search_key = (TextView) view.findViewById(R.id.search_key);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 DisplayUtil.screenHeight / 4);
         imageContainer.setLayoutParams(params);
 
-        viewPager.setOnTouchListener(new OnTouchListener() {
+        search_key.setOnClickListener(new OnClickListener() {
+
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                act.setCurrentPager(2);
+                act.setCurrentCheckedTitle(2);
 
-                float x = event.getX();
-                float y = event.getY();
-
-                int action = event.getAction();
-
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-
-                        canRoll = false;
-
-                        startX = x;
-                        startY = y;
-
-                        break;
-
-                    case MotionEvent.ACTION_MOVE:
-
-                        canRoll = false;
-
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-
-                        canRoll = true;
-
-                        float dis = (float) Math.sqrt((x - startX) * (x - startX) + (y - startY) * (y - startY));
-
-                        if (dis < 5) {
-                            Intent intent = new Intent(act, LuckDrawActivity.class);
-                            intent.putExtra("id", (viewPager.getCurrentItem() + 1) + "");
-                            act.startActivity(intent);
-
-                            act.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                        }
-
-                        break;
-                }
-
-                return false;
+                act.searchClick();
             }
         });
 
@@ -346,7 +312,7 @@ public class XListViewAd extends LinearLayout {
         public Object instantiateItem(ViewGroup container, final int position) {
             // TODO Auto-generated method stub
 
-            View view = LayoutInflater.from(act).inflate(R.layout.image_page_item, null);
+            View view = LayoutInflater.from(act).inflate(R.layout.image_page_item2, null);
 
             ImageView imageView = (ImageView) view.findViewById(R.id.image);
             ProgressBar loading = (ProgressBar) view.findViewById(R.id.loading);
@@ -358,6 +324,17 @@ public class XListViewAd extends LinearLayout {
             imageView.setLayoutParams(params);
 
             fb.display(imageView, Constant.DIR + images.get(position).getActPic());
+
+            view.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(act, LuckDrawActivity.class);
+                    intent.putExtra("id", (viewPager.getCurrentItem() + 1) + "");
+                    act.startActivity(intent);
+
+                    act.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                }
+            });
 
             ((ViewPager) container).addView(view);
 
