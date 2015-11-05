@@ -181,6 +181,17 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="c8b27237d11e20eabebaaeb336e527cb" />
+
+        <!-- 友盟统计 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5639654fe0f55afed900072e" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Fanbar" >
+        </meta-data>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
