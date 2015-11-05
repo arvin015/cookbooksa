@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="6dp"
                 android:layout_weight="1"
-                android:background="@drawable/search_btn_bg"
+                android:background="@drawable/blue_button"
                 android:padding="7dp"
                 android:text="搜索"
                 android:textColor="#FFFFFF"

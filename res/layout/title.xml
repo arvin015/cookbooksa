@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="6dp"
-            android:background="@drawable/search_btn_bg"
+            android:background="@drawable/blue_button"
             android:padding="5dp"
             android:text="确定"
             android:textColor="#FFFFFF"

@@ -1,20 +1,23 @@
 package com.sky.cookbooksa;
 
-import com.sky.cookbooksa.utils.SharedPreferencesUtils;
-
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-public class BlankActivity extends BaseActivity {
+import com.sky.cookbooksa.utils.ExitApplication;
+import com.sky.cookbooksa.utils.SharedPreferencesUtils;
+
+public class BlankActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
 
-        super.cancleTranslucentStatus();
-
         setContentView(R.layout.blank);
+
+        ExitApplication.getInstance(this).addActivity(this);
 
         new Handler().postDelayed(new Runnable() {
 
@@ -28,12 +31,13 @@ public class BlankActivity extends BaseActivity {
     }
 
     private void jumpTo() {
+
         Class<?> targetClass = null;
 
-        if (SharedPreferencesUtils.getInstance(context, null)
+        if (SharedPreferencesUtils.getInstance(this, null)
                 .loadStringSharedPreference("isFirst") == null) {
 
-            SharedPreferencesUtils.getInstance(context, null).saveSharedPreferences("isFirst", "false");
+            SharedPreferencesUtils.getInstance(this, null).saveSharedPreferences("isFirst", "false");
 
             targetClass = WelcomeActivity.class;
 
@@ -42,6 +46,8 @@ public class BlankActivity extends BaseActivity {
             targetClass = MainActivity.class;
         }
 
-        intentHandle(targetClass, null, true);
+        Intent intent = new Intent(this, targetClass);
+        startActivity(intent);
+
     }
 }

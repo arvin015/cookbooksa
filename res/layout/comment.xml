@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/search_btn_bg"
+                android:background="@drawable/blue_button"
                 android:focusable="true"
                 android:paddingBottom="7dp"
                 android:paddingTop="7dp"

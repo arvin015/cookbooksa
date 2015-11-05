@@ -3,17 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@drawable/my_login_bg" >
+            android:background="@drawable/my_login_bg">
 
             <ImageView
                 android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_centerInParent="true"
                 android:background="@drawable/pic_bg"
                 android:padding="2dp"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/userpic"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/rl_userpic"
                 android:layout_centerInParent="true"
-                android:background="@drawable/search_btn_bg"
+                android:background="@drawable/blue_button"
                 android:padding="5dp"
                 android:text="登录"
                 android:textColor="#FFFFFF"
@@ -67,7 +67,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp" >
+            android:padding="5dp">
 
             <com.sky.cookbooksa.widget.CommonGridView
                 android:id="@+id/usergridview"

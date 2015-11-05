@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -28,6 +27,7 @@ import com.sky.cookbooksa.utils.DisplayUtil;
 import com.sky.cookbooksa.utils.ExitApplication;
 import com.sky.cookbooksa.utils.SharedPreferencesUtils;
 import com.sky.cookbooksa.utils.StringUtil;
+import com.sky.cookbooksa.utils.SystemManager;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.utils.Utils;
 import com.sky.cookbooksa.widget.CustomViewPager;
@@ -39,6 +39,7 @@ import com.slidingmenu.fragment.SearchFragment;
 import com.slidingmenu.fragment.UserInfoFragment;
 import com.slidingmenu.lib.SlidingMenu;
 import com.slidingmenu.lib.app.SlidingFragmentActivity;
+import com.umeng.analytics.MobclickAgent;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -84,6 +85,9 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //设置状态栏样式
+        SystemManager.initSystemBar(this);
 
         //初始化百度云推送
         //		PushManager.startWork(getApplicationContext(),
@@ -324,6 +328,7 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
         ExitApplication.getInstance(context).exit();
     }
 
+    //singleTask启动模式，该Activity未在栈中，则创建之，已在栈中则把它之上的Activity清掉，使之置于栈顶，并执行onNewIntent方法
 //	@Override
 //	protected void onNewIntent(Intent intent) {
 //		// TODO Auto-generated method stub
@@ -360,7 +365,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
 
     @Override
     public void onPageSelected(int arg0) {
-        Log.i("slide", "onPageSelected+agr0=" + arg0);
         title.setText(titleNames[arg0]);
         titles.get(arg0).setChecked(true);//保持页面跟按钮的联动
 
@@ -423,7 +427,6 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
                             Utils.newMsgNum = resultObj.optInt("count", 0);
                         }
 
-                        //刚登录是否有新消息显示
                         if (Utils.newMsgNum > 0 && pager.getCurrentItem() == 3) {
                             showMsgIcon();
                         }
@@ -431,7 +434,8 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
                         //"我的"是否需要显示消息提示
                         //是否有新消息
                         if (Utils.newMsgNum > SharedPreferencesUtils.getInstance(context, "")
-                                .loadIntSharedPreference(Utils.NEW_MSG_NUM)) {
+                                .loadIntSharedPreference(Utils.NEW_MSG_NUM)) {                        //刚登录是否有新消息显示
+
                             newMsgFlag.setVisibility(View.VISIBLE);
                         } else {
                             //是否有未读消息
@@ -452,5 +456,19 @@ public class MainActivity extends SlidingFragmentActivity implements OnPageChang
     private void showMsgIcon() {
         msgNumText.setVisibility(View.VISIBLE);
         msgNumText.setText("" + Utils.newMsgNum);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        MobclickAgent.onResume(context);//友盟统计
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        MobclickAgent.onPause(context);//友盟统计
     }
 }

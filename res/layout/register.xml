@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <include layout="@layout/title" />
 
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp" >
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/register_tip"
@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/common_edit_bg_shape"
             android:inputType="numberSigned"
             android:maxLength="11"
             android:padding="5dp"
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/common_edit_bg_shape"
             android:hint="请输入密码"
             android:inputType="textPassword"
             android:maxLength="20"
@@ -49,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@drawable/common_edit_bg_shape"
             android:hint="请再次输入密码"
             android:inputType="textPassword"
             android:maxLength="20"
@@ -62,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/timer_tip"
@@ -78,7 +81,7 @@
                 android:id="@+id/getcode_again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/search_btn_bg"
+                android:background="@drawable/blue_button"
                 android:padding="8dp"
                 android:text="获取验证码"
                 android:textColor="#FFFFFF"
@@ -91,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/search_btn_bg"
+            android:background="@drawable/blue_button"
             android:padding="8dp"
             android:text="获取验证码"
             android:textColor="#FFFFFF"

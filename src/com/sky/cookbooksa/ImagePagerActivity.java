@@ -38,13 +38,16 @@ import com.sky.cookbooksa.utils.StringUtil;
 import com.sky.cookbooksa.utils.ToastUtil;
 import com.sky.cookbooksa.widget.HackyViewPager;
 
+import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImagePagerActivity extends BaseActivity {
+public class ImagePagerActivity extends Activity {
+
+    private Context context;
 
     private LinearLayout topLayout;
     private HackyViewPager pager;
@@ -58,7 +61,8 @@ public class ImagePagerActivity extends BaseActivity {
 
     private String DOWNLOADDIR = Environment.getExternalStorageDirectory().getAbsolutePath() + "/cookbook/download/";
 
-    protected ImageLoader imageLoader = ImageLoader.getInstance();
+    private FinalHttp fh;
+    private ImageLoader imageLoader = ImageLoader.getInstance();
     private DisplayImageOptions options;
     private static final String STATE_POSITION = "STATE_POSITION";
 
@@ -68,9 +72,9 @@ public class ImagePagerActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        super.cancleTranslucentStatus();
-
         setContentView(R.layout.image_page);
+
+        context = this;
 
         Bundle bundle = getIntent().getExtras();
         list = (ArrayList<PictureInfo>) bundle.getSerializable("list");
@@ -85,6 +89,8 @@ public class ImagePagerActivity extends BaseActivity {
 
     private void init() {
 
+        fh = new FinalHttp();
+
         topLayout = (LinearLayout) findViewById(R.id.ll_top);
         showNo = (TextView) findViewById(R.id.show_no);
         showNo.setText((pagerPosition + 1) + "/" + list.size());
@@ -93,7 +99,7 @@ public class ImagePagerActivity extends BaseActivity {
         descText = (TextView) findViewById(R.id.image_desc);
 
         pager = (HackyViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new ImagePagerAdapter(list, this));
+        pager.setAdapter(new ImagePagerAdapter(list, context));
         pager.setCurrentItem(pagerPosition);
 
         setDescText(0, list.get(0).getDesc());
@@ -200,6 +206,7 @@ public class ImagePagerActivity extends BaseActivity {
         descText.setText(Html.fromHtml(descHtml));
     }
 
+    //系统销毁Activity时保存临时数据
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putInt(STATE_POSITION, pager.getCurrentItem());
